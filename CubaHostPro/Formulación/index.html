@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="es-CU" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratar Plan - CubaHostPro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary: #ea580c;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --gray-lighter: #f1f5f9;
+            --white: #ffffff;
+            
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+            
+            --radius-sm: 0.25rem;
+            --radius: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-full: 9999px;
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: var(--gray-lighter);
+            color: var(--dark);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-md);
+            flex-grow: 1;
+            width: 100%;
+        }
+        
+        .form-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            margin: var(--space-md) 0;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: var(--space-lg);
+            text-align: center;
+        }
+        
+        .form-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .form-header p {
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+        
+        .form-body {
+            padding: var(--space-lg);
+        }
+        
+        /* Indicador de pasos */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+            gap: var(--space-sm);
+            position: relative;
+        }
+        
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray-light);
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+        
+        .step {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gray-light);
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            position: relative;
+            transition: var(--transition);
+            z-index: 2;
+            border: 2px solid var(--white);
+        }
+        
+        .step.active {
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        .step.completed {
+            background: var(--success);
+            color: var(--white);
+        }
+        
+        /* Contenido de los pasos */
+        .form-step {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .step-title .icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+        
+        /* Grupos de formulario */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-group.compact {
+            margin-bottom: var(--space-sm);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.875rem;
+        }
+        
+        .required-field::after {
+            content: ' *';
+            color: var(--error);
+        }
+        
+        .optional-field::after {
+            content: ' (opcional)';
+            color: var(--gray);
+            font-weight: 400;
+            font-size: 0.8em;
+        }
+        
+        /* Campos de formulario */
+        .input-wrapper {
+            position: relative;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            font-family: var(--font-main);
+            transition: var(--transition);
+            font-size: 0.9375rem;
+            background: var(--white);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        /* Errores */
+        .error-message {
+            color: var(--error);
+            font-size: 0.75rem;
+            margin-top: var(--space-xs);
+            display: none;
+        }
+        
+        .has-error input, 
+        .has-error select, 
+        .has-error textarea {
+            border-color: var(--error);
+        }
+        
+        .has-error .error-message {
+            display: block;
+        }
+        
+        /* Botones */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-align: center;
+            gap: var(--space-sm);
+            font-size: 0.9375rem;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            gap: var(--space-md);
+        }
+        
+        /* Tarjetas de plan */
+        .plan-card {
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--white);
+        }
+        
+        .plan-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        
+        .plan-card.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .plan-card h3 {
+            margin-bottom: var(--space-xs);
+            color: var(--dark);
+            font-size: 1.125rem;
+        }
+        
+        .plan-card p {
+            color: var(--gray);
+            font-size: 0.875rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .plan-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: var(--space-sm) 0;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-top: var(--space-md);
+        }
+        
+        .plan-features li {
+            padding: var(--space-xs) 0;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            font-size: 0.875rem;
+        }
+        
+        .plan-features i {
+            color: var(--success);
+            font-size: 0.875rem;
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+        }
+        
+        /* Opciones de periodo */
+        .plan-period {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+        
+        .period-option {
+            padding: var(--space-md);
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--white);
+            text-align: center;
+        }
+        
+        .period-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .period-option.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+        
+        .period-option h4 {
+            margin-bottom: var(--space-xs);
+            font-size: 1rem;
+        }
+        
+        .period-option p {
+            font-size: 0.8125rem;
+            color: var(--gray);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .period-option .discount {
+            color: var(--success);
+            font-weight: 600;
+            font-size: 0.8125rem;
+        }
+        
+        /* Método de pago */
+        .payment-method {
+            background: var(--gray-lighter);
+            padding: var(--space-lg);
+            border-radius: var(--radius);
+            margin-top: var(--space-lg);
+        }
+        
+        .payment-method h3 {
+            margin-bottom: var(--space-md);
+            color: var(--primary);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .payment-method h3 i {
+            font-size: 1rem;
+        }
+        
+        .payment-method p {
+            margin-bottom: var(--space-md);
+            font-size: 0.875rem;
+        }
+        
+        .payment-steps {
+            margin-top: var(--space-md);
+            padding-left: 1.25rem;
+        }
+        
+        .payment-steps li {
+            margin-bottom: var(--space-sm);
+            font-size: 0.875rem;
+        }
+        
+        .payment-steps strong {
+            color: var(--dark);
+        }
+        
+        /* Resumen */
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px dashed var(--gray-light);
+            font-size: 0.9375rem;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-item strong {
+            color: var(--dark);
+        }
+        
+        .total-price {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Checkbox términos */
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+        
+        .terms-checkbox input {
+            width: auto;
+            margin-top: 0.25rem;
+        }
+        
+        .terms-checkbox label {
+            font-size: 0.875rem;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+        
+        .terms-link {
+            color: var(--primary);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        /* Modal de términos */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: var(--space-md) var(--space-lg);
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            padding: var(--space-xs);
+        }
+        
+        .modal-content {
+            padding: var(--space-lg);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .modal-content p {
+            margin-bottom: var(--space-md);
+        }
+        
+        /* Notificación */
+        .notification {
+            position: fixed;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: var(--white);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            z-index: 1000;
+            transition: var(--transition);
+            max-width: 90%;
+            width: max-content;
+        }
+        
+        .notification.success {
+            background: var(--success);
+        }
+        
+        .notification.error {
+            background: var(--error);
+        }
+        
+        .notification.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(20px);
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0;
+            margin-left: var(--space-sm);
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: var(--space-sm);
+            }
+            
+            .form-header {
+                padding: var(--space-md);
+            }
+            
+            .form-body {
+                padding: var(--space-md);
+            }
+            
+            .plan-period {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-group {
+                flex-direction: column-reverse;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1><i class="fas fa-rocket"></i> Contratar Plan CubaHostPro</h1>
+                <p>Complete el formulario en 3 simples pasos</p>
+            </div>
+            
+            <div class="form-body">
+                <!-- Indicador de pasos -->
+                <div class="step-indicator">
+                    <div class="step active" id="step-1-indicator">1</div>
+                    <div class="step" id="step-2-indicator">2</div>
+                    <div class="step" id="step-3-indicator">3</div>
+                </div>
+                
+                <!-- Paso 1: Información del Cliente -->
+                <div class="form-step active" id="step-1">
+                    <h2 class="step-title">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                        Información Personal
+                    </h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nombre" class="required-field">Nombre completo</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez López" required>
+                            </div>
+                            <div class="error-message" id="nombre-error">Por favor ingrese su nombre completo</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono" class="required-field">Teléfono (WhatsApp)</label>
+                            <div class="input-wrapper">
+                                <input type="tel" id="telefono" name="telefono" placeholder="Ej: +5350369270" required>
+                            </div>
+                            <div class="error-message" id="telefono-error">Por favor ingrese un número de teléfono válido</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="optional-field">Correo electrónico</label>
+                            <div class="input-wrapper">
+                                <input type="email" id="email" name="email" placeholder="Ej: juan@ejemplo.com">
+                            </div>
+                            <div class="error-message" id="email-error">Por favor ingrese un correo electrónico válido</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gestor" class="optional-field">¿Quién te contactó?</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="gestor" name="gestor" placeholder="Nombre del gestor o referencia">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline" disabled>
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" id="next-1">
+                            Siguiente <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Paso 2: Selección de Plan -->
+                <div class="form-step" id="step-2">
+                    <h2 class="step-title">
+                        <span class="icon"><i class="fas fa-cubes"></i></span>
+                        Elige tu Plan
+                    </h2>
+                    
+                    <div class="plan-card" data-plan="emprendedor">
+                        <h3>Plan Emprendedor</h3>
+                        <p>Perfecto para usuarios que ofrecen un servicio/producto</p>
+                        <div class="plan-price" data-monthly="250.99" data-annual="2409.50">250,99 CUP/mes</div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Interfaz Simple</li>
+                            <li><i class="fas fa-check"></i> Nombre Personalizado</li>
+                            <li><i class="fas fa-check"></i> Dominio .cu</li>
+                            <li><i class="fas fa-check"></i> Logotipo Personalizado</li>
+                            <li><i class="fas fa-check"></i> Soporte 12/7</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plan-card" data-plan="negocio">
+                        <h3>Plan Negocio</h3>
+                        <p>Perfecto para negocios oficiales con múltiples funciones</p>
+                        <div class="plan-price" data-monthly="300.99" data-annual="2889.50">300,99 CUP/mes</div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Interfaz Sofisticada</li>
+                            <li><i class="fas fa-check"></i> Dominio .cu</li>
+                            <li><i class="fas fa-check"></i> Logotipo Personalizado</li>
+                            <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                            <li><i class="fas fa-check"></i> Actualizaciones Semanales</li>
+                            <li><i class="fas fa-check"></i> Disponible para móvil (apk)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plan-period">
+                        <div class="period-option" data-period="mensual">
+                            <h4>Pago Mensual</h4>
+                            <p>Facturación cada mes</p>
+                            <p class="discount">Precio normal</p>
+                        </div>
+                        
+                        <div class="period-option" data-period="anual">
+                            <h4>Pago Anual</h4>
+                            <p>Facturación cada año</p>
+                            <p class="discount">20% de descuento</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dominio" class="optional-field">Nombre de dominio deseado</label>
+                        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                            <input type="text" id="dominio" name="dominio" placeholder="minombre" style="flex: 1;">
+                            <span>.cu</span>
+                        </div>
+                        <small style="display: block; margin-top: var(--space-xs); color: var(--gray); font-size: 0.75rem;">Verificaremos disponibilidad y te contactaremos</small>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline" id="prev-2">
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" id="next-2">
+                            Siguiente <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Paso 3: Método de Pago y Resumen -->
+                <div class="form-step" id="step-3">
+                    <h2 class="step-title">
+                        <span class="icon"><i class="fas fa-credit-card"></i></span>
+                        Método de Pago
+                    </h2>
+                    
+                    <div class="payment-method">
+                        <h3><i class="fab fa-whatsapp"></i> Transfermóvil</h3>
+                        <p>Para completar tu contratación, realiza el pago a través de Transfermóvil siguiendo estos pasos:</p>
+                        
+                        <ol class="payment-steps">
+                            <li>Abre la aplicación Transfermóvil en tu teléfono</li>
+                            <li>Selecciona la opción<strong>"MiTransfer"</strong></li>
+                            <li>Introduzca el número de teléfono <strong>"50369270"</strong></li>
+                            <li>Ingresa el monto correspondiente a tu plan</li>
+                            <li>Confirma el pago y envianos el comprobante y deberá esperar 48 horas</li>
+                        </ol>
+                        
+                        <p style="margin-top: var(--space-md);"><strong>Listo</strong>👍</p>
+                    </div>
+                    
+                    <h3 class="step-title" style="margin: var(--space-xl) 0 var(--space-md);">
+                        <span class="icon"><i class="fas fa-file-invoice"></i></span>
+                        Resumen de tu Pedido
+                    </h3>
+                    
+                    <div class="summary-item">
+                        <span>Plan seleccionado:</span>
+                        <strong id="summary-plan">Plan Negocio</strong>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Periodo de pago:</span>
+                        <strong id="summary-period">Mensual</strong>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Dominio solicitado:</span>
+                        <strong id="summary-domain">No especificado</strong>
+                    </div>
+                    
+                    <div class="total-price">
+                        <span>Total a pagar:</span>
+                        <span id="summary-total">300,99 CUP</span>
+                    </div>
+                    
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="terminos" name="terminos" required>
+                        <label for="terminos">
+                            Acepto los <span class="terms-link" id="terms-link">términos y condiciones</span> y la 
+                            <span class="terms-link" id="privacy-link">política de privacidad</span> de CubaHostPro
+                        </label>
+                    </div>
+                    <div class="error-message" id="terminos-error">Debe aceptar los términos y condiciones</div>
+                    
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline" id="prev-3">
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" id="submit-form">
+                            <i class="fab fa-whatsapp"></i> Enviar Solicitud
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Términos y Condiciones -->
+    <div class="modal-overlay" id="terms-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Términos y Condiciones</h3>
+                <button class="modal-close" id="close-terms-modal">&times;</button>
+            </div>
+            <div class="modal-content">
+                <p><strong>Última actualización: 25 de mayo de 2025</strong></p>
+                
+                <p>Al contratar nuestros servicios, usted acepta los siguientes términos y condiciones:</p>
+                
+                <p><strong>1. Servicios:</strong> CubaHostPro proporciona servicios de hosting y desarrollo web según las características descritas en cada plan. Nos reservamos el derecho de modificar las características técnicas de los planes con previo aviso.</p>
+                
+                <p><strong>2. Pagos:</strong> Todos los servicios se facturan por adelantado. Los pagos anuales tienen un descuento del 20% y no son reembolsables. Los servicios se renovarán automáticamente al final de cada período de facturación.</p>
+                
+                <p><strong>3. Cancelación:</strong> Puede cancelar su plan en cualquier momento, pero no se realizarán reembolsos por períodos no utilizados.</p>
+                
+                <p><strong>4. Uso Aceptable:</strong> El cliente se compromete a utilizar los servicios de acuerdo con las leyes cubanas y no para actividades ilegales o que infrinjan derechos de terceros.</p>
+                
+                <p><strong>5. Soporte:</strong> El soporte técnico se proporciona según las condiciones de cada plan, exclusivamente a través de los canales oficiales de comunicación.</p>
+                
+                <p><strong>6. Garantías:</strong> CubaHostPro garantiza un tiempo de actividad del 99% para todos sus planes, excluyendo mantenimientos programados con previo aviso.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Política de Privacidad -->
+    <div class="modal-overlay" id="privacy-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Política de Privacidad</h3>
+                <button class="modal-close" id="close-privacy-modal">&times;</button>
+            </div>
+            <div class="modal-content">
+                <p><strong>Última actualización: 25 de mayo de 2025</strong></p>
+                
+                <p>CubaHostPro se compromete a proteger la privacidad de sus clientes. Esta política explica cómo recopilamos, usamos y protegemos su información personal.</p>
+                
+                <p><strong>1. Información Recopilada:</strong> Recopilamos información personal como nombre, teléfono, correo electrónico y datos de pago necesarios para proporcionar nuestros servicios.</p>
+                
+                <p><strong>2. Uso de la Información:</strong> Utilizamos su información para:</p>
+                <ul style="margin-left: 1.25rem; margin-bottom: 1rem;">
+                    <li>Proveer y mantener nuestros servicios</li>
+                    <li>Notificarle sobre cambios en nuestros servicios</li>
+                    <li>Permitirle participar en funciones interactivas de nuestro servicio</li>
+                    <li>Proporcionar soporte al cliente</li>
+                </ul>
+                
+                <p><strong>3. Seguridad de Datos:</strong> Implementamos medidas de seguridad técnicas y organizativas para proteger sus datos personales contra accesos no autorizados o divulgación.</p>
+                
+                <p><strong>4. Divulgación a Terceros:</strong> No compartimos su información personal con terceros excepto cuando sea necesario para proveer los servicios contratados o cuando lo requiera la ley.</p>
+                
+                <p><strong>5. Sus Derechos:</strong> Usted tiene derecho a acceder, corregir o solicitar la eliminación de sus datos personales en cualquier momento.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notificación -->
+    <div id="notification" class="notification hidden">
+        <div class="notification-content"></div>
+        <button class="notification-close">&times;</button>
+    </div>
+    
+    <script>
+        // Variables globales
+        let currentStep = 1;
+        const totalSteps = 3;
+        let formData = {
+            nombre: '',
+            telefono: '',
+            email: '',
+            gestor: '',
+            plan: 'negocio',
+            periodo: 'mensual',
+            dominio: ''
+        };
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleccionar plan negocio por defecto
+            selectPlan('negocio');
+            selectPeriod('mensual');
+            updateSummary();
+            
+            // Event listeners para navegación
+            document.getElementById('next-1').addEventListener('click', validateStep1);
+            document.getElementById('next-2').addEventListener('click', validateStep2);
+            document.getElementById('prev-2').addEventListener('click', () => navigateTo(1));
+            document.getElementById('prev-3').addEventListener('click', () => navigateTo(2));
+            document.getElementById('submit-form').addEventListener('click', submitForm);
+            
+            // Event listeners para selección de plan y periodo
+            document.querySelectorAll('.plan-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    selectPlan(this.dataset.plan);
+                    updateSummary();
+                });
+            });
+            
+            document.querySelectorAll('.period-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    selectPeriod(this.dataset.period);
+                    updateSummary();
+                });
+            });
+            
+            // Actualizar dominio en resumen
+            document.getElementById('dominio').addEventListener('input', function() {
+                formData.dominio = this.value;
+                updateSummary();
+            });
+            
+            // Campos de formulario
+            document.getElementById('nombre').addEventListener('input', function() {
+                formData.nombre = this.value.trim();
+                clearError(this);
+            });
+            
+            document.getElementById('telefono').addEventListener('input', function() {
+                formData.telefono = this.value.trim();
+                clearError(this);
+            });
+            
+            document.getElementById('email').addEventListener('input', function() {
+                formData.email = this.value.trim();
+                clearError(this);
+            });
+            
+            document.getElementById('gestor').addEventListener('input', function() {
+                formData.gestor = this.value.trim();
+            });
+            
+            // Términos y condiciones
+            document.getElementById('terms-link').addEventListener('click', () => {
+                document.getElementById('terms-modal').classList.add('active');
+            });
+            
+            document.getElementById('privacy-link').addEventListener('click', () => {
+                document.getElementById('privacy-modal').classList.add('active');
+            });
+            
+            document.getElementById('close-terms-modal').addEventListener('click', () => {
+                document.getElementById('terms-modal').classList.remove('active');
+            });
+            
+            document.getElementById('close-privacy-modal').addEventListener('click', () => {
+                document.getElementById('privacy-modal').classList.remove('active');
+            });
+            
+            // Cerrar modales al hacer clic fuera
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Cerrar notificación
+            document.querySelector('.notification-close').addEventListener('click', function() {
+                document.getElementById('notification').classList.add('hidden');
+            });
+        });
+        
+        // Funciones de navegación
+        function navigateTo(step) {
+            if (step < 1 || step > totalSteps) return;
+            
+            // Ocultar paso actual
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            document.getElementById(`step-${currentStep}-indicator`).classList.remove('active');
+            
+            // Mostrar nuevo paso
+            document.getElementById(`step-${step}`).classList.add('active');
+            document.getElementById(`step-${step}-indicator`).classList.add('active');
+            
+            // Actualizar estado de los indicadores
+            for (let i = 1; i <= totalSteps; i++) {
+                const indicator = document.getElementById(`step-${i}-indicator`);
+                if (i < step) {
+                    indicator.classList.add('completed');
+                } else if (i > step) {
+                    indicator.classList.remove('completed');
+                }
+            }
+            
+            currentStep = step;
+            
+            // Scroll suave al inicio del paso
+            document.getElementById(`step-${step}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        // Funciones de validación
+        function validateStep1() {
+            let isValid = true;
+            
+            // Validar nombre
+            const nombre = document.getElementById('nombre');
+            const nombreError = document.getElementById('nombre-error');
+            if (!formData.nombre) {
+                showError(nombre, nombreError, 'Por favor ingrese su nombre completo');
+                isValid = false;
+            } else {
+                clearError(nombre);
+            }
+            
+            // Validar teléfono
+            const telefono = document.getElementById('telefono');
+            const telefonoError = document.getElementById('telefono-error');
+            if (!formData.telefono) {
+                showError(telefono, telefonoError, 'Por favor ingrese su número de teléfono');
+                isValid = false;
+            } else if (!/^[0-9+]{8,15}$/.test(formData.telefono)) {
+                showError(telefono, telefonoError, 'Por favor ingrese un número de teléfono válido');
+                isValid = false;
+            } else {
+                clearError(telefono);
+            }
+            
+            // Validar email si está presente
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+                showError(email, emailError, 'Por favor ingrese un correo electrónico válido');
+                isValid = false;
+            } else {
+                clearError(email);
+            }
+            
+            if (isValid) {
+                navigateTo(2);
+            } else {
+                showNotification('Por favor complete los campos requeridos correctamente', 'error');
+                // Scroll al primer error
+                document.querySelector('.has-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        function validateStep2() {
+            navigateTo(3);
+        }
+        
+        function showError(input, errorElement, message) {
+            errorElement.textContent = message;
+            input.parentElement.parentElement.classList.add('has-error');
+        }
+        
+        function clearError(input) {
+            const formGroup = input.parentElement.parentElement;
+            formGroup.classList.remove('has-error');
+            const errorElement = formGroup.querySelector('.error-message');
+            if (errorElement) errorElement.style.display = 'none';
+        }
+        
+        // Funciones de selección
+        function selectPlan(plan) {
+            formData.plan = plan;
+            
+            // Actualizar UI
+            document.querySelectorAll('.plan-card').forEach(card => {
+                card.classList.remove('selected');
+                if (card.dataset.plan === plan) {
+                    card.classList.add('selected');
+                }
+            });
+            
+            // Actualizar precios
+            updatePrices();
+        }
+        
+        function selectPeriod(period) {
+            formData.periodo = period;
+            
+            // Actualizar UI
+            document.querySelectorAll('.period-option').forEach(option => {
+                option.classList.remove('selected');
+                if (option.dataset.period === period) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Actualizar precios
+            updatePrices();
+        }
+        
+        function updatePrices() {
+            const priceElements = document.querySelectorAll('.plan-price');
+            
+            priceElements.forEach(element => {
+                const plan = element.closest('.plan-card').dataset.plan;
+                const monthlyPrice = element.dataset.monthly;
+                const annualPrice = element.dataset.annual;
+                
+                if (formData.periodo === 'anual') {
+                    element.textContent = `${annualPrice} CUP/año`;
+                } else {
+                    element.textContent = `${monthlyPrice} CUP/mes`;
+                }
+            });
+        }
+        
+        // Actualizar resumen
+        function updateSummary() {
+            document.getElementById('summary-plan').textContent = 
+                formData.plan === 'emprendedor' ? 'Plan Emprendedor' : 'Plan Negocio';
+            
+            document.getElementById('summary-period').textContent = 
+                formData.periodo === 'mensual' ? 'Mensual' : 'Anual (20% desc.)';
+            
+            document.getElementById('summary-domain').textContent = 
+                formData.dominio ? `${formData.dominio}.cu` : 'No especificado';
+            
+            // Calcular total
+            let total;
+            if (formData.plan === 'emprendedor') {
+                total = formData.periodo === 'mensual' ? '250,99 CUP' : '2.409,50 CUP';
+            } else {
+                total = formData.periodo === 'mensual' ? '300,99 CUP' : '2.889,50 CUP';
+            }
+            
+            document.getElementById('summary-total').textContent = total;
+        }
+        
+        // Enviar formulario
+        function submitForm() {
+            // Validar términos y condiciones
+            const terminos = document.getElementById('terminos');
+            const terminosError = document.getElementById('terminos-error');
+            
+            if (!terminos.checked) {
+                terminosError.style.display = 'block';
+                showNotification('Debe aceptar los términos y condiciones', 'error');
+                terminos.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            
+            terminosError.style.display = 'none';
+            
+            // Construir mensaje para WhatsApp
+            let message = `*Nueva solicitud de plan CubaHostPro*%0A%0A`;
+            message += `*📌 Información del cliente*%0A`;
+            message += `*Nombre:* ${formData.nombre}%0A`;
+            message += `*Teléfono:* ${formData.telefono}%0A`;
+            if (formData.email) message += `*Email:* ${formData.email}%0A`;
+            if (formData.gestor) message += `*Gestor/Referencia:* ${formData.gestor}%0A`;
+            
+            message += `%0A*📋 Detalles del plan*%0A`;
+            message += `*Plan:* ${formData.plan === 'emprendedor' ? 'Emprendedor' : 'Negocio'}%0A`;
+            message += `*Periodo:* ${formData.periodo === 'mensual' ? 'Mensual' : 'Anual (20% desc.)'}%0A`;
+            if (formData.dominio) message += `*Dominio solicitado:* ${formData.dominio}.cu%0A`;
+            
+            message += `%0A*💳 Total a pagar:*%0A`;
+            if (formData.plan === 'emprendedor') {
+                message += formData.periodo === 'mensual' ? '250,99 CUP/mes' : '2.409,50 CUP/año';
+            } else {
+                message += formData.periodo === 'mensual' ? '300,99 CUP/mes' : '2.889,50 CUP/año';
+            }
+            
+            message += `%0A%0A_gracias por su servicio_`;
+            
+            // Abrir WhatsApp
+            window.open(`https://wa.me/5350369270?text=${message}`, '_blank');
+            
+            // Mostrar notificación de éxito
+            showNotification('Formulario completado. Redirigiendo a WhatsApp...', 'success');
+            
+            // Opcional: Resetear formulario después de 3 segundos
+            setTimeout(() => {
+                document.getElementById('contract-form')?.reset();
+                navigateTo(1);
+            }, 3000);
+        }
+        
+        // Mostrar notificación
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const content = notification.querySelector('.notification-content');
+            
+            notification.className = `notification ${type}`;
+            content.textContent = message;
+            notification.classList.remove('hidden');
+            
+            // Posicionar notificación
+            notification.style.bottom = `${document.querySelector('.btn-group')?.offsetHeight + 20}px` || '20px';
+            
+            setTimeout(() => {
+                notification.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

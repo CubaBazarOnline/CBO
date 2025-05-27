@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Afiliados Profesionales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #f39c12;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        main {
+            max-width: 950px;
+            margin: 1.5rem auto;
+            padding: 0 1.2rem;
+            flex: 1;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+        
+        h1 { 
+            font-size: 1.8rem; 
+            text-align: center; 
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        h2 { 
+            font-size: 1.5rem; 
+            border-bottom: 2px solid var(--border); 
+            padding-bottom: 0.5rem; 
+            margin-top: 2rem;
+        }
+        
+        h3 { 
+            font-size: 1.3rem; 
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(to right, rgba(243, 156, 18, 0.1), rgba(243, 156, 18, 0.05));
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            margin: 2rem 0;
+            border-radius: 0 6px 6px 0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight::before {
+            content: '¡OFERTA!';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: bold;
+            border-radius: 0 0 0 4px;
+        }
+        
+        .highlight:hover {
+            transform: translateX(3px);
+            box-shadow: 3px 0 10px rgba(243, 156, 18, 0.1);
+        }
+        
+        .comission-badge {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+            animation: pulse 2s infinite;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        
+        .feature {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .feature::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: transparent;
+        }
+        
+        .feature:hover::after {
+            opacity: 1;
+        }
+        
+        .feature-icon {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group { 
+            margin-bottom: 1.4rem;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        
+        .required::after {
+            content: '*';
+            color: var(--danger);
+            margin-left: 3px;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            background-color: var(--light);
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            background-color: var(--white);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary), #2980b9);
+            color: white;
+            border: none;
+            padding: 1rem 1.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s;
+            width: 100%;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 40%;
+            height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(30deg);
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(to right, #2980b9, var(--secondary));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn:hover::after {
+            left: 120%;
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-block { display: block; width: 100%; }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            max-width: 350px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success { 
+            background: rgba(39, 174, 96, 0.95);
+            border-left: 4px solid #219653;
+        }
+        
+        .notification.error { 
+            background: rgba(231, 76, 60, 0.95);
+            border-left: 4px solid #c0392b;
+        }
+        
+        .notification.warning { 
+            background: rgba(241, 196, 15, 0.95);
+            border-left: 4px solid #f39c12;
+            color: var(--text);
+        }
+        
+        .notification i {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); }
+            50% { transform: scale(1.02); box-shadow: 0 4px 20px rgba(52, 152, 219, 0.5); }
+            100% { transform: scale(1); box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); }
+        }
+        
+        .optional-badge {
+            display: inline-block;
+            background-color: var(--border);
+            color: var(--text);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+            vertical-align: middle;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: var(--danger);
+        }
+        
+        .modal-body {
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .modal-body h3 {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .modal-body ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .loading.show {
+            display: flex;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Nuevos estilos para el formulario por pasos */
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--border);
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step span {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--border);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .step p {
+            font-size: 0.8rem;
+            color: var(--text);
+            opacity: 0.7;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .step.active span {
+            background-color: var(--secondary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .step.active p {
+            opacity: 1;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .step.completed span {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .form-hint {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+        
+        .step-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .info-box {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            border-radius: 0 6px 6px 0;
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .info-box i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+        
+        .info-box p {
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        
+        .review-section {
+            background-color: rgba(243, 156, 18, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .review-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .review-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .review-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                padding: 0 1rem;
+            }
+            
+            .card { 
+                padding: 1.5rem;
+                margin: 1.2rem 0;
+            }
+            
+            .grid { 
+                grid-template-columns: 1fr; 
+                gap: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            .highlight {
+                padding: 1.2rem;
+            }
+            
+            .notification {
+                max-width: 90%;
+                right: 5%;
+                left: auto;
+            }
+            
+            .progress-steps {
+                margin: 1.5rem 0;
+            }
+            
+            .step p {
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .card {
+                padding: 1.2rem;
+                border-radius: 8px;
+            }
+            
+            h1 {
+                font-size: 1.4rem;
+                padding-bottom: 0.6rem;
+            }
+            
+            h1::after {
+                width: 60px;
+            }
+            
+            .btn {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 0.9rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+            
+            .step-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .step span {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    <meta name="description" content="Únete a nuestro programa de afiliados y gana 10% de comisión por cada cliente referido. Trabaja desde cualquier lugar con horarios flexibles.">
+</head>
+<body>
+    <header>
+        <div class="logo animate__animated animate__fadeInDown">Programa de Afiliados</div>
+        <div class="tagline animate__animated animate__fadeIn">Gana hasta <strong>10% de comisión</strong> por cada venta</div>
+    </header>
+    
+    <main>
+        <div class="card animate__animated animate__fadeIn">
+            <h1 class="animate__animated animate__fadeIn">Gana Dinero Recomendando Nuestros Servicios</h1>
+            
+            <div class="highlight animate__animated animate__fadeInUp">
+                <h3>¡Gana un <span class="comission-badge">10% de COMISIÓN</span> por cada cliente referido!</h3>
+                <p>Únete a nuestro exclusivo programa de afiliados y comienza a generar ingresos recomendando nuestros servicios profesionales. Sin inversión inicial, sin límites de ganancias.</p>
+            </div>
+            
+            <h2 class="animate__animated animate__fadeIn">Beneficios Exclusivos</h2>
+            <div class="grid">
+                <div class="feature animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                    <div class="feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>Altas Comisiones</h3>
+                    <p><strong>10% fijo</strong> sobre cada proyecto que refieras. Sin topes, sin límites. Gana más cuanto más recomiendes.</p>
+                </div>
+                <div class="feature animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Flexibilidad Total</h3>
+                    <p>Trabaja cuando quieras, desde donde quieras. Sin horarios fijos ni jefes.</p>
+                </div>
+                <div class="feature animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Crecimiento Ilimitado</h3>
+                    <p>Posibilidad de aumentar tu porcentaje hasta <strong>15%</strong> según tu desempeño.</p>
+                </div>
+            </div>
+            
+            <h2 class="animate__animated animate__fadeIn">Cómo Funciona</h2>
+            <ol style="margin-left: 1.5rem; margin-bottom: 2rem; list-style-type: none; counter-reset: step-counter;">
+                <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative; counter-increment: step-counter;">
+                    <span style="position: absolute; left: 0; font-weight: bold; color: var(--accent);">1</span>
+                    Regístrate como afiliado en menos de 2 minutos
+                </li>
+                <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative; counter-increment: step-counter;">
+                    <span style="position: absolute; left: 0; font-weight: bold; color: var(--accent);">2</span>
+                    Recibe el material promocional para compartir
+                </li>
+                <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative; counter-increment: step-counter;">
+                    <span style="position: absolute; left: 0; font-weight: bold; color: var(--accent);">3</span>
+                    Comparte con tus contactos o en redes sociales
+                </li>
+                <li style="margin-bottom: 1rem; padding-left: 2rem; position: relative; counter-increment: step-counter;">
+                    <span style="position: absolute; left: 0; font-weight: bold; color: var(--accent);">4</span>
+                    Tus referidos mencionan tu nombre al contratar
+                </li>
+                <li style="padding-left: 2rem; position: relative; counter-increment: step-counter;">
+                    <span style="position: absolute; left: 0; font-weight: bold; color: var(--accent);">5</span>
+                    <strong>Recibe tus comisiones directamente en tu cuenta</strong>
+                </li>
+            </ol>
+            
+            <h2 class="animate__animated animate__fadeIn">Registro Rápido</h2>
+            
+            <!-- Asistente de progreso -->
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    <span>1</span>
+                    <p>Información personal</p>
+                </div>
+                <div class="step" data-step="2">
+                    <span>2</span>
+                    <p>Método de pago</p>
+                </div>
+                <div class="step" data-step="3">
+                    <span>3</span>
+                    <p>Finalizar</p>
+                </div>
+            </div>
+            
+            <form id="promotorForm">
+                <!-- Paso 1: Información personal -->
+                <div class="form-step active" data-step="1">
+                    <div class="form-group">
+                        <label for="nombre" class="required">Nombre completo</label>
+                        <input type="text" id="nombre" required placeholder="Ej: María González">
+                        <div class="form-hint">Ingresa tu nombre completo como aparece en tus documentos</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono" class="required">Teléfono (WhatsApp)</label>
+                        <input type="tel" id="telefono" required placeholder="Ej: +5350369270">
+                        <div class="form-hint">Necesitamos tu número para contactarte sobre tus comisiones</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Correo electrónico <span class="optional-badge">Opcional</span></label>
+                        <input type="email" id="email" placeholder="Ej: tu@email.com">
+                        <div class="form-hint">Útil para enviarte actualizaciones del programa</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ubicacion">Ubicación <span class="optional-badge">Opcional</span></label>
+                        <input type="text" id="ubicacion" placeholder="Ej: La Habana">
+                        <div class="form-hint">Nos ayuda a conocer mejor a nuestros afiliados</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="referencia">¿Cómo nos conociste? <span class="optional-badge">Opcional</span></label>
+                        <select id="referencia">
+                            <option value="" selected>Seleccione una opción</option>
+                            <option value="Redes sociales">Redes sociales</option>
+                            <option value="Amigo/Familiar">Amigo/Familiar</option>
+                            <option value="Búsqueda en internet">Búsqueda en internet</option>
+                            <option value="Publicidad">Publicidad</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <button type="button" class="btn next-step" data-next="2">
+                        <i class="fas fa-arrow-right"></i> Siguiente: Método de pago
+                    </button>
+                </div>
+                
+                <!-- Paso 2: Método de pago -->
+                <div class="form-step" data-step="2">
+                    <div class="form-group">
+                        <label for="metodo_pago" class="required">Método de pago preferido</label>
+                        <select id="metodo_pago" required>
+                            <option value="" disabled selected>Seleccione un método de pago</option>
+                            <option value="Transferencia bancaria">Transferencia bancaria 💳</option>
+                            <option value="Transferencia móvil">Transferencia móvil 📲</option>
+                            <option value="Efectivo">Efectivo 💵</option>
+                        </select>
+                        <div class="form-hint">Selecciona cómo prefieres recibir tus comisiones</div>
+                    </div>
+                    
+                    <div class="form-group bank-data-group" id="bankDataGroup" style="display: none;">
+                        <label for="datos_pago" class="required">Datos bancarios</label>
+                        <input type="text" id="datos_pago" placeholder="Número de cuenta o tarjeta bancaria">
+                        <div class="form-hint">Ej: Tarjeta 9200 4500 6700 1234 o Cuenta 123456789</div>
+                        <small style="color: #666; display: block; margin-top: 0.3rem; font-size: 0.85rem;">Solo lo usaremos para transferirte tus comisiones</small>
+                    </div>
+                    
+                    <div class="form-group mobile-transfer-info" id="mobileTransferInfo" style="display: none;">
+                        <div class="info-box">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Para transferencias móviles, nos contactaremos contigo vía WhatsApp para coordinar el pago.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group cash-info" id="cashInfo" style="display: none;">
+                        <div class="info-box">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Para pagos en efectivo, coordinaremos un punto de encuentro seguro en tu localidad.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-outline prev-step" data-prev="1">
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button type="button" class="btn next-step" data-next="3">
+                            <i class="fas fa-arrow-right"></i> Siguiente: Revisar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Paso 3: Revisión y envío -->
+                <div class="form-step" data-step="3">
+                    <div class="review-section">
+                        <h3><i class="fas fa-user-check"></i> Revisa tu información</h3>
+                        <div class="review-item">
+                            <strong>Nombre:</strong>
+                            <span id="review-nombre"></span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Teléfono:</strong>
+                            <span id="review-telefono"></span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Email:</strong>
+                            <span id="review-email"></span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Ubicación:</strong>
+                            <span id="review-ubicacion"></span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Método de pago:</strong>
+                            <span id="review-metodo_pago"></span>
+                        </div>
+                        <div class="review-item" id="review-datos_pago-container" style="display: none;">
+                            <strong>Datos bancarios:</strong>
+                            <span id="review-datos_pago"></span>
+                        </div>
+                        <div class="review-item">
+                            <strong>Referencia:</strong>
+                            <span id="review-referencia"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-outline prev-step" data-prev="2">
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button type="button" id="submitBtn" class="btn pulse">
+                            <i class="fas fa-rocket"></i> ¡Quiero Ganar el 10%!
+                        </button>
+                    </div>
+                    
+                    <p style="font-size: 0.85rem; margin-top: 1.5rem; color: #666; text-align: center; line-height: 1.5;">
+                        Al registrarte aceptas nuestros <a href="#" id="termsLink" style="color: var(--secondary); font-weight: 600;">Términos del Programa</a> y 
+                        <a href="#" id="privacyLink" style="color: var(--secondary); font-weight: 600;">Política de Privacidad</a>.<br>
+                        <span style="font-size: 0.75rem; display: inline-block; margin-top: 0.5rem;">Sin costos ocultos. Sin requisitos complejos.</span>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+    
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-message"></span>
+    </div>
+    
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+    </div>
+    
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Términos del Programa de Afiliados</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>1. Definiciones</h3>
+                <p>El Programa de Afiliados es un sistema de recomendación donde los participantes (Afiliados) reciben comisiones por referir clientes que contraten nuestros servicios.</p>
+                
+                <h3>2. Requisitos de Participación</h3>
+                <ul>
+                    <li>Ser mayor de 18 años</li>
+                    <li>Proporcionar información veraz en el registro</li>
+                    <li>Aceptar estos términos y condiciones</li>
+                </ul>
+                
+                <h3>3. Comisiones</h3>
+                <p>Las comisiones del 10% se calculan sobre el valor neto del servicio contratado (sin impuestos) y se pagan dentro de los 15 días hábiles posteriores al pago completo del cliente.</p>
+                
+                <h3>4. Obligaciones del Afiliado</h3>
+                <ul>
+                    <li>Promocionar nuestros servicios de manera ética y profesional</li>
+                    <li>No hacer representaciones falsas sobre nuestros servicios</li>
+                    <li>Mantener actualizada su información de contacto y datos bancarios</li>
+                </ul>
+                
+                <h3>5. Legislación Aplicable</h3>
+                <p>Este programa se rige por las leyes de la República de Cuba, específicamente por el Código de Comercio y las regulaciones sobre contratos civiles.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Política de Privacidad</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>1. Información que Recopilamos</h3>
+                <p>Recopilamos información personal que nos proporcionas voluntariamente al registrarte en nuestro programa, incluyendo nombre, datos de contacto e información bancaria para el pago de comisiones.</p>
+                
+                <h3>2. Uso de la Información</h3>
+                <p>Utilizamos tu información para:</p>
+                <ul>
+                    <li>Gestionar tu participación en el programa de afiliados</li>
+                    <li>Realizar pagos de comisiones</li>
+                    <li>Mantenerte informado sobre novedades del programa</li>
+                    <li>Mejorar nuestros servicios</li>
+                </ul>
+                
+                <h3>3. Protección de Datos</h3>
+                <p>Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales contra accesos no autorizados, alteración o destrucción.</p>
+                
+                <h3>4. Compartir Información</h3>
+                <p>No compartimos tu información personal con terceros, excepto cuando sea necesario para procesar pagos o cumplir con requerimientos legales.</p>
+                
+                <h3>5. Derechos del Usuario</h3>
+                <p>De acuerdo con las regulaciones cubanas, tienes derecho a:</p>
+                <ul>
+                    <li>Solicitar acceso a tus datos personales</li>
+                    <li>Solicitar la corrección de información inexacta</li>
+                    <li>Retirar tu consentimiento para el tratamiento de datos</li>
+                </ul>
+                
+                <h3>6. Legislación Aplicable</h3>
+                <p>Esta política se rige por las disposiciones sobre protección de datos personales contenidas en la Constitución de la República de Cuba y la Ley No. 62 (Código Penal).</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="animate__animated animate__fadeInUp">
+        <p style="font-size: 1rem; font-weight: 600;">Programa de Afiliados Profesionales</p>
+        <p style="font-size: 0.8rem; margin-top: 0.6rem; opacity: 0.8;">© 2025 Todos los derechos reservados | Gana hasta 10% por cada referido</p>
+    </footer>
+    
+    <script>
+        // Sistema de notificación mejorado
+        function showNotification(message, type = 'success', duration = 5000) {
+            const notification = document.getElementById('notification');
+            const notificationMsg = document.getElementById('notification-message');
+            
+            // Cambiar icono según el tipo
+            let iconClass;
+            switch(type) {
+                case 'success':
+                    iconClass = 'fas fa-check-circle';
+                    break;
+                case 'error':
+                    iconClass = 'fas fa-exclamation-circle';
+                    break;
+                case 'warning':
+                    iconClass = 'fas fa-exclamation-triangle';
+                    break;
+                default:
+                    iconClass = 'fas fa-info-circle';
+            }
+            
+            // Actualizar contenido
+            notification.innerHTML = `<i class="${iconClass}"></i><span id="notification-message">${message}</span>`;
+            
+            // Establecer clase de tipo
+            notification.className = `notification ${type} show`;
+            
+            // Ocultar después del tiempo especificado
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, duration);
+        }
+        
+        // Modal system
+        function setupModal(modalId, triggerId) {
+            const modal = document.getElementById(modalId);
+            const trigger = document.getElementById(triggerId);
+            const closeBtn = modal.querySelector('.modal-close');
+            
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+        
+        // Inicializar modales
+        setupModal('termsModal', 'termsLink');
+        setupModal('privacyModal', 'privacyLink');
+        
+        // Manejar cambios en el método de pago
+        document.addEventListener('DOMContentLoaded', function() {
+            const metodoPago = document.getElementById('metodo_pago');
+            const bankDataGroup = document.getElementById('bankDataGroup');
+            const mobileTransferInfo = document.getElementById('mobileTransferInfo');
+            const cashInfo = document.getElementById('cashInfo');
+            
+            metodoPago.addEventListener('change', function() {
+                const selectedMethod = this.value;
+                
+                // Ocultar todos los grupos primero
+                bankDataGroup.style.display = 'none';
+                mobileTransferInfo.style.display = 'none';
+                cashInfo.style.display = 'none';
+                
+                // Mostrar el grupo correspondiente
+                if (selectedMethod === 'Transferencia bancaria') {
+                    bankDataGroup.style.display = 'block';
+                } else if (selectedMethod === 'Transferencia móvil') {
+                    mobileTransferInfo.style.display = 'block';
+                } else if (selectedMethod === 'Efectivo') {
+                    cashInfo.style.display = 'block';
+                }
+            });
+            
+            // Manejar navegación entre pasos
+            document.querySelectorAll('.next-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = this.closest('.form-step');
+                    const nextStepNum = this.getAttribute('data-next');
+                    const nextStep = document.querySelector(`.form-step[data-step="${nextStepNum}"]`);
+                    
+                    // Validar campos antes de avanzar
+                    if (nextStepNum === '2' && !validateStep1()) {
+                        return;
+                    }
+                    
+                    if (nextStepNum === '3' && !validateStep2()) {
+                        return;
+                    }
+                    
+                    // Actualizar progreso
+                    updateProgress(nextStepNum);
+                    
+                    // Cambiar pasos
+                    currentStep.classList.remove('active');
+                    nextStep.classList.add('active');
+                    
+                    // Si es el paso 3, llenar la revisión
+                    if (nextStepNum === '3') {
+                        fillReviewSection();
+                    }
+                    
+                    // Desplazarse al inicio del formulario
+                    nextStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            
+            document.querySelectorAll('.prev-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = this.closest('.form-step');
+                    const prevStepNum = this.getAttribute('data-prev');
+                    const prevStep = document.querySelector(`.form-step[data-step="${prevStepNum}"]`);
+                    
+                    // Cambiar pasos
+                    currentStep.classList.remove('active');
+                    prevStep.classList.add('active');
+                    
+                    // Actualizar progreso
+                    updateProgress(prevStepNum);
+                    
+                    // Desplazarse al inicio del formulario
+                    prevStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+            
+            // Validar paso 1
+            function validateStep1() {
+                let isValid = true;
+                const requiredFields = ['nombre', 'telefono'];
+                
+                requiredFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (!field.value.trim()) {
+                        field.style.borderColor = 'var(--danger)';
+                        isValid = false;
+                        
+                        field.classList.add('animate__animated', 'animate__headShake');
+                        setTimeout(() => {
+                            field.classList.remove('animate__animated', 'animate__headShake');
+                        }, 1000);
+                    }
+                });
+                
+                // Validar teléfono
+                const telefono = document.getElementById('telefono').value.trim();
+                if (telefono && !/^[\+]?[\d\s\-\(\)]{8,}$/.test(telefono)) {
+                    document.getElementById('telefono').style.borderColor = 'var(--danger)';
+                    showNotification('Por favor ingresa un número de teléfono válido', 'error');
+                    isValid = false;
+                }
+                
+                // Validar email si está presente
+                const email = document.getElementById('email').value.trim();
+                if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    document.getElementById('email').style.borderColor = 'var(--danger)';
+                    showNotification('Por favor ingresa un correo electrónico válido', 'error');
+                    isValid = false;
+                }
+                
+                if (!isValid) {
+                    showNotification('Por favor completa los campos obligatorios correctamente', 'error');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            // Validar paso 2
+            function validateStep2() {
+                const metodoPago = document.getElementById('metodo_pago').value;
+                const datosPago = document.getElementById('datos_pago').value.trim();
+                
+                if (!metodoPago) {
+                    document.getElementById('metodo_pago').style.borderColor = 'var(--danger)';
+                    showNotification('Por favor selecciona un método de pago', 'error');
+                    return false;
+                }
+                
+                if (metodoPago === 'Transferencia bancaria' && !datosPago) {
+                    document.getElementById('datos_pago').style.borderColor = 'var(--danger)';
+                    showNotification('Por favor ingresa tus datos bancarios', 'error');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            // Actualizar barra de progreso
+            function updateProgress(currentStep) {
+                document.querySelectorAll('.step').forEach(step => {
+                    step.classList.remove('active', 'completed');
+                    
+                    const stepNum = parseInt(step.getAttribute('data-step'));
+                    if (stepNum < currentStep) {
+                        step.classList.add('completed');
+                    } else if (stepNum == currentStep) {
+                        step.classList.add('active');
+                    }
+                });
+            }
+            
+            // Llenar sección de revisión
+            function fillReviewSection() {
+                document.getElementById('review-nombre').textContent = document.getElementById('nombre').value.trim();
+                document.getElementById('review-telefono').textContent = document.getElementById('telefono').value.trim();
+                
+                const email = document.getElementById('email').value.trim();
+                document.getElementById('review-email').textContent = email || 'No proporcionado';
+                
+                const ubicacion = document.getElementById('ubicacion').value.trim();
+                document.getElementById('review-ubicacion').textContent = ubicacion || 'No proporcionada';
+                
+                const metodoPago = document.getElementById('metodo_pago').value;
+                document.getElementById('review-metodo_pago').textContent = metodoPago;
+                
+                const referencia = document.getElementById('referencia').value;
+                document.getElementById('review-referencia').textContent = referencia || 'No especificado';
+                
+                // Mostrar datos bancarios solo si es transferencia bancaria
+                const datosPagoContainer = document.getElementById('review-datos_pago-container');
+                if (metodoPago === 'Transferencia bancaria') {
+                    document.getElementById('review-datos_pago').textContent = document.getElementById('datos_pago').value.trim();
+                    datosPagoContainer.style.display = 'block';
+                } else {
+                    datosPagoContainer.style.display = 'none';
+                }
+            }
+            
+            // Actualizar el envío del formulario para usar los datos del formulario por pasos
+            document.getElementById('submitBtn').addEventListener('click', function() {
+                if (!validateStep1() || !validateStep2()) {
+                    showNotification('Por favor completa todos los campos obligatorios correctamente', 'error');
+                    return;
+                }
+                
+                // Mostrar carga
+                document.getElementById('loading').classList.add('show');
+                
+                // Obtener valores del formulario
+                const formData = {
+                    nombre: document.getElementById('nombre').value.trim(),
+                    telefono: document.getElementById('telefono').value.trim(),
+                    email: document.getElementById('email').value.trim() || 'No proporcionado',
+                    ubicacion: document.getElementById('ubicacion').value.trim() || 'No proporcionada',
+                    metodo_pago: document.getElementById('metodo_pago').value,
+                    datos_pago: document.getElementById('datos_pago').value.trim() || 'No requerido',
+                    referencia: document.getElementById('referencia').value || 'No especificado',
+                    fecha: new Date().toLocaleString('es-ES', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })
+                };
+                
+                // Crear mensaje estructurado para WhatsApp
+                let mensaje = `*SOLICITUD PROGRAMA AFILIADOS*%0A%0A` +
+                               `*📅 Fecha:* ${formData.fecha}%0A%0A` +
+                               `*👤 Datos Personales*%0A` +
+                               `• *Nombre:* ${encodeURIComponent(formData.nombre)}%0A` +
+                               `• *Teléfono:* ${encodeURIComponent(formData.telefono)}%0A` +
+                               `• *Email:* ${encodeURIComponent(formData.email)}%0A` +
+                               `• *Ubicación:* ${encodeURIComponent(formData.ubicacion)}%0A%0A` +
+                               `*💰 Datos de Pago*%0A` +
+                               `• *Método preferido:* ${encodeURIComponent(formData.metodo_pago)}%0A`;
+                
+                // Agregar datos bancarios solo si es transferencia bancaria
+                if (formData.metodo_pago === 'Transferencia bancaria') {
+                    mensaje += `• *Datos para pago:* ${encodeURIComponent(formData.datos_pago)}%0A%0A`;
+                } else {
+                    mensaje += `%0A`;
+                }
+                
+                mensaje += `*🔎 Referencia*%0A` +
+                           `• *Cómo nos conoció:* ${encodeURIComponent(formData.referencia)}%0A%0A` +
+                           `¡Quiero unirme al programa de afiliados y empezar a ganar el 10%!`;
+                
+                // URL de WhatsApp
+                const whatsappUrl = `https://wa.me/5350369270?text=${mensaje}`;
+                
+                // Mostrar notificación de éxito
+                showNotification('¡Registro completado! Redirigiendo a WhatsApp...');
+                
+                // Ocultar carga
+                setTimeout(() => {
+                    document.getElementById('loading').classList.remove('show');
+                    
+                    // Abrir en nueva pestaña después de breve retraso
+                    setTimeout(() => {
+                        window.open(whatsappUrl, '_blank');
+                        document.getElementById('promotorForm').reset();
+                        
+                        // Resetear el formulario a paso 1
+                        document.querySelectorAll('.form-step').forEach(step => {
+                            step.classList.remove('active');
+                        });
+                        document.querySelector('.form-step[data-step="1"]').classList.add('active');
+                        updateProgress(1);
+                    }, 500);
+                }, 1500);
+            });
+            
+            // Mejorar la experiencia de usuario en campos del formulario
+            document.querySelectorAll('input, select').forEach(field => {
+                // Resaltar campo al enfocar
+                field.addEventListener('focus', function() {
+                    this.style.borderColor = 'var(--secondary)';
+                    this.style.boxShadow = '0 0 0 3px rgba(52, 152, 219, 0.2)';
+                });
+                
+                // Quitar resaltado al perder foco
+                field.addEventListener('blur', function() {
+                    this.style.borderColor = 'var(--border)';
+                    this.style.boxShadow = 'none';
+                });
+                
+                // Validación en tiempo real para campos requeridos
+                if (field.required) {
+                    field.addEventListener('input', function() {
+                        if (this.value.trim()) {
+                            this.style.borderColor = 'var(--border)';
+                        }
+                    });
+                }
+            });
+            
+            // Animación al hacer scroll mejorada
+            const animateElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animation = entry.target.getAttribute('data-animation') || 'fadeInUp';
+                        entry.target.classList.add(animation);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Mejorar accesibilidad del formulario
+            document.getElementById('promotorForm').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'TEXTAREA') {
+                    e.preventDefault();
+                    const formElements = Array.from(this.elements);
+                    const currentIndex = formElements.indexOf(e.target);
+                    
+                    if (currentIndex < formElements.length - 1) {
+                        formElements[currentIndex + 1].focus();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

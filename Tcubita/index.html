@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tcubita - Plataforma de anuncios cubanos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --primary-dark: #004d99;
+            --secondary-color: #e9f5ff;
+            --accent-color: #ff6b00;
+            --accent-dark: #e05d00;
+            --text-color: #333;
+            --text-light: #666;
+            --light-color: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 2.5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--white) 100%);
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 2.5rem 0;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.2rem;
+            display: inline-block;
+        }
+        
+        .download-section {
+            background-color: var(--secondary-color);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .download-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .download-section p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+            gap: 0.5rem;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Mejoras para móviles */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+                gap: 1.2rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .download-section {
+                padding: 2.5rem 1rem;
+            }
+            
+            .download-btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Tcubita</div>
+            <div class="tagline">La plataforma oficial de anuncios cubanos</div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Conectando a los cubanos con lo que necesitan</h2>
+                <p>Tcubita es la aplicación oficial de CubaBazarOnline, diseñada para que todos los usuarios cubanos puedan publicar sus anuncios de manera gratuita en una plataforma segura y verificada.</p>
+            </div>
+        </section>
+        
+        <section class="features container">
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Amplio catálogo</h3>
+                <p>Encuentra todo lo que necesitas en nuestro extenso catálogo de productos y servicios.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🖥️</div>
+                <h3>Interfaz sencilla</h3>
+                <p>Diseño intuitivo y fácil de usar para que cualquier persona pueda navegar sin dificultad.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📢</div>
+                <h3>Múltiples publicaciones</h3>
+                <p>Crea tantos anuncios como necesites sin límites ni restricciones.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Chat integrado</h3>
+                <p>Comunícate directamente con los vendedores a través de nuestro sistema de mensajería.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🖼️</div>
+                <h3>Envío de imágenes</h3>
+                <p>Comparte fotos de tus productos para mostrar su estado real.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>Usuarios verificados</h3>
+                <p>Interactúa con personas reales en un entorno seguro y confiable.</p>
+            </div>
+        </section>
+        
+        <section class="download-section">
+            <div class="container">
+                <h2>Descarga Tcubita ahora</h2>
+                <p>Únete a la comunidad de compradores y vendedores más grande de Cuba</p>
+                <a href="https://apk.e-droid.net/apk/app3494684-t8z7op.apk?v=9" class="download-btn" download="Tcubita.apk">
+                    <span>Descargar la aplicación</span>
+                    <span>↓</span>
+                </a>
+                <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--text-light);">Versión Compatible con Android 4.2.0+</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Tcubita - Todos los derechos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>
