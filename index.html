@@ -2,70 +2,160 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>CBO - Empresa</title>
-    <meta name="description" content="CBO es un emprendimiento cubano innovador dedicado al desarrollo tecnológico, hosting especializado y servicios digitales para empresas y particulares.">
-    <meta name="google-site-verification" content="KwYd-p4Sl1VlkdQmdyKKgwMpT7BsxFKygnGzibzNijQ">
-    <link rel="canonical" href="https://cubabazaronline.github.io/CBO---Empresa/">
-    <meta property="og:url" content="https://cubabazaronline.github.io/CBO---Empresa/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBO</title>
+    <meta name="description" content="CBO es un emprendimiento cubano innovador dedicado al desarrollo tecnológico, hosting especializado (.cu) y servicios digitales para empresas y particulares en Cuba.">
+    <meta name="keywords" content="hosting Cuba, desarrollo web Cuba, empleo tecnología Cuba, comercio electrónico Cuba, dominios .cu">
+    
+    <!-- SEO Actualizado -->
+    <link rel="canonical" href="https://cubabazaronline.github.io/CBO/">
+    <meta property="og:url" content="https://cubabazaronline.github.io/CBO/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="CBO - Empresa Tecnológica Cubana">
-    <meta property="og:description" content="Soluciones tecnológicas y hosting profesional para Cuba. Desarrollo web, alojamiento y oportunidades de empleo.">
+    <meta property="og:title" content="CBO - Empresa Tecnológica Cubana | Hosting, Desarrollo Web y Empleo">
+    <meta property="og:description" content="Soluciones tecnológicas y hosting profesional para Cuba. Desarrollo web, alojamiento .cu y oportunidades de empleo en el sector tecnológico.">
+    <meta property="og:image" content="https://cubabazaronline.github.io/CBO/images/og-image.jpg">
+    <meta property="og:site_name" content="CBO - Empresa Tecnológica Cubana">
+    
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CubaBazarOnline">
+    <meta name="twitter:creator" content="@CubaBazarOnline">
     <meta property="twitter:domain" content="cubabazaronline.github.io">
-    <meta property="twitter:url" content="https://cubabazaronline.github.io/CBO---Empresa/">
-    <meta name="twitter:title" content="CBO - Empresa Tecnológica Cubana">
-    <meta name="twitter:description" content="Soluciones tecnológicas y hosting profesional para Cuba. Desarrollo web, alojamiento y oportunidades de empleo.">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Segoe+UI:wght@400;500&display=swap" rel="stylesheet">
+    <meta property="twitter:url" content="https://cubabazaronline.github.io/CBO/">
+    <meta name="twitter:title" content="CBO - Empresa Tecnológica Cubana | Hosting, Desarrollo Web y Empleo">
+    <meta name="twitter:description" content="Soluciones tecnológicas y hosting profesional para Cuba. Desarrollo web, alojamiento .cu y oportunidades de empleo en tecnología.">
+    <meta name="twitter:image" content="https://cubabazaronline.github.io/CBO/images/twitter-card.jpg">
+    
+    <meta name="google-site-verification" content="KwYd-p4Sl1VlkdQmdyKKgwMpT7BsxFKygnGzibzNijQ">
     <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Segoe+UI:wght@400;500&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Segoe+UI:wght@400;500&display=swap">
+    
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos críticos inline -->
     <style>
         :root {
-            --primary: #00f7ff;
-            --secondary: #0066ff;
-            --dark: #0a0a1a;
-            --light: #f0f8ff;
-            --accent: #ff00aa;
-            --glow: 0 0 10px rgba(0,247,255,0.7);
-            --success: #00ff88;
-            --warning: #ffaa00;
-            --error: #ff5555;
+            --hologram-blue: rgba(0, 255, 255, 0.8);
+            --hologram-pink: rgba(255, 0, 255, 0.8);
+            --hologram-purple: rgba(128, 0, 255, 0.8);
+            --hologram-bg: rgba(0, 0, 20, 0.95);
+            --hologram-line: rgba(0, 255, 255, 0.2);
+            --hologram-highlight: rgba(255, 255, 255, 0.1);
+            --hologram-text: rgba(255, 255, 255, 0.9);
+            --hologram-text-secondary: rgba(200, 200, 255, 0.7);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
         }
         
         body {
-            background-color: var(--dark);
-            color: var(--light);
-            background-image: radial-gradient(circle at 25% 25%, rgba(0,247,255,0.1) 0%, transparent 50%), 
-                              radial-gradient(circle at 75% 75%, rgba(255,0,170,0.1) 0%, transparent 50%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--hologram-bg);
+            color: var(--hologram-text);
             min-height: 100vh;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
+            position: relative;
+            line-height: 1.6;
         }
         
+        /* Fuente Orbitron solo para elementos específicos */
+        h1, h2, h3, .holographic-button {
+            font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+        }
+        
+        /* Efecto de rejilla holográfica */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(var(--hologram-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--hologram-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            opacity: 0.3;
+        }
+        
+        /* Efecto de escaneo holográfico optimizado para móviles */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 255, 255, 0.1),
+                rgba(0, 255, 255, 0.4),
+                rgba(0, 255, 255, 0.1)
+            );
+            animation: scan 10s linear infinite;
+            z-index: -1;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        @keyframes scan {
+            0% { top: -10px; }
+            100% { top: 100%; }
+        }
+        
+        /* Contenedor principal mejorado */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1.5rem;
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Encabezado mejorado */
+        header {
+            width: 100%;
+            margin-bottom: 2rem;
         }
         
         h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            text-shadow: var(--glow);
-            animation: textGlow 2s infinite alternate;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--hologram-blue), var(--hologram-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--hologram-blue), var(--hologram-pink), transparent);
+            box-shadow: 0 0 10px var(--hologram-blue), 0 0 20px var(--hologram-pink);
         }
         
         .page-description {
@@ -73,30 +163,47 @@
             margin: 0 auto 2rem;
             font-size: 1.1rem;
             line-height: 1.6;
-            color: rgba(240, 248, 255, 0.9);
+            color: var(--hologram-text-secondary);
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            position: relative;
+            padding: 1.5rem;
         }
         
-        @keyframes textGlow {
-            from { text-shadow: 0 0 5px var(--primary); }
-            to { text-shadow: 0 0 20px var(--primary), 0 0 30px var(--secondary); }
+        .page-description::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--hologram-blue);
+            border-radius: 5px;
+            box-shadow: 
+                inset 0 0 10px var(--hologram-blue),
+                0 0 20px rgba(0, 255, 255, 0.2);
+            pointer-events: none;
+            opacity: 0.5;
         }
         
+        /* Botones mejorados para móviles */
         .button-container {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
             justify-content: center;
-            margin-top: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            width: 100%;
         }
         
-        .futuristic-button {
+        .holographic-button {
             position: relative;
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, rgba(0,247,255,0.1), rgba(0,103,255,0.2));
-            border: 1px solid var(--primary);
-            border-radius: 50px;
-            color: var(--light);
-            font-size: 1.1rem;
+            padding: 1.2rem 1.5rem;
+            background: rgba(0, 20, 40, 0.3);
+            border: 1px solid var(--hologram-blue);
+            border-radius: 5px;
+            color: var(--hologram-text);
+            font-size: 1rem;
             font-weight: 500;
             text-decoration: none;
             text-transform: uppercase;
@@ -104,87 +211,231 @@
             cursor: pointer;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0,247,255,0.2);
-            z-index: 1;
-            min-width: 250px;
+            box-shadow: 
+                0 0 10px rgba(0, 255, 255, 0.2),
+                inset 0 0 10px rgba(0, 255, 255, 0.1);
+            width: 100%;
+            max-width: 300px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            z-index: 1;
         }
         
-        .futuristic-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,247,255,0.4);
-            color: var(--primary);
-        }
-        
-        .futuristic-button::before {
-            content: '';
+        .holographic-button::before {
+            content: "";
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,247,255,0.2), transparent);
-            transition: 0.5s;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                var(--hologram-highlight),
+                transparent
+            );
+            transform: rotate(30deg);
+            transition: all 0.7s ease;
             z-index: -1;
         }
         
-        .futuristic-button:hover::before {
+        .holographic-button:hover,
+        .holographic-button:focus {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 5px 15px rgba(0, 255, 255, 0.4),
+                inset 0 0 15px rgba(0, 255, 255, 0.3);
+            border-color: var(--hologram-pink);
+            color: var(--hologram-blue);
+            outline: none;
+        }
+        
+        .holographic-button:hover::before,
+        .holographic-button:focus::before {
             left: 100%;
+        }
+        
+        .holographic-button:nth-child(2) {
+            border-color: var(--hologram-pink);
+        }
+        
+        .holographic-button:nth-child(2):hover,
+        .holographic-button:nth-child(2):focus {
+            border-color: var(--hologram-purple);
+        }
+        
+        .holographic-button:nth-child(3) {
+            border-color: var(--hologram-purple);
+        }
+        
+        .holographic-button:nth-child(3):hover,
+        .holographic-button:nth-child(3):focus {
+            border-color: var(--hologram-blue);
         }
         
         .button-description {
             font-size: 0.85rem;
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
             font-weight: normal;
-            opacity: 0.8;
+            color: var(--hologram-text-secondary);
             text-transform: none;
             letter-spacing: normal;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
         
+        /* Sección de redes sociales */
+        .social-section {
+            margin: 2rem 0;
+            width: 100%;
+        }
+        
+        .social-title {
+            font-size: 1rem;
+            color: var(--hologram-text-secondary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            color: var(--hologram-text);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid var(--hologram-blue);
+            position: relative;
+            overflow: hidden;
+            background: rgba(0, 20, 40, 0.3);
+        }
+        
+        .social-link::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--hologram-blue), var(--hologram-pink));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .social-link:hover,
+        .social-link:focus {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+            border-color: var(--hologram-pink);
+            outline: none;
+        }
+        
+        .social-link:hover::before,
+        .social-link:focus::before {
+            opacity: 0.3;
+        }
+        
+        /* Prompt de instalación mejorado */
         .install-prompt {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: rgba(0, 103, 255, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 10px;
+            margin: 2rem 0;
+            padding: 1.2rem;
+            background: rgba(0, 20, 40, 0.3);
+            border: 1px solid var(--hologram-blue);
+            border-radius: 5px;
             max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 0 10px rgba(0, 255, 255, 0.1),
+                0 0 15px rgba(0, 255, 255, 0.1);
+        }
+        
+        .install-prompt::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--hologram-blue), var(--hologram-pink), var(--hologram-purple));
+            animation: borderGlow 3s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .install-prompt p {
+            margin-bottom: 1rem;
+            color: var(--hologram-text-secondary);
+            font-size: 0.95rem;
         }
         
         .install-button {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--hologram-blue), var(--hologram-pink));
             border: none;
-            color: var(--dark);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            color: var(--hologram-bg);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
             margin-top: 0.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            width: 100%;
+            max-width: 200px;
+            font-size: 0.9rem;
         }
         
-        .install-button:hover {
+        .install-button:hover,
+        .install-button:focus {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.5);
+            outline: none;
         }
         
+        /* Notificaciones mejoradas */
         .notification-toast {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: rgba(10, 10, 26, 0.95);
-            border: 1px solid var(--primary);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 10, 20, 0.95);
+            border: 1px solid var(--hologram-blue);
+            border-radius: 5px;
+            padding: 12px;
+            box-shadow: 
+                0 0 15px rgba(0, 255, 255, 0.2),
+                inset 0 0 10px rgba(0, 255, 255, 0.1);
             max-width: 300px;
+            width: calc(100% - 40px);
             display: flex;
             align-items: center;
             gap: 10px;
             transform: translateX(150%);
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 1000;
+            backdrop-filter: blur(5px);
         }
         
         .notification-toast.show {
@@ -193,7 +444,10 @@
         
         .notification-icon {
             font-size: 20px;
-            color: var(--primary);
+            background: linear-gradient(90deg, var(--hologram-blue), var(--hologram-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             flex-shrink: 0;
         }
         
@@ -203,26 +457,42 @@
         
         .notification-title {
             font-weight: bold;
-            margin-bottom: 5px;
-            color: var(--primary);
-            font-size: 0.9rem;
+            margin-bottom: 3px;
+            background: linear-gradient(90deg, var(--hologram-blue), var(--hologram-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
         }
         
         .notification-message {
             font-size: 0.8rem;
             line-height: 1.4;
+            color: var(--hologram-text-secondary);
         }
         
         .notification-close {
             background: none;
             border: none;
-            color: var(--light);
+            color: var(--hologram-pink);
             cursor: pointer;
             font-size: 1rem;
             align-self: flex-start;
+            transition: all 0.3s ease;
+            padding: 2px;
+            line-height: 1;
         }
         
-        .particles {
+        .notification-close:hover,
+        .notification-close:focus {
+            color: var(--hologram-blue);
+            transform: rotate(90deg);
+            outline: none;
+        }
+        
+        /* Efecto de partículas optimizado */
+        .holographic-particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -230,76 +500,246 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
+            overflow: hidden;
         }
         
         .particle {
             position: absolute;
-            background-color: var(--primary);
+            background: linear-gradient(90deg, var(--hologram-blue), var(--hologram-pink));
             border-radius: 50%;
             animation: floatUp linear infinite;
+            opacity: 0.6;
+            filter: blur(1px);
+        }
+        
+        .particle::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 150%;
+            border-radius: 50%;
+            background: inherit;
+            opacity: 0.3;
+            filter: blur(3px);
         }
         
         @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
             100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
         
+        /* Efecto de esquinas optimizado */
+        .corner-effect {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .corner-effect.top-left {
+            top: 15px;
+            left: 15px;
+            border-top: 2px solid var(--hologram-blue);
+            border-left: 2px solid var(--hologram-blue);
+        }
+        
+        .corner-effect.top-right {
+            top: 15px;
+            right: 15px;
+            border-top: 2px solid var(--hologram-pink);
+            border-right: 2px solid var(--hologram-pink);
+        }
+        
+        .corner-effect.bottom-left {
+            bottom: 15px;
+            left: 15px;
+            border-bottom: 2px solid var(--hologram-purple);
+            border-left: 2px solid var(--hologram-purple);
+        }
+        
+        .corner-effect.bottom-right {
+            bottom: 15px;
+            right: 15px;
+            border-bottom: 2px solid var(--hologram-blue);
+            border-right: 2px solid var(--hologram-blue);
+        }
+        
+        @keyframes cornerGlow {
+            0% { border-color: var(--hologram-blue); box-shadow: 0 0 5px var(--hologram-blue); }
+            50% { border-color: var(--hologram-pink); box-shadow: 0 0 10px var(--hologram-pink); }
+            100% { border-color: var(--hologram-purple); box-shadow: 0 0 15px var(--hologram-purple); }
+        }
+        
+        /* Media Queries mejoradas */
         @media (max-width: 768px) {
-            .button-container {
-                flex-direction: column;
-                gap: 1rem;
+            .container {
+                padding: 1rem;
             }
             
-            .futuristic-button {
-                width: 100%;
-                text-align: center;
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
             }
             
             .page-description {
                 font-size: 1rem;
-                padding: 0 1rem;
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .button-container {
+                gap: 1rem;
+                margin: 1.5rem 0;
+            }
+            
+            .holographic-button {
+                padding: 1rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .button-description {
+                font-size: 0.8rem;
+            }
+            
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .corner-effect {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .corner-effect.top-left,
+            .corner-effect.top-right {
+                top: 10px;
+            }
+            
+            .corner-effect.bottom-left,
+            .corner-effect.bottom-right {
+                bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .page-description {
+                font-size: 0.95rem;
+                padding: 0.8rem;
+            }
+            
+            .holographic-button {
+                padding: 0.9rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .button-description {
+                font-size: 0.75rem;
+            }
+            
+            .social-links {
+                gap: 0.8rem;
+            }
+            
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .install-prompt p {
+                font-size: 0.9rem;
+            }
+            
+            .install-button {
+                font-size: 0.85rem;
+                padding: 0.7rem 1.2rem;
+            }
+            
+            .notification-toast {
+                max-width: calc(100% - 30px);
+                right: 15px;
+                bottom: 15px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="corner-effect top-left"></div>
+    <div class="corner-effect top-right"></div>
+    <div class="corner-effect bottom-left"></div>
+    <div class="corner-effect bottom-right"></div>
+    
     <main class="container">
-        <h1>BIENVENIDO A CBO</h1>
-        <p class="page-description">
-            CBO es un emprendimiento cubano innovador dedicado al desarrollo tecnológico y servicios digitales. 
-            Ofrecemos soluciones de hosting especializado, desarrollo web a medida y oportunidades de empleo 
-            en el sector tecnológico para profesionales cubanos.
-        </p>
+        <header>
+            <h1>BIENVENIDO</h1>
+            <p class="page-description">
+                CBO es un emprendimiento cubano innovador dedicado al desarrollo tecnológico y servicios digitales. 
+                Ofrecemos soluciones de hosting especializado, desarrollo web a medida y oportunidades de empleo 
+                en el sector tecnológico para profesionales cubanos.
+            </p>
+        </header>
         
         <div class="button-container">
-            <a href="Tcubita/index.html" class="futuristic-button">
+            <a href="Tcubita/index.html" class="holographic-button" aria-label="Ir a Tcubita, plataforma de comercio electrónico">
                 Tcubita
                 <span class="button-description">Plataforma de comercio electrónico para negocios cubanos</span>
             </a>
             
-            <a href="CubaHostPro/index.html" class="futuristic-button">
+            <a href="CubaHostPro/index.html" class="holographic-button" aria-label="Ir a CubaHostPro, servicio de hosting">
                 CubaHostPro
                 <span class="button-description">Servicio premium de hosting con dominios .cu y soporte 24/7</span>
             </a>
             
-            <a href="Empleo/index.html" class="futuristic-button">
+            <a href="Empleo/index.html" class="holographic-button" aria-label="Ir a Empleo, oportunidades laborales">
                 Empleo
                 <span class="button-description">Oportunidades laborales en el sector tecnológico</span>
             </a>
         </div>
         
+        <!-- Sección de redes sociales -->
+        <div class="social-section">
+            <p class="social-title">Síguenos en redes sociales</p>
+            <div class="social-links">
+                <a href="https://whatsapp.com/channel/0029Vb61NTa5vKA3hCMIQr3j" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/cubabazaronline?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/CubaBazarOnline?t=kpGyUCV0vcv4was7EdFzwQ&s=09" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://youtube.com/@cbo_oficial?feature=shared" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.reddit.com/r/CubaBazarOnline/s/YRAtm4kyKn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Reddit">
+                    <i class="fab fa-reddit-alien"></i>
+                </a>
+            </div>
+        </div>
+        
         <div class="install-prompt" id="installContainer" style="display: none;">
             <p>¿Quieres acceder más rápido a nuestros servicios?</p>
-            <button class="install-button" id="installButton">Instalar CBO</button>
+            <button class="install-button" id="installButton" aria-label="Instalar aplicación CBO">Instalar CBO</button>
         </div>
     </main>
     
-    <div class="particles" id="particles"></div>
+    <div class="holographic-particles" id="particles"></div>
     
     <div class="notification-toast" id="notificationToast" role="alert">
-        <div class="notification-icon">💡</div>
+        <div class="notification-icon">⚡</div>
         <div class="notification-content">
             <div class="notification-title" id="notificationToastTitle">Nueva notificación</div>
             <div class="notification-message" id="notificationToastMessage"></div>
@@ -307,25 +747,30 @@
         <button class="notification-close" id="notificationClose" aria-label="Cerrar notificación">×</button>
     </div>
     
+    <!-- Scripts optimizados -->
     <script>
-        // Crear partículas de fondo
+        // Crear partículas de fondo optimizadas
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
+            const particleCount = window.innerWidth < 768 ? 20 : 30;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 
-                const size = Math.random() * 2 + 1;
+                const size = Math.random() * 4 + 2;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
                 particle.style.left = `${Math.random() * 100}%`;
                 particle.style.bottom = `-10px`;
                 
-                const duration = Math.random() * 10 + 10;
+                const colors = ['var(--hologram-blue)', 'var(--hologram-pink)', 'var(--hologram-purple)'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = randomColor;
+                
+                const duration = Math.random() * 20 + 15;
                 particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particle.style.animationDelay = `${Math.random() * 15}s`;
                 
                 particlesContainer.appendChild(particle);
             }
@@ -350,7 +795,7 @@
             setTimeout(type, 500);
         }
         
-        // Sistema de notificaciones
+        // Sistema de notificaciones mejorado
         class NotificationSystem {
             constructor() {
                 this.toast = document.getElementById('notificationToast');
@@ -366,6 +811,13 @@
             setupEventListeners() {
                 this.closeButton.addEventListener('click', () => {
                     this.hideToast();
+                });
+                
+                // Cerrar al hacer clic fuera
+                document.addEventListener('click', (e) => {
+                    if (this.toast.classList.contains('show') && !this.toast.contains(e.target)) {
+                        this.hideToast();
+                    }
                 });
             }
             
@@ -389,11 +841,11 @@
                         'Bienvenido a CBO', 
                         'Explora nuestros servicios tecnológicos para Cuba'
                     );
-                }, 3000);
+                }, 2000);
             }
             
             checkNotificationPermission() {
-                if ('Notification' in window) {
+                if ('Notification' in window && Notification.permission !== 'denied') {
                     Notification.requestPermission().then(permission => {
                         if (permission === 'granted') {
                             this.showToast(
@@ -409,13 +861,13 @@
                 if ('Notification' in window && Notification.permission === 'granted') {
                     new Notification(title, {
                         body: message,
-                        icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMDBmN2ZmIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTNiIDh6bTAgNDQ4Yy0xMTAuNSAwLTIwMC04OS41LTIwMC0yMDBTMTQ1LjUgNTYgMjU2IDU2czIwMCA4OS41IDIwMCAyMDAtODkuNSAyMDAtMjAwIDIwMHptNjIuMi0xNDYuMmMtMTguNyAxOC43LTQ5LjEgMTguNy02Ny45IDBsLTY3LjktNjcuOUwxNTMuMyAyNTZsLTY3LjktNjcuOWMtMTguNy0xOC43LTE4Ny00OS4xIDAtNjcuOSAxOC43LTE4LjcgNDkuMS0xOC43IDY3LjkgMGw2Ny45IDY3LjkgNjcuOS02Ny45YzE4LjctMTguNyA0OS4xLTE4LjcgNjcuOSAwIDE4LjcgMTguNyAxOC43IDQ5LjEgMCA2Ny45TDMyOS4zIDI1Nmw2Ny45IDY3LjljMTguNyAxOC43IDE4NyA0OS4xIDAgNjcuOXoiLz48L3N2Zz4="
+                        icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMDBmN2ZmIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTZiIDh6bTAgNDQ4Yy0xMTAuNSAwLTIwMC04OS41LTIwMC0yMDBTMTQ1LjUgNTYgMjU2IDU2czIwMCA4OS41IDIwMCAyMDAtODkuNSAyMDAtMjAwIDIwMHptNjIuMi0xNDYuMmMtMTguNyAxOC43LTQ5LjEgMTguNy02Ny45IDBsLTY3LjktNjcuOUwxNTMuMyAyNTZsLTY3LjktNjcuOWMtMTguNy0xOC43LTE4Ny00OS4xIDAtNjcuOSAxOC43LTE4LjcgNDkuMS0xOC43IDY3LjkgMGw2Ny45IDY3LjkgNjcuOS02Ny45YzE4LjctMTguNyA0OS4xLTE4LjcgNjcuOSAwIDE4LjcgMTguNyAxOC43IDQ5LjEgMCA2Ny45TDMyOS4zIDI1Nmw2Ny45IDY3LjljMTguNyAxOC43IDE4NyA0OS4xIDAgNjcuOXoiLz48L3N2Zz4="
                     });
                 }
             }
         }
         
-        // Instalación como PWA
+        // Instalación como PWA mejorada
         class PWAInstaller {
             constructor() {
                 this.installContainer = document.getElementById('installContainer');
@@ -429,44 +881,87 @@
                 window.addEventListener('beforeinstallprompt', (e) => {
                     e.preventDefault();
                     this.deferredPrompt = e;
-                    this.installContainer.style.display = 'block';
+                    this.showInstallPrompt();
                 });
                 
                 this.installButton.addEventListener('click', async () => {
-                    if (this.deferredPrompt) {
-                        this.deferredPrompt.prompt();
-                        const { outcome } = await this.deferredPrompt.userChoice;
-                        
-                        if (outcome === 'accepted') {
-                            console.log('Usuario aceptó la instalación');
-                        } else {
-                            console.log('Usuario rechazó la instalación');
-                        }
-                        
-                        this.deferredPrompt = null;
-                        this.installContainer.style.display = 'none';
-                    }
+                    await this.installApp();
                 });
                 
                 window.addEventListener('appinstalled', () => {
-                    console.log('Aplicación instalada');
-                    this.installContainer.style.display = 'none';
+                    this.hideInstallPrompt();
                     new NotificationSystem().showToast(
                         'Instalación completada', 
                         'CBO ahora está disponible en tu dispositivo'
                     );
                 });
             }
+            
+            showInstallPrompt() {
+                // Mostrar solo si no está en modo standalone (ya instalado)
+                if (!window.matchMedia('(display-mode: standalone)').matches) {
+                    this.installContainer.style.display = 'block';
+                    
+                    // Ocultar después de 30 segundos si no se interactúa
+                    setTimeout(() => {
+                        if (this.installContainer.style.display === 'block') {
+                            this.hideInstallPrompt();
+                        }
+                    }, 30000);
+                }
+            }
+            
+            hideInstallPrompt() {
+                this.installContainer.style.display = 'none';
+            }
+            
+            async installApp() {
+                if (this.deferredPrompt) {
+                    this.deferredPrompt.prompt();
+                    const { outcome } = await this.deferredPrompt.userChoice;
+                    
+                    if (outcome === 'accepted') {
+                        new NotificationSystem().showToast(
+                            'Instalación en progreso', 
+                            'Por favor completa el proceso de instalación'
+                        );
+                    }
+                    
+                    this.deferredPrompt = null;
+                    this.hideInstallPrompt();
+                }
+            }
         }
         
-        // Inicialización
+        // Inicialización optimizada
         document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            typeWriterEffect();
+            // Cargar elementos no críticos después de que la página esté lista
+            setTimeout(() => {
+                createParticles();
+                typeWriterEffect();
+            }, 100);
             
             // Iniciar sistemas
             new NotificationSystem();
             new PWAInstaller();
+            
+            // Mejorar rendimiento en móviles
+            if ('connection' in navigator && navigator.connection.saveData) {
+                document.querySelectorAll('.particle').forEach(particle => {
+                    particle.style.display = 'none';
+                });
+            }
+        });
+        
+        // Optimización para cambio de tamaño
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const particlesContainer = document.getElementById('particles');
+                particlesContainer.innerHTML = '';
+                createParticles();
+            }, 200);
         });
     </script>
 </body>
