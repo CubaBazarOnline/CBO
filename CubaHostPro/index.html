@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-CU" data-theme="light">
+<html lang="es-CU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,19 +60,6 @@
             --container-padding: 1.5rem;
         }
         
-        [data-theme="dark"] {
-            --primary: #00f7ff;
-            --primary-dark: #00c4cc;
-            --primary-light: #0d4b4e;
-            --dark: #f0f8ff;
-            --light: #0a0a1a;
-            --light-gray: #0f172a;
-            --gray: #94a3b8;
-            --gray-light: #1e293b;
-            --shadow-sm: 0 1px 10px 0 rgba(0, 247, 255, 0.25);
-            --shadow: 0 4px 20px -1px rgba(0, 247, 255, 0.3), 0 2px 10px -1px rgba(0, 247, 255, 0.2);
-        }
-        
         *,
         *::before,
         *::after {
@@ -92,7 +79,6 @@
             background-color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -422,10 +408,6 @@
             transition: var(--transition);
         }
         
-        [data-theme="dark"] nav {
-            background-color: rgba(10, 10, 26, 0.9);
-        }
-        
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -505,33 +487,6 @@
             color: var(--primary);
             transform: rotate(90deg);
             text-shadow: 0 0 10px var(--primary);
-        }
-        
-        .theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.25rem;
-            color: var(--light);
-            padding: 0.5rem;
-            transition: var(--transition);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .theme-toggle:hover {
-            background-color: rgba(0, 247, 255, 0.1);
-            transform: rotate(20deg);
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
-        }
-        
-        [data-theme="dark"] .theme-toggle:hover {
-            background-color: rgba(0, 247, 255, 0.1);
         }
         
         /* Features Section */
@@ -922,132 +877,38 @@
             z-index: 2;
         }
         
-        /* Footer */
-        .footer {
-            background: rgba(10, 10, 26, 0.9);
-            color: white;
-            padding: 4rem 0 2rem;
-            margin-top: auto;
-            border-top: 1px solid rgba(0, 247, 255, 0.2);
-            position: relative;
-        }
-        
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-col h3 {
-            color: var(--primary-light);
-            margin-bottom: 1.5rem;
-            font-size: 1.25rem;
-            position: relative;
-            display: inline-block;
-            text-shadow: 0 0 10px var(--primary);
-        }
-        
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: -0.5rem;
-            left: 0;
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 5rem;
+            right: 1.5rem;
             width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: var(--radius);
-            box-shadow: 0 0 10px var(--primary);
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col li {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: var(--transition-fast);
-        }
-        
-        .footer-col li:hover {
-            color: var(--primary-light);
-            transform: translateX(5px);
-        }
-        
-        .footer-col a {
-            color: var(--gray);
-            transition: var(--transition-fast);
-        }
-        
-        .footer-col a:hover {
-            color: var(--primary-light);
-            text-decoration: none;
-            text-shadow: 0 0 10px var(--primary);
-        }
-        
-        .footer-col i {
-            color: var(--primary);
-            text-shadow: 0 0 5px var(--primary);
-            width: 20px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(0, 247, 255, 0.1);
-            color: var(--primary-light);
-            transition: var(--transition);
-            border: 1px solid rgba(0, 247, 255, 0.3);
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            color: var(--dark);
-            transform: translateY(-3px);
+            font-size: 1.25rem;
             box-shadow: 0 0 15px var(--primary);
+            z-index: 999;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            border: none;
+            cursor: pointer;
         }
         
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0, 247, 255, 0.2);
-            color: var(--gray);
-            font-size: 0.875rem;
-            position: relative;
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
         }
         
-        .footer-bottom::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--primary);
         }
         
         /* Floating buttons */
@@ -1101,39 +962,6 @@
         .form-float:hover .form-float-tooltip {
             opacity: 1;
             right: 60px;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 5rem;
-            right: 1.5rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            box-shadow: 0 0 15px var(--primary);
-            z-index: 999;
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background: var(--primary-light);
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px var(--primary);
         }
         
         /* Notification System */
@@ -1294,8 +1122,7 @@
             nav,
             .hero-cta,
             .form-float,
-            .back-to-top,
-            .footer {
+            .back-to-top {
                 display: none !important;
             }
             
@@ -1393,11 +1220,6 @@
                 width: 100%;
             }
             
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
             .form-float {
                 bottom: 1rem;
                 right: 1rem;
@@ -1441,10 +1263,6 @@
             .plan-period {
                 padding: 0.75rem;
             }
-            
-            .footer-col li {
-                font-size: 0.95rem;
-            }
         }
     </style>
 </head>
@@ -1459,11 +1277,6 @@
                     <li><a href="#features">Características</a></li>
                     <li><a href="#pricing">Precios</a></li>
                     <li><a href="#faq">Preguntas</a></li>
-                    <li>
-                        <button class="theme-toggle" aria-label="Cambiar tema">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
                 </ul>
                 
                 <button class="mobile-menu-toggle" aria-label="Menú" aria-expanded="false">
@@ -1478,8 +1291,8 @@
         <div class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title flicker">Tu negocio merece una plataforma web profesional</h1>
-                    <p class="hero-subtitle flicker">Páginas webs para cubanos</p>
+                    <h1 class="hero-title flicker">Tu negocio necesita</h1>
+                    <p class="hero-subtitle flicker">Páginas Webs Profecionales</p>
                     
                     <div class="hero-cta">
                         <a href="#pricing" class="btn btn-primary pulse">
@@ -1506,7 +1319,7 @@
         <!-- Features Section -->
         <section id="features" class="section">
             <div class="container">
-                <h2 class="section-title flicker">Tecnología adaptada para Cuba</h2>
+                <h2 class="section-title flicker">Adaptada para Cuba</h2>
                 <p class="section-subtitle">Optimizado para las condiciones de conectividad del país</p>
                 
                 <div class="features-grid">
@@ -1540,8 +1353,8 @@
         <!-- Pricing Section -->
         <section id="pricing" class="section">
             <div class="container">
-                <h2 class="section-title flicker">Planes económicos a la medida</h2>
-                <p class="section-subtitle">Precios en CUP asequibles</p>
+                <h2 class="section-title flicker">Planes de pago super económicos</h2>
+                <p class="section-subtitle">Precios en CUP asequibles / Recibe un descuento del 20% por pagar anualmente + un 10% de descuento por realizar el pago por transfermovil</p>
                 
                 <div class="plan-selector">
                     <button class="plan-period active" data-period="monthly">Mensual</button>
@@ -1559,11 +1372,11 @@
                         
                         <div class="pricing-features">
                             <ul>
-                                <li><i class="fas fa-check"></i> Interfaz Simple</li>
-                                <li><i class="fas fa-check"></i> Nombre Personalizado</li>
-                                <li><i class="fas fa-check"></i> Dominio</li>
-                                <li><i class="fas fa-check"></i> Logotipo Personalizado</li>
-                                <li><i class="fas fa-check"></i> Soporte 12/7</li>
+                                <li><i class="fas fa-check"></i> Interfaz ~ Común </li>
+                                <li><i class="fas fa-check"></i> Nombre ~ Personalizado </li>
+                                <li><i class="fas fa-check"></i> Dominio ~ Estándar </li>
+                                <li><i class="fas fa-check"></i> Logotipo ~ Común </li>
+                                <li><i class="fas fa-check"></i> Soporte ~ [12/7] </li>
                             </ul>
                         </div>
                     </div>
@@ -1579,15 +1392,15 @@
                         
                         <div class="pricing-features">
                             <ul>
-                                <li><i class="fas fa-check"></i> Interfaz Sofisticada</li>
-                                <li><i class="fas fa-check"></i> Nombre Personalizado</li>
-                                <li><i class="fas fa-check"></i> Dominio</li>
-                                <li><i class="fas fa-check"></i> Logotipo Personalizado</li>
-                                <li><i class="fas fa-check"></i> Soporte 24/7</li>
-                                <li><i class="fas fa-check"></i> Actualizaciones Semanales</li>
-                                <li><i class="fas fa-check"></i> Sin marca de agua (CUBAHOSTPRO)</li>
-                                <li><i class="fas fa-check"></i> Disponible para móvil (apk)</li>
-                                <li><i class="fas fa-check"></i> Disposición en Tcubita</li>
+                                <li><i class="fas fa-check"></i> Interfaz ~ Sofisticada </li>
+                                <li><i class="fas fa-check"></i> Nombre ~ Personalizado </li>
+                                <li><i class="fas fa-check"></i> Dominio ~ Personalizado </li>
+                                <li><i class="fas fa-check"></i> Logotipo ~ Personalizado </li>
+                                <li><i class="fas fa-check"></i> Soporte ~ [24/7] </li>
+                                <li><i class="fas fa-check"></i> Actualizaciones ~ Semanales </li>
+                                <li><i class="fas fa-check"></i> Sin marca de agua ~ [CBO] </li>
+                                <li><i class="fas fa-check"></i> Disponible para móvil ~ [APP] </li>
+                                <li><i class="fas fa-check"></i> Disposición ~ Tcubita </li>
                             </ul>
                         </div>
                     </div>
@@ -1595,7 +1408,7 @@
                 
                 <div class="pricing-guide pulse">
                     <i class="fas fa-info-circle"></i>
-                    <p>¿Listo para comenzar? Haz clic en el botón de formulario flotante para solicitar tu plan</p>
+                    <p>¿Listo para comenzar? Haz clic en el botón de formulario flotante 📄 para solicitar tu plan</p>
                 </div>
             </div>
         </section>
@@ -1675,55 +1488,6 @@
     
     <!-- Scripts -->
     <script>
-        // Dark mode toggle
-        const themeToggle = document.querySelector('.theme-toggle');
-        const html = document.documentElement;
-        
-        // Verificar preferencia del usuario
-        const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedTheme = localStorage.getItem('theme') || (userPrefersDark ? 'dark' : 'light');
-        
-        // Aplicar tema guardado
-        html.setAttribute('data-theme', savedTheme);
-        
-        // Actualizar icono según el tema
-        const updateThemeIcon = () => {
-            const icon = themeToggle.querySelector('i');
-            const currentTheme = html.getAttribute('data-theme');
-            
-            if (currentTheme === 'dark') {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                icon.setAttribute('aria-label', 'Cambiar a tema claro');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                icon.setAttribute('aria-label', 'Cambiar a tema oscuro');
-            }
-        };
-        
-        // Cambiar tema al hacer clic
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon();
-            
-            // Mostrar notificación
-            showNotification(`Tema ${newTheme === 'dark' ? 'oscuro' : 'claro'} activado`, 'success');
-        });
-        
-        // Escuchar cambios en las preferencias del sistema
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-            const newTheme = e.matches ? 'dark' : 'light';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon();
-        });
-        
-        // Inicializar icono
-        updateThemeIcon();
-        
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navLinks = document.querySelector('.nav-links');
