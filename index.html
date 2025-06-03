@@ -33,9 +33,6 @@
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Segoe+UI:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Segoe+UI:wght@300;400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-<style>
-:root{--hologram-blue:rgba(0,255,255,0.8);--hologram-pink:rgba(255,0,255,0.8);--hologram-purple:rgba(128,0,255,0.8);--hologram-bg:rgba(0,0,20,0.95);--hologram-line:rgba(0,255,255,0.2);--hologram-highlight:rgba(255,255,255,0.1);--hologram-text:rgba(255,255,255,0.9);--hologram-text-secondary:rgba(200,200,255,0.7);--badge-new:#ff4d4d;--badge-popular:#ffb84d;--badge-free:#4dff4d;--transition-base:all 0.3s cubic-bezier(0.25,0.8,0.25,1);--transition-smooth:all 0.5s cubic-bezier(0.22,1,0.36,1)}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background-color:var(--hologram-bg);color:var(--hologram-text);min-height:100vh;overflow-x:hidden;display:flex;flex-direction:column;position:relative;line-height:1.6;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}h1,h2,h3,.holographic-button,.button-badge{font-family:'Orbitron','Segoe UI',sans-serif;font-weight:600}body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(var(--hologram-line) 1px,transparent 1px),linear-gradient(90deg,var(--hologram-line) 1px,transparent 1px);background-size:40px 40px;z-index:-2;opacity:0.3;pointer-events:none}body::after{content:"";position:fixed;top:0;left:0;width:100%;height:4px;background:linear-gradient(to bottom,rgba(0,255,255,0.1),rgba(0,255,255,0.4),rgba(0,255,255,0.1));animation:scan 8s linear infinite;z-index:-1;box-shadow:0 0 10px rgba(0,255,255,0.3);opacity:0.8;pointer-events:none}@keyframes scan{0%{top:-10px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}.container{max-width:1280px;margin:0 auto;padding:1.5rem clamp(1rem,5vw,2rem);flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;z-index:1;width:100%}header{width:100%;margin-bottom:2rem;position:relative;isolation:isolate}.title-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(100%,600px);height:150px;background:radial-gradient(circle,rgba(0,255,255,0.15),transparent 70%);filter:blur(40px);z-index:-1;opacity:0.8;animation:glowPulse 6s ease-in-out infinite alternate;pointer-events:none}@keyframes glowPulse{0%{opacity:0.6}100%{opacity:0.9}}h1{font-size:clamp(1.8rem,6vw,3.5rem);margin-bottom:1.5rem;background:linear-gradient(90deg,var(--hologram-blue),var(--hologram-pink));-webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase;letter-spacing:1px;position:relative;padding:0.5rem 0;line-height:1.2;text-shadow:0 0 10px rgba(0,255,255,0.3)}h1::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80%;height:2px;background:linear-gradient(90deg,transparent,var(--hologram-blue),var(--hologram-pink),transparent);box-shadow:0 0 10px var(--hologram-blue),0 0 20px var(--hologram-pink);animation:linePulse 4s ease-in-out infinite}@keyframes linePulse{0%,100%{opacity:0.8;width:80%}50%{opacity:1;width:85%}}.page-description{max-width:800px;margin:0 auto 2rem;font-size:clamp(1rem,2.5vw,1.2rem);line-height:1.7;color:var(--hologram-text-secondary);text-shadow:0 0 5px rgba(0,255,255,0.3);position:relative;padding:1.5rem;backdrop-filter:blur(5px)}.page-description::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;border:1px solid var(--hologram-blue);border-radius:8px;box-shadow:inset 0 0 15px var(--hologram-blue),0 0 30px rgba(0,255,255,0.2);pointer-events:none;opacity:0.5;animation:borderGlow 8s linear infinite}.description-particle{position:absolute;width:6px;height:6px;background:var(--hologram-blue);border-radius:50%;filter:blur(1px);animation:float 8s infinite ease-in-out;opacity:0;pointer-events:none}@keyframes float{0%{transform:translate(0,0);opacity:0}10%{opacity:0.6}90%{opacity:0.6}100%{transform:translate(20px,-40px);opacity:0}}.button-container{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin:2.5rem 0;position:relative;width:100%;perspective:1000px}.holographic-button{position:relative;padding:1.3rem 1.8rem;background:rgba(0,20,40,0.25);border:1px solid var(--hologram-blue);border-radius:8px;color:var(--hologram-text);font-size:clamp(0.9rem,2vw,1.1rem);font-weight:500;text-decoration:none;text-transform:uppercase;letter-spacing:1px;cursor:pointer;overflow:hidden;transition:var(--transition-smooth);box-shadow:0 4px 15px rgba(0,255,255,0.15),inset 0 0 10px rgba(0,255,255,0.1);width:100%;max-width:320px;display:flex;flex-direction:column;align-items:center;z-index:1;transform-style:preserve-3d;will-change:transform}.holographic-button::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(0,255,255,0.1),rgba(255,0,255,0.1) 100%);z-index:-1;opacity:0;transition:var(--transition-base)}.holographic-button::after{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(to bottom right,transparent,transparent,transparent,var(--hologram-highlight),transparent);transform:rotate(30deg);transition:var(--transition-smooth);z-index:-1}.holographic-button:hover,.holographic-button:focus{transform:translateY(-5px) scale(1.02);box-shadow:0 8px 25px rgba(0,255,255,0.3),inset 0 0 15px rgba(0,255,255,0.2);border-color:var(--hologram-pink);color:var(--hologram-blue);outline:none}.holographic-button:hover::before,.holographic-button:focus::before{opacity:1}.holographic-button:hover::after,.holographic-button:focus::after{left:100%}.holographic-button:nth-child(1){border-color:var(--hologram-blue);--button-accent:var(--hologram-blue)}.holographic-button:nth-child(1):hover,.holographic-button:nth-child(1):focus{border-color:var(--hologram-purple)}.holographic-button:nth-child(2){border-color:var(--hologram-pink);--button-accent:var(--hologram-pink)}.holographic-button:nth-child(2):hover,.holographic-button:nth-child(2):focus{border-color:var(--hologram-purple)}.holographic-button:nth-child(3){border-color:var(--hologram-purple);--button-accent:var(--hologram-purple)}.holographic-button:nth-child(3):hover,.holographic-button:nth-child(3):focus{border-color:var(--hologram-blue)}.button-description{font-size:clamp(0.8rem,2vw,0.9rem);margin-top:0.8rem;font-weight:normal;color:var(--hologram-text-secondary);text-transform:none;letter-spacing:normal;font-family:'Segoe UI',sans-serif;transition:var(--transition-base)}.holographic-button:hover .button-description{color:var(--hologram-text);text-shadow:0 0 5px var(--button-accent)}.button-badge{position:absolute;top:-10px;right:-10px;padding:0.3rem 0.7rem;border-radius:20px;font-size:0.7rem;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;color:white;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,0.3);animation:pulse 2s infinite ease-in-out;transition:var(--transition-base);transform-origin:center}.button-badge::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;border-radius:20px;background:inherit;z-index:-1;filter:blur(5px);opacity:0.4}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}.badge-new{background:var(--badge-new);box-shadow:0 0 15px rgba(255,77,77,0.5)}.badge-popular{background:var(--badge-popular);box-shadow:0 0 15px rgba(255,184,77,0.5)}.badge-free{background:var(--badge-free);box-shadow:0 0 15px rgba(77,255,77,0.5)}.button-connector{position:absolute;height:2px;background:linear-gradient(90deg,var(--hologram-blue),var(--hologram-pink));opacity:0.3;z-index:0;animation:connectorPulse 4s infinite ease-in-out;pointer-events:none}@keyframes connectorPulse{0%,100%{opacity:0.3}50%{opacity:0.7}}.social-section{margin:3rem 0;width:100%;position:relative}.social-title{font-size:1rem;color:var(--hologram-text-secondary);margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:1px;position:relative;display:inline-block}.social-title::after{content:"";position:absolute;bottom:-5px;left:0;width:100%;height:1px;background:linear-gradient(90deg,var(--hologram-blue),transparent);opacity:0.5}.social-links{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative}.social-link{color:var(--hologram-text);font-size:1.4rem;transition:var(--transition-smooth);display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;border:1px solid var(--hologram-blue);position:relative;overflow:hidden;background:rgba(0,20,40,0.3);transform-style:preserve-3d;box-shadow:0 4px 10px rgba(0,0,0,0.2)}.social-link::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,var(--hologram-blue),var(--hologram-pink));opacity:0;transition:var(--transition-base);z-index:-1}.social-link::after{content:attr(aria-label);position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);font-size:0.7rem;background:rgba(0,10,20,0.9);padding:0.3rem 0.6rem;border-radius:4px;opacity:0;transition:var(--transition-base);pointer-events:none;white-space:nowrap;border:1px solid var(--hologram-blue)}.social-link:hover,.social-link:focus{color:white;transform:translateY(-5px) scale(1.1);box-shadow:0 8px 20px rgba(0,255,255,0.3);border-color:var(--hologram-pink);outline:none}.social-link:hover::before,.social-link:focus::before{opacity:0.3}.social-link:hover::after,.social-link:focus::after{opacity:1;bottom:-25px}.social-link[aria-label*="WhatsApp"]:hover{background:#25D366;border-color:#25D366}.social-link[aria-label*="LinkedIn"]:hover{background:#0077B5;border-color:#0077B5}.social-link[aria-label*="Twitter"]:hover{background:#1DA1F2;border-color:#1DA1F2}.social-link[aria-label*="YouTube"]:hover{background:#FF0000;border-color:#FF0000}.social-link[aria-label*="Reddit"]:hover{background:#FF5700;border-color:#FF5700}.social-connector{position:absolute;height:1px;background:linear-gradient(90deg,var(--hologram-blue),var(--hologram-pink));opacity:0.2;z-index:-1;animation:socialConnectorPulse 6s infinite ease-in-out;pointer-events:none}@keyframes socialConnectorPulse{0%,100%{opacity:0.2}50%{opacity:0.4}}.install-prompt{margin:2.5rem 0;padding:1.5rem;background:rgba(0,20,40,0.3);border:1px solid var(--hologram-blue);border-radius:8px;max-width:500px;width:100%;position:relative;overflow:hidden;box-shadow:inset 0 0 15px rgba(0,255,255,0.1),0 0 20px rgba(0,255,255,0.1);backdrop-filter:blur(5px);transform:translateY(20px);opacity:0;transition:var(--transition-smooth)}.install-prompt.visible{transform:translateY(0);opacity:1}.install-prompt::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--hologram-blue),var(--hologram-pink),var(--hologram-purple));animation:borderGlow 3s linear infinite}.install-prompt p{margin-bottom:1.2rem;color:var(--hologram-text-secondary);font-size:0.95rem;line-height:1.6}.install-button{background:linear-gradient(90deg,var(--hologram-blue),var(--hologram-pink));border:none;color:var(--hologram-bg);padding:0.9rem 1.8rem;border-radius:6px;margin-top:0.5rem;cursor:pointer;transition:var(--transition-smooth);font-weight:bold;text-transform:uppercase;letter-spacing:1px;position:relative;overflow:hidden;box-shadow:0 4px 15px rgba(0,255,255,0.3);width:100%;max-width:220px;font-size:0.95rem;transform:translateZ(0)}.install-button::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,rgba(255,255,255,0.2),transparent);transform:translateX(-100%);transition:var(--transition-smooth)}.install-button:hover,.install-button:focus{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 25px rgba(0,255,255,0.5);outline:none}.install-button:hover::before,.install-button:focus::before{transform:translateX(100%)}.notification-toast{position:fixed;bottom:20px;right:20px;background:rgba(0,10,20,0.97);border:1px solid var(--hologram-blue);border-radius:8px;padding:14px;box-shadow:0 0 20px rgba(0,255,255,0.25),inset 0 0 15px rgba(0,255,255,0.15);max-width:320px;width:calc(100% - 40px);display:flex;align-items:center;gap:12px;transform:translateX(150%);transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);z-index:1000;backdrop-filter:blur(10px)}.notification-toast.show{transform:translateX(0)}.notification-icon{font-size:22px;background:linear-gradient(90deg,var(--hologram-blue),var(--hologram-pink));-webkit-background-clip:text;background-clip:text;color:transparent;flex-shrink:0}.notification-content{flex:1;text-align:left}.notification-title{font-weight:bold;margin-bottom:4px;background:linear-gradient(90deg,var(--hologram-blue),var(--hologram-pink));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:0.9rem;letter-spacing:0.5px}.notification-message{font-size:0.85rem;line-height:1.5;color:var(--hologram-text-secondary)}.notification-close{background:none;border:none;color:var(--hologram-pink);cursor:pointer;font-size:1.1rem;align-self:flex-start;transition:var(--transition-base);padding:2px;line-height:1}.notification-close:hover,.notification-close:focus{color:var(--hologram-blue);transform:rotate(90deg);outline:none}.holographic-particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;overflow:hidden}.particle{position:absolute;background:linear-gradient(90deg,var(--hologram-blue),var(--hologram-pink));border-radius:50%;animation:floatUp linear infinite;opacity:0;filter:blur(1px);pointer-events:none}.particle::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:150%;height:150%;border-radius:50%;background:inherit;opacity:0.3;filter:blur(3px)}@keyframes floatUp{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:0.6}90%{opacity:0.6}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}.corner-effect{position:absolute;width:40px;height:40px;pointer-events:none;z-index:1;animation:cornerGlow 8s infinite ease-in-out}.corner-effect.top-left{top:15px;left:15px;border-top:2px solid var(--hologram-blue);border-left:2px solid var(--hologram-blue)}.corner-effect.top-right{top:15px;right:15px;border-top:2px solid var(--hologram-pink);border-right:2px solid var(--hologram-pink)}.corner-effect.bottom-left{bottom:15px;left:15px;border-bottom:2px solid var(--hologram-purple);border-left:2px solid var(--hologram-purple)}.corner-effect.bottom-right{bottom:15px;right:15px;border-bottom:2px solid var(--hologram-blue);border-right:2px solid var(--hologram-blue)}@keyframes cornerGlow{0%{border-color:var(--hologram-blue);box-shadow:0 0 10px var(--hologram-blue)}33%{border-color:var(--hologram-pink);box-shadow:0 0 15px var(--hologram-pink)}66%{border-color:var(--hologram-purple);box-shadow:0 0 20px var(--hologram-purple)}100%{border-color:var(--hologram-blue);box-shadow:0 0 10px var(--hologram-blue)}}.corner-glow{position:absolute;width:100px;height:100px;border-radius:50%;filter:blur(30px);opacity:0.3;pointer-events:none;z-index:0}.corner-glow.top-left{top:0;left:0;background:var(--hologram-blue)}.corner-glow.top-right{top:0;right:0;background:var(--hologram-pink)}.corner-glow.bottom-left{bottom:0;left:0;background:var(--hologram-purple)}.corner-glow.bottom-right{bottom:0;right:0;background:var(--hologram-blue)}@media (max-width:992px){.container{padding:1.2rem}.holographic-button{max-width:280px}.social-link{width:48px;height:48px;font-size:1.3rem}}@media (max-width:768px){.container{padding:1rem}h1{font-size:2rem;margin-bottom:1.2rem}.page-description{font-size:1rem;padding:1.2rem;margin-bottom:1.8rem}.button-container{gap:1.2rem;margin:2rem 0}.holographic-button{padding:1.1rem 1.5rem;max-width:100%}.button-badge{font-size:0.65rem;padding:0.25rem 0.6rem;top:-8px;right:-8px}.social-links{gap:1rem}.social-link{width:44px;height:44px;font-size:1.2rem}.corner-effect{width:30px;height:30px}.corner-glow{width:80px;height:80px;filter:blur(25px)}}@media (max-width:480px){h1{font-size:1.8rem}.page-description{font-size:0.95rem;padding:1rem}.button-container{gap:1rem}.holographic-button{padding:1rem 1.2rem}.button-description{font-size:0.8rem}.social-links{gap:0.8rem}.social-link{width:42px;height:42px;font-size:1.1rem}.social-link::after{font-size:0.6rem;bottom:-28px}.install-prompt{padding:1.2rem}.install-button{font-size:0.9rem;padding:0.8rem 1.5rem}.notification-toast{max-width:calc(100% - 30px);right:15px;bottom:15px;padding:12px}.corner-effect{width:25px;height:25px}.corner-glow{width:60px;height:60px;filter:blur(20px)}}@media (max-width:360px){h1{font-size:1.6rem}.social-links{gap:0.6rem}.social-link{width:38px;height:38px;font-size:1rem}}@supports not (backdrop-filter:blur(5px)){.page-description,.install-prompt,.notification-toast{background:rgba(0,10,20,0.9)}}@media print{body{background:white!important;color:black!important}.holographic-button,.social-link,.install-prompt,.notification-toast,.corner-effect,.corner-glow,.holographic-particles{display:none!important}}
-</style>
 </head>
 <body>
 <div class="corner-effect top-left" aria-hidden="true"></div>
@@ -46,477 +43,116 @@
 <div class="corner-glow top-right" aria-hidden="true"></div>
 <div class="corner-glow bottom-left" aria-hidden="true"></div>
 <div class="corner-glow bottom-right" aria-hidden="true"></div>
+
 <main class="container">
-<header>
-<div class="title-glow" aria-hidden="true"></div>
-<h1 id="main-title">BIENVENIDO</h1>
-<p class="page-description">
-CBO es un emprendimiento cubano innovador dedicado al desarrollo tecnológico y servicios digitales. 
-Ofrecemos soluciones de hosting especializado, desarrollo web a medida y oportunidades de empleo 
-en el sector tecnológico para profesionales cubanos.
-</p>
-</header>
-<div class="button-container">
-<a href="Tcubita/index.html" class="holographic-button" aria-label="Ir a Tcubita, plataforma de comercio electrónico">
-<span class="button-badge badge-free">Gratuito</span>
-Tcubita
-<span class="button-description">Plataforma de comercio electrónico para negocios cubanos</span>
-</a>
-<a href="CubaHostPro/index.html" class="holographic-button" aria-label="Ir a CubaHostPro, servicio de hosting">
-<span class="button-badge badge-popular">Popular</span>
-CubaHostPro
-<span class="button-description">Servicio premium de hosting con dominios .cu y soporte 24/7</span>
-</a>
-<a href="Empleo/index.html" class="holographic-button" aria-label="Ir a Empleo, oportunidades laborales">
-<span class="button-badge badge-new">Nuevo</span>
-Empleo
-<span class="button-description">Oportunidades laborales en el sector tecnológico</span>
-</a>
-</div>
-<div class="social-section">
-<h2 class="social-title">Conéctate con nosotros</h2>
-<div class="social-links">
-<a href="https://whatsapp.com/channel/0029Vb61NTa5vKA3hCMIQr3j" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-<i class="fab fa-whatsapp" aria-hidden="true"></i>
-</a>
-<a href="https://x.com/CubaBazarOnline?t=kpGyUCV0vcv4was7EdFzwQ&s=09" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-<i class="fab fa-twitter" aria-hidden="true"></i>
-</a>
-<a href="https://youtube.com/@cbo_oficial?feature=shared" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-<i class="fab fa-youtube" aria-hidden="true"></i>
-</a>
-<a href="https://www.reddit.com/r/CubaBazarOnline/s/YRAtm4kyKn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Reddit">
-<i class="fab fa-reddit-alien" aria-hidden="true"></i>
-</a>
-</div>
-</div>
-<button id="share-button" class="holographic-button" style="margin-top: 2rem;">
-Compartir esta página
-<span class="button-description">Difunde nuestros servicios con otros emprendedores</span>
-</button>
+  <header>
+    <div class="title-glow" aria-hidden="true"></div>
+    <h1 id="main-title">BIENVENIDO</h1>
+    <p class="page-description">
+      CBO es un emprendimiento cubano innovador dedicado al desarrollo tecnológico y servicios digitales. 
+      Ofrecemos soluciones de hosting especializado, desarrollo web a medida y oportunidades de empleo 
+      en el sector tecnológico para profesionales cubanos.
+    </p>
+  </header>
+
+  <div class="button-container">
+    <a href="Tcubita/index.html" class="holographic-button" aria-label="Ir a Tcubita, plataforma de comercio electrónico">
+      <span class="button-badge badge-free">Gratuito</span>
+      Tcubita
+      <span class="button-description">Plataforma de comercio electrónico para negocios cubanos</span>
+    </a>
+    <a href="CubaHostPro/index.html" class="holographic-button" aria-label="Ir a CubaHostPro, servicio de hosting">
+      <span class="button-badge badge-popular">Popular</span>
+      CubaHostPro
+      <span class="button-description">Servicio premium de hosting con dominios .cu y soporte 24/7</span>
+    </a>
+    <a href="Empleo/index.html" class="holographic-button" aria-label="Ir a Empleo, oportunidades laborales">
+      <span class="button-badge badge-new">Nuevo</span>
+      Empleo
+      <span class="button-description">Oportunidades laborales en el sector tecnológico</span>
+    </a>
+  </div>
+
+  <div class="social-section">
+    <h2 class="social-title">Conéctate con nosotros</h2>
+    <div class="social-links">
+      <a href="https://whatsapp.com/channel/0029Vb61NTa5vKA3hCMIQr3j" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+      </a>
+      <a href="https://x.com/CubaBazarOnline?t=kpGyUCV0vcv4was7EdFzwQ&s=09" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      <a href="https://youtube.com/@cbo_oficial?feature=shared" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <i class="fab fa-youtube" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.reddit.com/r/CubaBazarOnline/s/YRAtm4kyKn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Reddit">
+        <i class="fab fa-reddit-alien" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <button id="share-button" class="holographic-button" style="margin-top: 2rem;">
+    Compartir esta página
+    <span class="button-description">Difunde nuestros servicios con otros emprendedores</span>
+  </button>
 </main>
-<script>
-function createParticles(){
-const particlesContainer=document.createElement('div');
-particlesContainer.id='particles';
-particlesContainer.className='holographic-particles';
-document.body.appendChild(particlesContainer);
-const particleCount=window.innerWidth<768?20:40;
-const colors=['var(--hologram-blue)','var(--hologram-pink)','var(--hologram-purple)'];
-for(let i=0;i<particleCount;i++){
-const particle=document.createElement('div');
-particle.classList.add('particle');
-const size=Math.random()*5+2;
-particle.style.width=`${size}px`;
-particle.style.height=`${size}px`;
-particle.style.left=`${Math.random()*100}%`;
-particle.style.bottom=`-10px`;
-const randomColor=colors[Math.floor(Math.random()*colors.length)];
-particle.style.background=randomColor;
-const duration=Math.random()*25+15;
-particle.style.animationDuration=`${duration}s`;
-particle.style.animationDelay=`${Math.random()*10}s`;
-particlesContainer.appendChild(particle);
-}
-const description=document.querySelector('.page-description');
-if(description){
-for(let i=0;i<6;i++){
-const particle=document.createElement('div');
-particle.classList.add('description-particle');
-particle.style.width=`${Math.random()*4+2}px`;
-particle.style.height=particle.style.width;
-particle.style.left=`${Math.random()*100}%`;
-particle.style.top=`${Math.random()*100}%`;
-particle.style.animationDelay=`${Math.random()*5}s`;
-particle.style.animationDuration=`${Math.random()*5+5}s`;
-description.appendChild(particle);
-}
-}
-}
-function typeWriterEffect(){
-const title=document.querySelector('h1');
-if(!title)return;
-const text=title.textContent;
-title.textContent='';
-let i=0;
-const speed=100;
-const type=()=>{
-if(i<text.length){
-title.textContent+=text.charAt(i);
-i++;
-setTimeout(type,speed);
-}
-};
-setTimeout(type,500);
-}
-function createButtonConnectors(){
-const buttonContainer=document.querySelector('.button-container');
-if(!buttonContainer)return;
-const buttons=buttonContainer.querySelectorAll('.holographic-button');
-if(buttons.length<2)return;
-const connector1=document.createElement('div');
-connector1.classList.add('button-connector');
-buttonContainer.appendChild(connector1);
-const connector2=document.createElement('div');
-connector2.classList.add('button-connector');
-buttonContainer.appendChild(connector2);
-const updateConnectors=()=>{
-const rect1=buttons[0].getBoundingClientRect();
-const rect2=buttons[1].getBoundingClientRect();
-const rect3=buttons[2]?.getBoundingClientRect();
-if(window.innerWidth>768){
-connector1.style.width=`${rect2.left-rect1.right}px`;
-connector1.style.top=`${rect1.top+rect1.height/2}px`;
-connector1.style.left=`${rect1.right}px`;
-if(rect3){
-connector2.style.width=`${rect3.left-rect2.right}px`;
-connector2.style.top=`${rect2.top+rect2.height/2}px`;
-connector2.style.left=`${rect2.right}px`;
-}
-}else{
-connector1.style.width=`2px`;
-connector1.style.height=`${rect2.top-rect1.bottom}px`;
-connector1.style.top=`${rect1.bottom}px`;
-connector1.style.left=`${rect1.left+rect1.width/2}px`;
-if(rect3){
-connector2.style.width=`2px`;
-connector2.style.height=`${rect3.top-rect2.bottom}px`;
-connector2.style.top=`${rect2.bottom}px`;
-connector2.style.left=`${rect2.left+rect2.width/2}px`;
-}
-}
-};
-updateConnectors();
-window.addEventListener('resize',updateConnectors);
-}
-function createSocialConnectors(){
-const socialLinks=document.querySelector('.social-links');
-if(!socialLinks)return;
-const links=socialLinks.querySelectorAll('.social-link');
-if(links.length<2)return;
-for(let i=0;i<links.length-1;i++){
-const connector=document.createElement('div');
-connector.classList.add('social-connector');
-socialLinks.appendChild(connector);
-}
-const updateConnectors=()=>{
-const connectors=document.querySelectorAll('.social-connector');
-for(let i=0;i<connectors.length;i++){
-const rect1=links[i].getBoundingClientRect();
-const rect2=links[i+1].getBoundingClientRect();
-connectors[i].style.width=`${rect2.left-rect1.right}px`;
-connectors[i].style.top=`${rect1.top+rect1.height/2}px`;
-connectors[i].style.left=`${rect1.right}px`;
-}
-};
-updateConnectors();
-window.addEventListener('resize',updateConnectors);
-}
-class NotificationSystem{
-constructor(){
-this.toast=document.createElement('div');
-this.toast.className='notification-toast';
-this.toast.innerHTML=`
-<div class="notification-icon"><i class="fas fa-info-circle"></i></div>
-<div class="notification-content">
-<div class="notification-title" id="notificationToastTitle"></div>
-<div class="notification-message" id="notificationToastMessage"></div>
-</div>
-<button class="notification-close" id="notificationClose" aria-label="Cerrar notificación">&times;</button>
-`;
-document.body.appendChild(this.toast);
-this.toastTitle=document.getElementById('notificationToastTitle');
-this.toastMessage=document.getElementById('notificationToastMessage');
-this.closeButton=document.getElementById('notificationClose');
-this.setupEventListeners();
-this.checkNotificationPermission();
-this.showWelcomeNotification();
-}
-setupEventListeners(){
-if(!this.closeButton)return;
-this.closeButton.addEventListener('click',()=>{
-this.hideToast();
-});
-document.addEventListener('click',(e)=>{
-if(this.toast.classList.contains('show')&&!this.toast.contains(e.target)){
-this.hideToast();
-}
-});
-}
-showToast(title,message,duration=5000){
-if(!this.toast||!this.toastTitle||!this.toastMessage)return;
-this.toastTitle.textContent=title;
-this.toastMessage.textContent=message;
-this.toast.classList.add('show');
-setTimeout(()=>{
-this.hideToast();
-},duration);
-}
-hideToast(){
-if(this.toast){
-this.toast.classList.remove('show');
-}
-}
-showWelcomeNotification(){
-setTimeout(()=>{
-this.showToast(
-'Bienvenido a CBO',
-'Explora nuestros servicios tecnológicos para Cuba'
-);
-},2000);
-}
-checkNotificationPermission(){
-if('Notification'in window&&Notification.permission!=='denied'){
-Notification.requestPermission().then(permission=>{
-if(permission==='granted'){
-this.showToast(
-'Notificaciones activadas',
-'Recibirás actualizaciones importantes'
-);
-}
-});
-}
-}
-showBrowserNotification(title,message){
-if('Notification'in window&&Notification.permission==='granted'){
-new Notification(title,{
-body:message,
-icon:"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMDBmN2ZmIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTZiIDh6bTAgNDQ4Yy0xMTAuNSAwLTIwMC04OS41LTIwMC0yMDBTMTQ1LjUgNTYgMjU2IDU2czIwMCA4OS41IDIwMCAyMDAtODkuNSAyMDAtMjAwIDIwMHptNjIuMi0xNDYuMmMtMTguNyAxOC43LTQ5LjEgMTguNy02Ny45IDBsLTY3LjktNjcuOUwxNTMuMyAyNTZsLTY3LjktNjcuOWMtMTguNy0xOC43LTE4Ny00OS4xIDAtNjcuOSAxOC43LTE4LjcgNDkuMS0xOC43IDY3LjkgMGw2Ny45IDY3LjkgNjcuOS02Ny45YzE4LjctMTguNyA0OS4xLTE4LjcgNjcuOSAwIDE4LjcgMTguNyAxOC43IDQ5LjEgMCA2Ny45TDMyOS4zIDI1Nmw2Ny45IDY3LjljMTguNyAxOC43IDE4NyA0OS4xIDAgNjcuOXoiLz48L3N2Zz4="
-});
-}
-}
-}
-class PWAInstaller{
-constructor(){
-this.installContainer=document.createElement('div');
-this.installContainer.className='install-prompt';
-this.installContainer.innerHTML=`
-<p>Instala nuestra aplicación para acceder rápidamente a nuestros servicios, incluso sin conexión.</p>
-<button id="installButton" class="install-button">Instalar CBO</button>
-`;
-document.querySelector('.container').appendChild(this.installContainer);
-this.installButton=document.getElementById('installButton');
-this.deferredPrompt=null;
-this.isAppInstalled=false;
-if(!this.installContainer||!this.installButton)return;
-this.setupEventListeners();
-this.checkIfAppIsInstalled();
-}
-setupEventListeners(){
-window.addEventListener('beforeinstallprompt',(e)=>{
-e.preventDefault();
-this.deferredPrompt=e;
-this.showInstallPrompt();
-});
-this.installButton.addEventListener('click',async()=>{
-await this.installApp();
-});
-window.addEventListener('appinstalled',()=>{
-this.isAppInstalled=true;
-this.hideInstallPrompt();
-new NotificationSystem().showToast(
-'Instalación completada',
-'CBO ahora está disponible en tu dispositivo'
-);
-setTimeout(()=>{
-if(window.matchMedia('(display-mode: standalone)').matches){
-window.location.reload();
-}
-},1000);
-});
-window.matchMedia('(display-mode: standalone)').addEventListener('change',(e)=>{
-this.isAppInstalled=e.matches;
-if(e.matches){
-this.hideInstallPrompt();
-}
-});
-}
-checkIfAppIsInstalled(){
-if(window.matchMedia('(display-mode: standalone)').matches){
-this.isAppInstalled=true;
-this.hideInstallPrompt();
-return;
-}
-if(window.navigator.standalone){
-this.isAppInstalled=true;
-this.hideInstallPrompt();
-return;
-}
-if(window.navigator.userAgent.includes('Safari')&&!window.navigator.userAgent.includes('Chrome')){
-this.isAppInstalled=localStorage.getItem('pwaInstalled')==='true';
-if(this.isAppInstalled){
-this.hideInstallPrompt();
-}
-}
-}
-showInstallPrompt(){
-if(this.isAppInstalled||!this.deferredPrompt){
-this.hideInstallPrompt();
-return;
-}
-this.installContainer.classList.add('visible');
-setTimeout(()=>{
-if(this.installContainer.classList.contains('visible')){
-this.hideInstallPrompt();
-}
-},30000);
-}
-hideInstallPrompt(){
-this.installContainer.classList.remove('visible');
-}
-async installApp(){
-if(!this.deferredPrompt){
-if(/iPad|iPhone|iPod/.test(navigator.userAgent)){
-new NotificationSystem().showToast(
-'Instalación en iOS',
-'Usa el menú compartir y selecciona "Añadir a pantalla de inicio"'
-);
-localStorage.setItem('pwaInstalled','true');
-}
-return;
-}
-this.deferredPrompt.prompt();
-const{outcome}=await this.deferredPrompt.userChoice;
-if(outcome==='accepted'){
-new NotificationSystem().showToast(
-'Instalación en progreso',
-'Por favor completa el proceso de instalación'
-);
-}
-this.deferredPrompt=null;
-this.hideInstallPrompt();
-}
-}
-function registerServiceWorker(){
-if('serviceWorker'in navigator){
-window.addEventListener('load',()=>{
-navigator.serviceWorker.register('/sw.js').then(registration=>{
-console.log('ServiceWorker registration successful with scope: ',registration.scope);
-}).catch(err=>{
-console.log('ServiceWorker registration failed: ',err);
-});
-});
-}
-}
-function sharePage(){
-if(navigator.share){
-navigator.share({
-title:'CBO - Soluciones para emprendedores cubanos',
-text:'Descubre los servicios tecnológicos de CBO para emprendedores en Cuba',
-url:'https://cubabazaronline.github.io/CBO/'
-}).then(()=>{
-new NotificationSystem().showToast('¡Gracias por compartir!','Tu apoyo ayuda a otros emprendedores');
-}).catch(err=>{
-console.error('Error al compartir:',err);
-new NotificationSystem().showToast('Error al compartir','Inténtalo de nuevo más tarde');
-});
-}else{
-const url='https://cubabazaronline.github.io/CBO/';
-const text='Descubre los servicios tecnológicos de CBO para emprendedores en Cuba: '+url;
-if(navigator.clipboard){
-navigator.clipboard.writeText(text).then(()=>{
-new NotificationSystem().showToast('Enlace copiado','Puedes pegarlo donde quieras compartirlo');
-}).catch(err=>{
-console.error('Error al copiar:',err);
-window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,'_blank');
-});
-}else{
-window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,'_blank');
-}
-}
-}
-document.addEventListener('DOMContentLoaded',()=>{
-setTimeout(()=>{
-createParticles();
-typeWriterEffect();
-createButtonConnectors();
-createSocialConnectors();
-document.querySelector('.container').style.opacity='1';
-},100);
-new NotificationSystem();
-new PWAInstaller();
-if('serviceWorker'in navigator&&'BeforeInstallPromptEvent'in window){
-registerServiceWorker();
-}
-if('connection'in navigator&&(navigator.connection.saveData||navigator.connection.effectiveType.includes('2g'))){
-document.querySelectorAll('.particle, .description-particle').forEach(particle=>{
-particle.style.display='none';
-});
-}
-document.querySelector('.container').style.opacity='0';
-document.querySelector('.container').style.transition='opacity 0.5s ease';
-document.getElementById('share-button').addEventListener('click',sharePage);
-});
-let resizeTimeout;
-window.addEventListener('resize',()=>{
-clearTimeout(resizeTimeout);
-resizeTimeout=setTimeout(()=>{
-const particlesContainer=document.getElementById('particles');
-if(particlesContainer){
-particlesContainer.innerHTML='';
-createParticles();
-}
-},200);
-});
-window.addEventListener('load',()=>{
-if(window.matchMedia('(display-mode: standalone)').matches){
-document.documentElement.setAttribute('data-pwa','true');
-}
-});
-</script>
+
 <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-<defs>
-<linearGradient id="holographic" gradientTransform="rotate(45)">
-<stop offset="0%" stop-color="#00f7ff">
-<animate attributeName="stop-color" values="#00f7ff; #ff00f7; #00ff47; #00f7ff" dur="6s" repeatCount="indefinite"/>
-</stop>
-<stop offset="100%" stop-color="#ff00f7">
-<animate attributeName="stop-color" values="#ff00f7; #00ff47; #00f7ff; #ff00f7" dur="6s" repeatCount="indefinite"/>
-</stop>
-</linearGradient>
-<filter id="hologram-effect" color-interpolation-filters="sRGB">
-<feTurbulence type="fractalNoise" baseFrequency="0.015 0.03" numOctaves="2" result="turbulence">
-<animate attributeName="baseFrequency" values="0.015 0.03;0.025 0.04;0.015 0.03" dur="7s" repeatCount="indefinite"/>
-</feTurbulence>
-<feDisplacementMap in2="turbulence" in="SourceGraphic" scale="3" xChannelSelector="R" yChannelSelector="G"/>
-<feGaussianBlur stdDeviation="0.6"/>
-</filter>
-<g id="particle" opacity="0.7">
-<circle r="1.2" fill="url(#holographic)">
-<animate attributeName="r" values="1.2;1.5;1.2" dur="4s" repeatCount="indefinite"/>
-</circle>
-</g>
-<circle id="halo" r="40" fill="none" stroke="url(#holographic)" stroke-width="0.8" stroke-dasharray="3,1" opacity="0.6"/>
-</defs>
-<g transform="translate(75 75)">
-<text font-family="'Orbitron', sans-serif" font-size="28" font-weight="500" 
-text-anchor="middle" dominant-baseline="middle" 
-fill="url(#holographic)" filter="url(#hologram-effect)">
-CBO
-<animate attributeName="opacity" values="0.9;0.7;0.9" dur="4s" repeatCount="indefinite"/>
-</text>
-<use href="#halo">
-<animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="5s" repeatCount="indefinite"/>
-</use>
-<use href="#halo" transform="scale(1.3)" opacity="0.4">
-<animateTransform attributeName="transform" type="scale" values="1.3;1.4;1.3" dur="6s" repeatCount="indefinite"/>
-</use>
-<use href="#particle" transform="rotate(0) translate(35 0)">
-<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
-</use>
-<use href="#particle" transform="rotate(120) translate(35 0)">
-<animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="15s" repeatCount="indefinite"/>
-</use>
-<use href="#particle" transform="rotate(240) translate(35 0)">
-<animateTransform attributeName="transform" type="rotate" from="240" to="600" dur="18s" repeatCount="indefinite"/>
-</use>
-</g>
-<path d="M10,10 L140,140" stroke="url(#holographic)" stroke-width="0.4" stroke-dasharray="4,2" opacity="0.3">
-<animate attributeName="stroke-dashoffset" values="0;10;0" dur="8s" repeatCount="indefinite"/>
-</path>
-<path d="M140,10 L10,140" stroke="url(#holographic)" stroke-width="0.4" stroke-dasharray="4,2" opacity="0.3">
-<animate attributeName="stroke-dashoffset" values="5;15;5" dur="7s" repeatCount="indefinite"/>
-</path>
+  <defs>
+    <linearGradient id="holographic" gradientTransform="rotate(45)">
+      <stop offset="0%" stop-color="#00f7ff">
+        <animate attributeName="stop-color" values="#00f7ff; #ff00f7; #00ff47; #00f7ff" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#ff00f7">
+        <animate attributeName="stop-color" values="#ff00f7; #00ff47; #00f7ff; #ff00f7" dur="6s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <filter id="hologram-effect" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015 0.03" numOctaves="2" result="turbulence">
+        <animate attributeName="baseFrequency" values="0.015 0.03;0.025 0.04;0.015 0.03" dur="7s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="0.6"/>
+    </filter>
+    <g id="particle" opacity="0.7">
+      <circle r="1.2" fill="url(#holographic)">
+        <animate attributeName="r" values="1.2;1.5;1.2" dur="4s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    <circle id="halo" r="40" fill="none" stroke="url(#holographic)" stroke-width="0.8" stroke-dasharray="3,1" opacity="0.6"/>
+  </defs>
+  <g transform="translate(75 75)">
+    <text font-family="'Orbitron', sans-serif" font-size="28" font-weight="500" 
+      text-anchor="middle" dominant-baseline="middle" 
+      fill="url(#holographic)" filter="url(#hologram-effect)">
+      CBO
+      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="4s" repeatCount="indefinite"/>
+    </text>
+    <use href="#halo">
+      <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="5s" repeatCount="indefinite"/>
+    </use>
+    <use href="#halo" transform="scale(1.3)" opacity="0.4">
+      <animateTransform attributeName="transform" type="scale" values="1.3;1.4;1.3" dur="6s" repeatCount="indefinite"/>
+    </use>
+    <use href="#particle" transform="rotate(0) translate(35 0)">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
+    </use>
+    <use href="#particle" transform="rotate(120) translate(35 0)">
+      <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="15s" repeatCount="indefinite"/>
+    </use>
+    <use href="#particle" transform="rotate(240) translate(35 0)">
+      <animateTransform attributeName="transform" type="rotate" from="240" to="600" dur="18s" repeatCount="indefinite"/>
+    </use>
+  </g>
+  <path d="M10,10 L140,140" stroke="url(#holographic)" stroke-width="0.4" stroke-dasharray="4,2" opacity="0.3">
+    <animate attributeName="stroke-dashoffset" values="0;10;0" dur="8s" repeatCount="indefinite"/>
+  </path>
+  <path d="M140,10 L10,140" stroke="url(#holographic)" stroke-width="0.4" stroke-dasharray="4,2" opacity="0.3">
+    <animate attributeName="stroke-dashoffset" values="5;15;5" dur="7s" repeatCount="indefinite"/>
+  </path>
 </svg>
+
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
 </body>
 </html>
