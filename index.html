@@ -1,205 +1,442 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <title>CBO - Soluciones para emprendedores cubanos</title>
-    <meta name="description" content="CBO es un emprendimiento cubano innovador dedicado al desarrollo tecnológico, hosting especializado (.cu) y servicios digitales para empresas y particulares en Cuba.">
-    <meta name="keywords" content="hosting Cuba, desarrollo web Cuba, empleo tecnología Cuba, comercio electrónico Cuba, dominios .cu">
-    
-    <!-- Favicon y assets -->
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
-    
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Segoe+UI:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Segoe+UI:wght@300;400;500;600&display=swap"></noscript>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Metadatos sociales -->
-    <meta property="og:url" content="https://cubabazaronline.github.io/CBO/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="CBO - Empresa Tecnológica Cubana | Hosting, Desarrollo Web y Empleo">
-    <meta property="og:description" content="Soluciones tecnológicas y hosting profesional para Cuba. Desarrollo web, alojamiento .cu y oportunidades de empleo en el sector tecnológico.">
-    <meta property="og:image" content="https://cubabazaronline.github.io/CBO/images/og-image.jpg">
-    <meta property="og:site_name" content="CBO - Empresa Tecnológica Cubana">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@CubaBazarOnline">
-    <meta name="twitter:creator" content="@CubaBazarOnline">
-    <meta name="twitter:title" content="CBO - Empresa Tecnológica Cubana | Hosting, Desarrollo Web y Empleo">
-    <meta name="twitter:description" content="Soluciones tecnológicas y hosting profesional para Cuba. Desarrollo web, alojamiento .cu y oportunidades de empleo en tecnología.">
-    <meta name="twitter:image" content="https://cubabazaronline.github.io/CBO/images/twitter-card.jpg">
-    
-    <!-- PWA -->
-    <meta name="theme-color" content="#001428">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="CBO">
-    <link rel="manifest" href="/manifest.json">
-    
-    <!-- Verificación -->
-    <meta name="google-site-verification" content="KwYd-p4Sl1VlkdQmdyKKgwMpT7BsxFKygnGzibzNijQ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon estándar en múltiples formatos y tamaños -->
+    <link rel="icon" type="image/png" sizes="50x50" href="logo.png">
+    <!-- Favicon en formato ICO (para máxima compatibilidad) -->
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <!-- Apple Touch Icon en múltiples tamaños -->
+    <link rel="apple-touch-icon" sizes="100x100" href="logo.png">
+    <!-- Safari pinned tab icon -->
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <!-- Microsoft application metadata -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="logo.png">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <!-- Manifest para PWA -->
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Color de tema para navegadores móviles -->
+    <meta name="theme-color" content="#ffffff">
+    <!-- Precomposed para evitar efectos visuales en iOS -->
+    <link rel="apple-touch-icon-precomposed" href="logo.png">
+    <title>Mantenimiento del Sistema CBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --hologram-blue: rgba(0, 255, 255, 0.7);
+            --hologram-pink: rgba(255, 0, 255, 0.7);
+            --glow-color: rgba(100, 255, 255, 0.8);
+            --critical: rgba(255, 50, 50, 0.8);
+            --warning: rgba(255, 200, 0, 0.8);
+            --ok: rgba(0, 255, 100, 0.8);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0a0a20;
+            color: #e0e0e0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .hologram-container {
+            background: rgba(10, 20, 40, 0.85);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            border: 1px solid var(--hologram-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hologram-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--hologram-blue), var(--hologram-pink), transparent);
+            animation: borderGlow 3s linear infinite;
+        }
+        
+        .hologram-container::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--hologram-pink), var(--hologram-blue), transparent);
+            animation: borderGlow 3s linear infinite reverse;
+        }
+        
+        @keyframes borderGlow {
+            0% { background-position: -500px 0; }
+            100% { background-position: 500px 0; }
+        }
+        
+        .maintenance-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--hologram-blue);
+            text-shadow: 0 0 10px var(--glow-color);
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 0 0 8px var(--glow-color);
+            letter-spacing: 1px;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+        
+        .countdown {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--hologram-blue);
+            margin: 1.5rem 0;
+            text-shadow: 0 0 8px var(--glow-color);
+            letter-spacing: 2px;
+        }
+        
+        .progress-container {
+            height: 6px;
+            background-color: rgba(0, 50, 80, 0.3);
+            border-radius: 3px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 65%;
+            background: linear-gradient(90deg, var(--hologram-blue), var(--hologram-pink));
+            border-radius: 3px;
+            position: relative;
+            animation: progressColorShift 4s infinite alternate;
+        }
+        
+        @keyframes progressColorShift {
+            0% { background: linear-gradient(90deg, var(--hologram-blue), var(--hologram-pink)); }
+            100% { background: linear-gradient(90deg, var(--hologram-pink), var(--hologram-blue)); }
+        }
+        
+        .status-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .status-item {
+            margin: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            background: rgba(0, 20, 40, 0.5);
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .status-title {
+            font-size: 0.7rem;
+            color: var(--hologram-blue);
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .status-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .critical { color: var(--critical); }
+        .warning { color: var(--warning); }
+        .ok { color: var(--ok); }
+        
+        .task-list {
+            text-align: left;
+            margin: 1rem 0;
+            max-height: 150px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        .task-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 150, 150, 0.2);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .task-item::before {
+            content: "•";
+            color: var(--hologram-blue);
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 480px) {
+            .hologram-container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .countdown {
+                font-size: 1.1rem;
+            }
+            
+            .status-item {
+                min-width: 100px;
+            }
+        }
+        
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 50, 80, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--hologram-blue);
+            border-radius: 3px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Efectos de esquina -->
-    <div class="corner-effect top-left" aria-hidden="true"></div>
-    <div class="corner-effect top-right" aria-hidden="true"></div>
-    <div class="corner-effect bottom-left" aria-hidden="true"></div>
-    <div class="corner-effect bottom-right" aria-hidden="true"></div>
-    
-    <div class="corner-glow top-left" aria-hidden="true"></div>
-    <div class="corner-glow top-right" aria-hidden="true"></div>
-    <div class="corner-glow bottom-left" aria-hidden="true"></div>
-    <div class="corner-glow bottom-right" aria-hidden="true"></div>
-    
-    <!-- Contenido principal -->
-    <main class="container">
-        <header>
-            <div class="title-glow" aria-hidden="true"></div>
-            <h1 id="main-title">BIENVENIDO</h1>
-            <p class="page-description">
-                CBO es un emprendimiento cubano innovador dedicado al desarrollo tecnológico y servicios digitales. 
-                Ofrecemos soluciones de hosting especializado, desarrollo web a medida y oportunidades de empleo 
-                en el sector tecnológico para profesionales cubanos.
-            </p>
-        </header>
+    <div class="hologram-container">
+        <div class="maintenance-icon">⚙️</div>
+        <h1>ACTUALIZACIÓN DE LA PAGINA</h1>
+        <p>Estamos implementando mejoras críticas para optimizar el rendimiento y la seguridad.</p>
         
-        <div class="button-container">
-            <a href="#" class="holographic-button" aria-label="Ir a Tcubita, plataforma de comercio electrónico">
-                <span class="button-badge badge-free">Gratuito</span>
-                Tcubita
-                <span class="button-description">Plataforma de comercio electrónico para negocios cubanos</span>
-            </a>
-            
-            <a href=https://cubabazaronline.github.io/CHP/" class="holographic-button" aria-label="Ir a CubaHostPro, servicio de hosting">
-                <span class="button-badge badge-popular">Popular</span>
-                CubaHostPro
-                <span class="button-description">Servicio premium de hosting con dominios .cu y soporte 24/7</span>
-            </a>
-            
-            <a href="#" class="holographic-button" aria-label="Ir a Empleo, oportunidades laborales">
-                <span class="button-badge badge-new">Nuevo</span>
-                Empleo
-                <span class="button-description">Oportunidades laborales en el sector tecnológico</span>
-            </a>
+        <div class="countdown" id="countdown">
+            TIEMPO ESTIMADO: 48:00:00
         </div>
         
-        <div class="social-section">
-            <h2 class="social-title">Conéctate con nosotros</h2>
-            <div class="social-links">
-                <a href="https://whatsapp.com/channel/0029Vb61NTa5vKA3hCMIQr3j" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                </a>
-                <a href="https://x.com/CubaBazarOnline?t=kpGyUCV0vcv4was7EdFzwQ&s=09" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="https://youtube.com/@cbo_oficial?feature=shared" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <i class="fab fa-youtube" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.reddit.com/r/CubaBazarOnline/s/YRAtm4kyKn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Reddit">
-                    <i class="fab fa-reddit-alien" aria-hidden="true"></i>
-                </a>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="status-container">
+            <div class="status-item">
+                <div class="status-title">Estado</div>
+                <div class="status-value" id="statusValue">En progreso</div>
+            </div>
+            <div class="status-item">
+                <div class="status-title">Progreso</div>
+                <div class="status-value" id="progressValue">35%</div>
+            </div>
+            <div class="status-item">
+                <div class="status-title">Tareas</div>
+                <div class="status-value" id="tasksValue">7/20</div>
             </div>
         </div>
         
-        <button id="share-button" class="holographic-button" style="margin-top: 2rem;">
-            Compartir esta página
-            <span class="button-description">Difunde nuestros servicios con otros emprendedores</span>
-        </button>
-    </main>
-    
-    <!-- Pie de página con información del autor -->
-    <footer class="site-footer">
-        <div class="author-container">
-            <div class="author-avatar">
-                <img src="1749299505562.webp" alt="Fundador de CBO">
-                <div class="avatar-overlay"></div>
-            </div>
-            
-            <h3 class="author-name">
-                <span>MARCOS VOLTA</span>
-            </h3>
-            <p class="author-title">
-                Fundador de CBO<br>
-                Especialista
-            </p>
+        <h3 style="margin: 1rem 0 0.5rem; font-size: 0.9rem; color: var(--hologram-blue); text-align: left;">TAREAS EN CURSO:</h3>
+        <div class="task-list" id="taskList">
+            <!-- Las tareas se generarán dinámicamente -->
         </div>
-        
-        <p class="copyright">
-            © 2023 CBO - Todos los derechos reservados
-        </p>
-    </footer>
-    
-    <!-- SVG para efectos holográficos -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
-        <defs>
-            <linearGradient id="holographic" gradientTransform="rotate(45)">
-                <stop offset="0%" stop-color="#00f7ff">
-                    <animate attributeName="stop-color" values="#00f7ff; #ff00f7; #00ff47; #00f7ff" dur="6s" repeatCount="indefinite"/>
-                </stop>
-                <stop offset="100%" stop-color="#ff00f7">
-                    <animate attributeName="stop-color" values="#ff00f7; #00ff47; #00f7ff; #ff00f7" dur="6s" repeatCount="indefinite"/>
-                </stop>
-            </linearGradient>
-            <filter id="hologram-effect" color-interpolation-filters="sRGB">
-                <feTurbulence type="fractalNoise" baseFrequency="0.015 0.03" numOctaves="2" result="turbulence">
-                    <animate attributeName="baseFrequency" values="0.015 0.03;0.025 0.04;0.015 0.03" dur="7s" repeatCount="indefinite"/>
-                </feTurbulence>
-                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="3" xChannelSelector="R" yChannelSelector="G"/>
-                <feGaussianBlur stdDeviation="0.6"/>
-            </filter>
-            <g id="particle" opacity="0.7">
-                <circle r="1.2" fill="url(#holographic)">
-                    <animate attributeName="r" values="1.2;1.5;1.2" dur="4s" repeatCount="indefinite"/>
-                </circle>
-            </g>
-            <circle id="halo" r="40" fill="none" stroke="url(#holographic)" stroke-width="0.8" stroke-dasharray="3,1" opacity="0.6"/>
-        </defs>
-        <g transform="translate(75 75)">
-            <text font-family="'Orbitron', sans-serif" font-size="28" font-weight="500" 
-                  text-anchor="middle" dominant-baseline="middle" 
-                  fill="url(#holographic)" filter="url(#hologram-effect)">
-                CBO
-                <animate attributeName="opacity" values="0.9;0.7;0.9" dur="4s" repeatCount="indefinite"/>
-            </text>
-            <use href="#halo">
-                <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="5s" repeatCount="indefinite"/>
-            </use>
-            <use href="#halo" transform="scale(1.3)" opacity="0.4">
-                <animateTransform attributeName="transform" type="scale" values="1.3;1.4;1.3" dur="6s" repeatCount="indefinite"/>
-            </use>
-            <use href="#particle" transform="rotate(0) translate(35 0)">
-                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
-            </use>
-            <use href="#particle" transform="rotate(120) translate(35 0)">
-                <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="15s" repeatCount="indefinite"/>
-            </use>
-            <use href="#particle" transform="rotate(240) translate(35 0)">
-                <animateTransform attributeName="transform" type="rotate" from="240" to="600" dur="18s" repeatCount="indefinite"/>
-            </use>
-        </g>
-        <path d="M10,10 L140,140" stroke="url(#holographic)" stroke-width="0.4" stroke-dasharray="4,2" opacity="0.3">
-            <animate attributeName="stroke-dashoffset" values="0;10;0" dur="8s" repeatCount="indefinite"/>
-        </path>
-        <path d="M140,10 L10,140" stroke="url(#holographic)" stroke-width="0.4" stroke-dasharray="4,2" opacity="0.3">
-            <animate attributeName="stroke-dashoffset" values="5;15;5" dur="7s" repeatCount="indefinite"/>
-        </path>
-    </svg>
-    
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    </div>
+
     <script>
-        // Todos los scripts JavaScript mencionados anteriormente
-        // (createParticles, typeWriterEffect, createButtonConnectors, etc.)
-        // se mantienen exactamente igual que en tu versión original
+        // Configuración inicial
+        const MAINTENANCE_DURATION = 48 * 60 * 60; // 48 horas en segundos
+        const TASKS = [
+            "Actualización del núcleo del sistema",
+            "Pruebas del sistema",
+            "Pruebas de seguridad",
+            "Preparación para relanzamiento con nuevos elementos"
+        ];
+        
+        // Estado del sistema
+        let state = {
+            startTime: Date.now(),
+            completedTasks: 0,
+            currentProgress: 0,
+            status: "active",
+            tasks: TASKS.map(task => ({ name: task, completed: false }))
+        };
+        
+        // Elementos del DOM
+        const countdownElement = document.getElementById('countdown');
+        const progressBarElement = document.getElementById('progressBar');
+        const progressValueElement = document.getElementById('progressValue');
+        const tasksValueElement = document.getElementById('tasksValue');
+        const statusValueElement = document.getElementById('statusValue');
+        const taskListElement = document.getElementById('taskList');
+        
+        // Inicializar la interfaz
+        function init() {
+            renderTasks();
+            updateStatus();
+            startCountdown();
+            simulateProgress();
+        }
+        
+        // Renderizar lista de tareas
+        function renderTasks() {
+            taskListElement.innerHTML = state.tasks.map(task => 
+                `<div class="task-item ${task.completed ? 'completed' : ''}">${task.name}</div>`
+            ).join('');
+        }
+        
+        // Actualizar el estado del sistema
+        function updateStatus() {
+            const progress = Math.floor(state.currentProgress);
+            const completedTasks = state.tasks.filter(t => t.completed).length;
+            const totalTasks = state.tasks.length;
+            
+            // Actualizar valores
+            progressValueElement.textContent = `${progress}%`;
+            tasksValueElement.textContent = `${completedTasks}/${totalTasks}`;
+            
+            // Actualizar barra de progreso
+            progressBarElement.style.width = `${progress}%`;
+            
+            // Determinar estado general
+            if (progress >= 90) {
+                statusValueElement.textContent = "Finalizando";
+                statusValueElement.className = "status-value ok";
+            } else if (progress >= 50) {
+                statusValueElement.textContent = "En progreso";
+                statusValueElement.className = "status-value warning";
+            } else {
+                statusValueElement.textContent = "Inicializando";
+                statusValueElement.className = "status-value critical";
+            }
+        }
+        
+        // Simular progreso del mantenimiento
+        function simulateProgress() {
+            // Progreso basado en tiempo (50% del progreso)
+            const timePassed = (Date.now() - state.startTime) / 1000;
+            const timeBasedProgress = Math.min(50, (timePassed / MAINTENANCE_DURATION) * 50);
+            
+            // Progreso basado en tareas completadas (50% del progreso)
+            const completedTasks = state.tasks.filter(t => t.completed).length;
+            const taskBasedProgress = (completedTasks / state.tasks.length) * 50;
+            
+            state.currentProgress = timeBasedProgress + taskBasedProgress;
+            
+            // Completar tareas aleatoriamente
+            if (Math.random() < 0.02 && completedTasks < state.tasks.length) {
+                const incompleteTasks = state.tasks.filter(t => !t.completed);
+                if (incompleteTasks.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * incompleteTasks.length);
+                    incompleteTasks[randomIndex].completed = true;
+                    renderTasks();
+                }
+            }
+            
+            updateStatus();
+            
+            if (state.currentProgress < 100) {
+                setTimeout(simulateProgress, 1000);
+            } else {
+                statusValueElement.textContent = "Completado";
+                statusValueElement.className = "status-value ok";
+            }
+        }
+        
+        // Contador regresivo inteligente
+        function startCountdown() {
+            const endTime = state.startTime + MAINTENANCE_DURATION * 1000;
+            
+            function update() {
+                const now = Date.now();
+                const remaining = Math.max(0, endTime - now);
+                
+                if (remaining <= 0) {
+                    countdownElement.textContent = "MANTENIMIENTO COMPLETADO";
+                    countdownElement.style.color = "var(--ok)";
+                    return;
+                }
+                
+                // Ajustar tiempo estimado basado en progreso
+                const adjustedRemaining = remaining * (1 - state.currentProgress / 100);
+                
+                const hours = Math.floor(adjustedRemaining / (1000 * 60 * 60));
+                const minutes = Math.floor((adjustedRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((adjustedRemaining % (1000 * 60)) / 1000);
+                
+                countdownElement.textContent = `TIEMPO ESTIMADO: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                // Cambiar color según urgencia
+                if (hours < 2) {
+                    countdownElement.style.color = "var(--critical)";
+                } else if (hours < 12) {
+                    countdownElement.style.color = "var(--warning)";
+                } else {
+                    countdownElement.style.color = "var(--hologram-blue)";
+                }
+                
+                requestAnimationFrame(update);
+            }
+            
+            update();
+        }
+        
+        // Iniciar el sistema
+        window.onload = init;
     </script>
 </body>
 </html>
