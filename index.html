@@ -2,35 +2,44 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="description" content="Plataforma CBO para emprendedores cubanos - Conexiones, recursos y oportunidades de negocio. Conectamos el talento cubano con oportunidades globales desde 2024.">
     <meta name="keywords" content="Cuba, emprendedores, negocios, oportunidades, red profesional, emprendimiento cubano, negocios en Cuba, startups Cuba, economía cubana">
     <meta name="author" content="Marcos Volta, CBO Team">
-    
-    <!-- Optimización de meta tags -->
-    <meta property="og:title" content="CBO - Plataforma para Cubanos Emprendedores">
-    <meta property="og:description" content="Conectando emprendedores cubanos con oportunidades globales">
-    <meta property="og:image" content="https://cubabazaronline.github.io/CBO/images/logo-cbo.png">
-    <meta property="og:url" content="https://cubabazaronline.github.io/CBO/">
-    <meta property="og:type" content="website">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <!-- Preload crítico -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" crossorigin>
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="google-site-verification" content="KwYd-p4Sl1VlkdQmdyKKgwMpT7BsxFKygnGzibzNijQ">
+    <link rel="canonical" href="https://cubabazaronline.github.io/CBO/">
+    <meta name="theme-color" content="#1a365d">
+    <meta name="generator" content="CBO Platform v2.0">
+    <meta name="geo.region" content="CU">
+    <meta name="geo.placename" content="La Habana">
+    <meta name="geo.position" content="23.1136;-82.3666">
+    <meta name="ICBM" content="23.1136, -82.3666">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preload" href="styles.css" as="style">
-    
-    <!-- Favicon mejorado -->
-    <link rel="icon" href="logo.png" sizes="any">
-    <link rel="icon" href="logo.png" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="logo.png">
-    <link rel="manifest" href="site.webmanifest">
-    
-    <!-- Estilos -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" crossorigin>
+    <link rel="icon" type="image/png" href="logo.png">
+        <!-- Color de tema para navegadores móviles -->
+        <meta name="theme-color" content="#ffffff">
     
     <title>CBO - Plataforma para Cubanos Emprendedores | Conexiones Globales</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
@@ -39,7 +48,7 @@
       "@type": "Organization",
       "name": "CBO - Plataforma para Cubanos Emprendedores",
       "url": "https://cubabazaronline.github.io/CBO/",
-      "logo": "https://cubabazaronline.github.io/CBO/logo.png",
+      "logo": "https://cubabazaronline.github.io/CBO/images/logo-cbo.png",
       "description": "Plataforma para conectar emprendedores cubanos con oportunidades globales",
       "address": {
         "@type": "PostalAddress",
@@ -60,48 +69,48 @@
 
 <body>
     <!-- Partículas de fondo -->
-    <canvas id="particlesCanvas" aria-hidden="true"></canvas>
-    
-    <div class="container">
+    <canvas id="particlesCanvas"></canvas>
+    <div class="container holographic-effect">
+        </div>
+        
         <!-- Barra de navegación con botones para compartir -->
         <nav class="nav-bar" aria-label="Navegación principal">
-            <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema claro/oscuro">
-                <span class="theme-icon" aria-hidden="true"></span>
+            <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+                <i class="fas fa-moon"></i>
             </button>
             <div class="share-buttons">
                 <button class="share-btn" data-social="facebook" aria-label="Compartir en Facebook">
-                    <span class="fab fa-facebook-f" aria-hidden="true"></span>
+                    <i class="fab fa-facebook-f"></i>
                 </button>
                 <button class="share-btn" data-social="twitter" aria-label="Compartir en Twitter">
-                    <span class="fab fa-twitter" aria-hidden="true"></span>
+                    <i class="fab fa-twitter"></i>
                 </button>
                 <button class="share-btn" id="copyLinkBtn" aria-label="Copiar enlace">
-                    <span class="fas fa-link" aria-hidden="true"></span>
+                    <i class="fas fa-link"></i>
                 </button>
             </div>
         </nav>
         
         <header>
-            <div class="logo" tabindex="0" role="img" aria-label="Logo CBO"></div>
-            <h1 class="glow">Plataforma <span class="highlight">CBO</span></h1>
-            <p class="subtitle">Conectando emprendedores cubanos con oportunidades globales</p>
+            <h1 class="glow">Plataforma <span class="glow">CBO</span></h1>
+            <p>Conectando emprendedores cubanos con oportunidades globales</p>
         </header>
         
         <main class="tabs-container">
             <div class="tab-nav" role="tablist" aria-label="Secciones de la plataforma">
-                <button class="active" data-tab="0" role="tab" aria-selected="true" aria-controls="tabpanel-1" id="tab-1">Tcubita</button>
-                <button data-tab="1" role="tab" aria-selected="false" aria-controls="tabpanel-2" id="tab-2" tabindex="-1">CHP</button>
-                <button data-tab="2" role="tab" aria-selected="false" aria-controls="tabpanel-3" id="tab-3" tabindex="-1">Afiliados</button>
+                <button class="active" data-tab="0" role="tab" aria-selected="true" aria-controls="tabpanel-1" id="tab-1">1</button>
+                <button data-tab="1" role="tab" aria-selected="false" aria-controls="tabpanel-2" id="tab-2" tabindex="-1">2</button>
+                <button data-tab="2" role="tab" aria-selected="false" aria-controls="tabpanel-3" id="tab-3" tabindex="-1">3</button>
             </div>
             
             <div class="tabs" id="tabs">
-                <article class="tab active" data-tab-content="0" role="tabpanel" id="tabpanel-1" aria-labelledby="tab-1" tabindex="0">
+                <article class="tab" data-tab-content="0" role="tabpanel" id="tabpanel-1" aria-labelledby="tab-1" tabindex="0">
                     <div>
                         <h2>Tcubita</h2>
                         <p>Conéctate con una comunidad llena de emprendedores cubanos. Comparte ofertas, encuentra colaboradores y haz crecer tu red de contacto.</p>
                     </div>
                     <a href="https://cubabazaronline.github.io/Tcubita/" target="_blank" rel="noopener noreferrer" class="cta-button">
-                        <span class="fas fa-users tab-icon" aria-hidden="true"></span> Unirse a la Red
+                        <i class="fas fa-users tab-icon"></i> Unirse a la Red
                     </a>
                 </article>
                 
@@ -111,7 +120,7 @@
                         <p>Accede a servicio exclusivo, crea tu propia página web personalizable específicamente para emprendedores cubanos. Supera tus desafíos y lleva tu negocio al siguiente nivel con lo que necesites.</p>
                     </div>
                     <a href="https://cubabazaronline.github.io/CHP/" target="_blank" rel="noopener noreferrer" class="cta-button">
-                        <span class="fas fa-tools tab-icon" aria-hidden="true"></span> Explorar Recursos
+                        <i class="fas fa-tools tab-icon"></i> Explorar Recursos
                     </a>
                 </article>
                 
@@ -121,7 +130,7 @@
                         <p>Descubre la oportunidad de obtener ingresos desde casa, buscando a emprendedores cubanos que necesiten crecer y asesora sus exigencias, gana comisiones ilimitadas y más.</p>
                     </div>
                     <a href="https://cubabazaronline.github.io/Afiliados-de-CHP/" target="_blank" rel="noopener noreferrer" class="cta-button">
-                        <span class="fas fa-briefcase tab-icon" aria-hidden="true"></span> Ver Oportunidades
+                        <i class="fas fa-briefcase tab-icon"></i> Ver Oportunidades
                     </a>
                 </article>
             </div>
@@ -134,7 +143,7 @@
     <footer>
         <div class="footer-grid">
             <div class="creator">
-                <img src="mv.jpg" alt="Marcos Volta, Fundador de CBO" class="creator-img" loading="lazy" width="100" height="100">
+                <img src="mv.jpg" alt="Fundador de CBO" class="creator-img" loading="lazy" width="80" height="80">
                 <div class="creator-info">
                     <h3>Marcos Volta</h3>
                     <p>Creador de CBO</p>
@@ -143,32 +152,35 @@
             
             <div class="mission">
                 <h3>Objetivo</h3>
-                <p>Esta plataforma fue fundada en noviembre del 2024 para empoderar a los cubanos emprendedores, proporcionando herramientas, conexiones y recursos necesarios para transformar ideas en negocios prósperos. Creemos en el ingenio de nuestra comunidad y nos comprometemos a ser el puente que conecta el talento cubano con oportunidades globales.</p>
+                <p>Esta plataforma fue fundada en: noviembre del 2024, para empoderar a los cubanos emprendedores, proporcionando herramientas, conexiones y recursos necesarios para transformar ideas en negocios prósperos. Creemos en el ingenio en nuestra comunidad, y nos comprometemos a ser el puente que conecta el talento cubano con oportunidades globales.</p>
             </div>  
             
             <div class="social-links">
-                <h3>Conéctate con CBO</h3>
+                <h3>Conéctar con CBO</h3>
                 <div class="social-icons">
-                    <a href="https://t.me/CBO_Oficial" class="social-link" aria-label="Telegram" rel="noopener noreferrer">
-                        <span class="fab fa-telegram-f" aria-hidden="true"></span>
-                    </a>
-                    <a href="https://whatsapp.com/channel/0029Vb61NTa5vKA3hCMIQr3j" class="social-link" aria-label="WhatsApp" rel="noopener noreferrer">
-                        <span class="fab fa-whatsapp" aria-hidden="true"></span>
-                    </a>
-                    <a href="https://youtube.com/@cbo_com?feature=shared" class="social-link" aria-label="YouTube" rel="noopener noreferrer">
-                        <span class="fab fa-youtube" aria-hidden="true"></span>
-                    </a>
+                    <a href="https://t.me/CBO_Oficial" class="social-link" aria-label="Telegram" rel="noopener"><i class="fab fa-telegram-f"></i></a>
+                    <a href="https://whatsapp.com/channel/0029Vb61NTa5vKA3hCMIQr3j" class="social-link" aria-label="WhatsApp" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://youtube.com/@cbo_com?feature=shared" class="social-link" aria-label="YouTube" rel="noopener"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
         
         <div class="copyright">
             <p>&copy; <span id="currentYear"></span> CBO - Plataforma para Cubanos Emprendedores. Todos los derechos reservados.</p>
-            <p>Hecho con <span aria-label="amor">❤️</span> en Cuba</p>
+            <p>Made with <span aria-label="amor">❤️</span> in Cuba</p>
         </div>
     </footer>
 
-    <!-- Scripts optimizados -->
+    <!-- Scripts al final del body para mejor rendimiento -->
     <script src="script.js" defer></script>
+    
+    <!-- Analytics (ejemplo) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXX');
+    </script>
 </body>
 </html>
