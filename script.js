@@ -3,13 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
   initTheme();
   initParticles();
   initTabs();
-  initShareButtons();
+  initShareButton();
   updateCopyrightYear();
+  initContactButton();
   addHolographicEffects();
-  initAnalytics();
-  initSmoothScrolling();
-  initLazyLoading();
-  initPerformanceMonitoring();
 });
 
 // Sistema de temas
@@ -185,34 +182,11 @@ function initTabs() {
   }
 }
 
-// Botones para compartir
-function initShareButtons() {
-  const shareButtons = document.querySelectorAll('.share-btn');
+// Botón para compartir simplificado
+function initShareButton() {
   const copyLinkBtn = document.getElementById('copyLinkBtn');
   const pageUrl = window.location.href;
   
-  // Compartir en redes sociales
-  shareButtons.forEach(button => {
-    if (button.id !== 'copyLinkBtn') {
-      button.addEventListener('click', () => {
-        const social = button.getAttribute('data-social');
-        let shareUrl;
-        
-        switch(social) {
-          case 'facebook':
-            shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
-            break;
-          case 'twitter':
-            shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent('Descubre la plataforma CBO para emprendedores cubanos')}`;
-            break;
-        }
-        
-        window.open(shareUrl, '_blank', 'width=600,height=400');
-      });
-    }
-  });
-  
-  // Copiar enlace
   if (copyLinkBtn) {
     copyLinkBtn.addEventListener('click', () => {
       navigator.clipboard.writeText(pageUrl).then(() => {
@@ -221,6 +195,17 @@ function initShareButtons() {
         console.error('Error al copiar: ', err);
         showNotification('Error al copiar el enlace', 'error');
       });
+    });
+  }
+}
+
+// Botón de contacto
+function initContactButton() {
+  const contactBtn = document.getElementById('contactBtn');
+  
+  if (contactBtn) {
+    contactBtn.addEventListener('click', () => {
+      showNotification('Próximamente disponible el formulario de contacto');
     });
   }
 }
@@ -250,9 +235,9 @@ function updateCopyrightYear() {
   }
 }
 
-// Efectos holográficos adicionales
+// Efectos holográficos
 function addHolographicEffects() {
-  const elements = document.querySelectorAll('.cta-button, .tab-nav button, .social-link');
+  const elements = document.querySelectorAll('.cta-button, .tab-nav button, .footer-btn');
   
   elements.forEach(el => {
     el.classList.add('neon-effect');
@@ -265,93 +250,5 @@ function addHolographicEffects() {
     el.addEventListener('mouseleave', () => {
       el.style.transform = '';
     });
-  });
-}
-
-// Analytics
-function initAnalytics() {
-  if (typeof gtag !== 'undefined') {
-    // Track page views
-    gtag('config', 'G-XXXXXX', {
-      'page_title': document.title,
-      'page_location': window.location.href,
-      'page_path': window.location.pathname
-    });
-    
-    // Track interactions
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('click', () => {
-        gtag('event', 'click', {
-          'event_category': 'Interaction',
-          'event_label': el.textContent.trim() || el.getAttribute('aria-label') || 'Unknown'
-        });
-      });
-    });
-  }
-}
-
-// Desplazamiento suave
-function initSmoothScrolling() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      
-      if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-}
-
-// Carga diferida de imágenes
-function initLazyLoading() {
-  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-  
-  if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src || img.src;
-          img.removeAttribute('loading');
-          observer.unobserve(img);
-        }
-      });
-    });
-    
-    lazyImages.forEach(img => imageObserver.observe(img));
-  }
-}
-
-// Monitoreo de rendimiento
-function initPerformanceMonitoring() {
-  if ('PerformanceObserver' in window) {
-    const perfObserver = new PerformanceObserver((list) => {
-      for (const entry of list.getEntries()) {
-        console.log(`[Performance] ${entry.name}: ${entry.duration.toFixed(2)}ms`);
-      }
-    });
-    
-    perfObserver.observe({ entryTypes: ['measure', 'resource', 'navigation', 'paint'] });
-    
-    // Medir tiempo de carga inicial
-    performance.mark('pageLoaded');
-    performance.measure('Page Load Time', 'navigationStart', 'pageLoaded');
-  }
-  
-  // Reportar errores no capturados
-  window.addEventListener('error', (event) => {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'exception', {
-        'description': event.message,
-        'fatal': true
-      });
-    }
   });
 }
