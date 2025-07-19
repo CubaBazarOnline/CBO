@@ -9,9 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactButton();
     initInstallPrompt();
     animateStats();
+    
+    // Track page view
+    gtag('event', 'page_view', {
+      'page_title': document.title,
+      'page_location': window.location.href,
+      'page_path': window.location.pathname
+    });
   } catch (error) {
     console.error('Error en la inicialización:', error);
     showNotification('Error al cargar la aplicación', 'error');
+    gtag('event', 'initialization_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 });
 
@@ -35,6 +46,10 @@ function initTheme() {
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
     themeToggle.setAttribute('aria-pressed', newTheme === 'dark');
+    gtag('event', 'theme_changed', {
+      'event_category': 'UI',
+      'event_label': newTheme
+    });
   });
   
   themeToggle.addEventListener('click', () => {
@@ -45,6 +60,10 @@ function initTheme() {
     updateThemeIcon(newTheme);
     themeToggle.setAttribute('aria-pressed', newTheme === 'dark');
     showNotification(`Modo ${newTheme === 'dark' ? 'oscuro' : 'claro'} activado`);
+    gtag('event', 'theme_toggle', {
+      'event_category': 'UI',
+      'event_label': newTheme
+    });
   });
 }
 
@@ -119,6 +138,10 @@ function initParticles() {
       } catch (error) {
         console.error('Error en animación de partículas:', error);
         canvas.style.display = 'none';
+        gtag('event', 'particles_error', {
+          'event_category': 'Error',
+          'event_label': error.message
+        });
       }
     }
     
@@ -132,6 +155,10 @@ function initParticles() {
     console.error('Error al inicializar partículas:', error);
     const canvas = document.getElementById('particlesCanvas');
     if (canvas) canvas.style.display = 'none';
+    gtag('event', 'particles_init_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 }
 
@@ -146,6 +173,10 @@ function initTabs() {
     tabButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
         setActiveTab(index);
+        gtag('event', 'tab_click', {
+          'event_category': 'Navigation',
+          'event_label': button.textContent.trim()
+        });
       });
       
       button.addEventListener('keydown', (e) => {
@@ -212,6 +243,10 @@ function initTabs() {
     setActiveTab(0);
   } catch (error) {
     console.error('Error en sistema de pestañas:', error);
+    gtag('event', 'tabs_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 }
 
@@ -229,6 +264,11 @@ function initShareButton() {
           title: 'Plataforma CBO',
           text: 'Conectando emprendedores cubanos con oportunidades globales',
           url: pageUrl
+        }).then(() => {
+          gtag('event', 'share', {
+            'method': 'native',
+            'content_type': 'page'
+          });
         }).catch(err => {
           console.log('Error al compartir:', err);
           fallbackCopy();
@@ -241,6 +281,10 @@ function initShareButton() {
     function fallbackCopy() {
       navigator.clipboard.writeText(pageUrl).then(() => {
         showNotification('Enlace copiado al portapapeles');
+        gtag('event', 'share', {
+          'method': 'clipboard',
+          'content_type': 'page'
+        });
       }).catch(err => {
         console.error('Error al copiar: ', err);
         // Fallback más antiguo para navegadores que no soportan clipboard API
@@ -251,14 +295,26 @@ function initShareButton() {
         try {
           document.execCommand('copy');
           showNotification('Enlace copiado al portapapeles');
+          gtag('event', 'share', {
+            'method': 'execCommand',
+            'content_type': 'page'
+          });
         } catch (err) {
           showNotification('Error al copiar el enlace', 'error');
+          gtag('event', 'share_error', {
+            'event_category': 'Error',
+            'event_label': err.message
+          });
         }
         document.body.removeChild(textarea);
       });
     }
   } catch (error) {
     console.error('Error en botón de compartir:', error);
+    gtag('event', 'share_init_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 }
 
@@ -270,9 +326,17 @@ function initContactButton() {
     
     contactBtn.addEventListener('click', () => {
       window.location.href = 'mailto:cubabazaronline@gmail.com?subject=Consulta%20sobre%20CBO&body=Hola%20equipo%20CBO,%20me%20gustaría%20saber%20más%20sobre...';
+      gtag('event', 'contact_click', {
+        'event_category': 'Engagement',
+        'event_label': 'Email Contact'
+      });
     });
   } catch (error) {
     console.error('Error en botón de contacto:', error);
+    gtag('event', 'contact_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 }
 
@@ -295,6 +359,10 @@ function initInstallPrompt() {
         installFooterBtn.style.display = 'flex';
         installFooterBtn.addEventListener('click', showInstallPrompt);
       }
+      
+      gtag('event', 'pwa_install_available', {
+        'event_category': 'PWA'
+      });
     });
     
     function showInstallPrompt() {
@@ -303,8 +371,14 @@ function initInstallPrompt() {
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
             showNotification('¡Aplicación instalada con éxito!');
+            gtag('event', 'pwa_install_success', {
+              'event_category': 'PWA'
+            });
           } else {
             showNotification('Instalación cancelada', 'info');
+            gtag('event', 'pwa_install_canceled', {
+              'event_category': 'PWA'
+            });
           }
           deferredPrompt = null;
           
@@ -320,6 +394,9 @@ function initInstallPrompt() {
       if (installBtn) installBtn.style.display = 'none';
       if (installFooterBtn) installFooterBtn.style.display = 'none';
       showNotification('¡Gracias por instalar nuestra aplicación!');
+      gtag('event', 'pwa_installed', {
+        'event_category': 'PWA'
+      });
     });
     
     // Verificar si ya está instalada
@@ -329,6 +406,10 @@ function initInstallPrompt() {
     }
   } catch (error) {
     console.error('Error en instalación PWA:', error);
+    gtag('event', 'pwa_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 }
 
@@ -344,6 +425,10 @@ function animateStats() {
     }
   } catch (error) {
     console.error('Error en animación de estadísticas:', error);
+    gtag('event', 'stats_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 }
 
@@ -383,10 +468,21 @@ function showNotification(message, type = 'success') {
         notification.remove();
       }, 300);
     }, 3500);
+    
+    // Track notification
+    gtag('event', 'notification_shown', {
+      'event_category': 'UI',
+      'event_label': type,
+      'value': message
+    });
   } catch (error) {
     console.error('Error al mostrar notificación:', error);
     // Fallback simple para navegadores muy antiguos
     alert(message);
+    gtag('event', 'notification_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 }
 
@@ -399,5 +495,9 @@ function updateCopyrightYear() {
     }
   } catch (error) {
     console.error('Error al actualizar año de copyright:', error);
+    gtag('event', 'copyright_error', {
+      'event_category': 'Error',
+      'event_label': error.message
+    });
   }
 }

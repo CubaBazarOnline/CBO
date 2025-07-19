@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,9 +117,10 @@
             box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
         }
         
-        button:hover {
+        button:hover, button:focus {
             background-color: var(--primary-hover);
             box-shadow: 0 6px 20px rgba(66, 153, 225, 0.6);
+            outline: none;
         }
         
         button::after {
@@ -168,27 +169,6 @@
             to { background-position: 40px 40px; }
         }
         
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            .container {
-                padding: 1.5rem;
-                max-width: 90%;
-            }
-            
-            h1 {
-                font-size: 1.5rem;
-            }
-            
-            .icon {
-                font-size: 3rem;
-            }
-            
-            button {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.9rem;
-            }
-        }
-        
         /* Connection status indicator */
         .connection-status {
             position: fixed;
@@ -215,37 +195,49 @@
             100% { opacity: 1; }
         }
         
-        /* 3D favicon simulation */
-        .favicon-3d {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            font-size: 1.5rem;
-            transform-style: preserve-3d;
-            animation: spin3D 8s linear infinite;
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+                max-width: 90%;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .icon {
+                font-size: 3rem;
+            }
+            
+            button {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
         }
         
-        @keyframes spin3D {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(360deg); }
+        /* Shake animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
         }
     </style>
 </head>
 <body>
-    <div class="holographic-grid"></div>
-    <div class="favicon-3d" title="CBO">🚀</div>
+    <div class="holographic-grid" aria-hidden="true"></div>
     
     <div class="container">
-        <div class="icon">⚠️</div>
+        <div class="icon" aria-hidden="true">⚠️</div>
         <h1>Estás sin conexión</h1>
         <p>La aplicación CBO requiere conexión a Internet para acceder a los contenidos más recientes. Por favor, verifica tu conexión e intenta nuevamente.</p>
-        <button onclick="checkConnection()">
-            <i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Reintentar
+        <button onclick="checkConnection()" aria-label="Reintentar conexión">
+            <i class="fas fa-sync-alt" style="margin-right: 8px;" aria-hidden="true"></i> Reintentar
         </button>
     </div>
     
-    <div class="connection-status">
-        <div class="status-dot"></div>
+    <div class="connection-status" aria-live="polite">
+        <div class="status-dot" aria-hidden="true"></div>
         <span>Sin conexión</span>
     </div>
 
@@ -258,20 +250,20 @@
             const statusText = document.querySelector('.connection-status span');
             
             // Show loading state
-            button.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Comprobando...';
+            button.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;" aria-hidden="true"></i> Comprobando...';
             button.disabled = true;
             
             // Simulate network check with timeout
             setTimeout(() => {
                 if (navigator.onLine) {
                     // Connection restored
-                    icon.innerHTML = '<i class="fas fa-check"></i>';
+                    icon.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
                     icon.style.color = '#48bb78';
                     statusDot.style.backgroundColor = '#48bb78';
                     statusText.textContent = 'Conectado';
                     
                     // Brief confirmation before reload
-                    button.innerHTML = '<i class="fas fa-check" style="margin-right: 8px;"></i> ¡Conectado!';
+                    button.innerHTML = '<i class="fas fa-check" style="margin-right: 8px;" aria-hidden="true"></i> ¡Conectado!';
                     setTimeout(() => {
                         window.location.reload();
                     }, 1000);
@@ -282,28 +274,17 @@
                     statusDot.style.backgroundColor = '#e53e3e';
                     statusText.textContent = 'Sin conexión';
                     
-                    button.innerHTML = '<i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Reintentar';
+                    button.innerHTML = '<i class="fas fa-sync-alt" style="margin-right: 8px;" aria-hidden="true"></i> Reintentar';
                     button.disabled = false;
                     
                     // Shake animation for error feedback
-                    container.style.animation = 'shake 0.5s';
+                    document.querySelector('.container').style.animation = 'shake 0.5s';
                     setTimeout(() => {
-                        container.style.animation = '';
+                        document.querySelector('.container').style.animation = '';
                     }, 500);
                 }
             }, 1500);
         }
-        
-        // Add shake animation dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-                20%, 40%, 60%, 80% { transform: translateX(5px); }
-            }
-        `;
-        document.head.appendChild(style);
         
         // Listen for connection changes
         window.addEventListener('online', () => {
@@ -316,17 +297,6 @@
             statusDot.style.backgroundColor = '#e53e3e';
             statusText.textContent = 'Sin conexión';
         });
-        
-        // Check for service worker support
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('ServiceWorker registration successful');
-                }).catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
     </script>
 </body>
 </html>

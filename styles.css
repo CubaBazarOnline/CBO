@@ -11,9 +11,9 @@
 }
 
 [data-theme="light"] {
-  --primary: #2b6cb0; /* Mejor contraste */
+  --primary: #2b6cb0;
   --secondary: #ebf8ff;
-  --accent: #2c5282; /* Mejor contraste */
+  --accent: #2c5282;
   --text: #1a202c;
   --bg: #f7fafc;
   --card-bg: rgba(247, 250, 252, 0.9);
@@ -503,19 +503,6 @@ footer::before {
 
 .quick-links a:hover::after, .quick-links a:focus::after {
   width: 100%;
-}
-
-.qr-code {
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.qr-code svg {
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  max-width: 150px;
-  background: white;
-  padding: 10px;
 }
 
 .contact p {

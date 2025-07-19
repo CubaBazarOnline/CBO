@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plataforma CBO para emprendedores cubanos - Conexiones, recursos y oportunidades de negocio.">
     <meta name="author" content="Marcos Volta, CBO Team">
-    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#1a365d">
     
     <title>CBO - Plataforma para Cubanos Emprendedores | Conexiones Globales</title>
@@ -26,6 +25,15 @@
     
     <!-- Manifest PWA -->
     <link rel="manifest" href="manifest.json">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
@@ -70,9 +78,9 @@
                 </div>
                 <h1 class="glow">Plataforma <span class="glow">CBO</span></h1>
                 <p class="hero-subtitle">Conectando emprendedores cubanos con oportunidades globales</p>
-                <div class="scroll-indicator">
-                    <div class="mouse" aria-hidden="true"></div>
-                    <div class="arrow" aria-hidden="true"></div>
+                <div class="scroll-indicator" aria-hidden="true">
+                    <div class="mouse"></div>
+                    <div class="arrow"></div>
                 </div>
             </div>
         </header>
@@ -208,20 +216,10 @@
             <div class="quick-links">
                 <h3>Accesos Rápidos</h3>
                 <ul>
-                    <li><a href="https://cubabazaronline.github.io/Tcubita/" target="_blank">Tcubita</a></li>
-                    <li><a href="https://cubabazaronline.github.io/CHP/" target="_blank">CHP</a></li>
-                    <li><a href="https://cubabazaronline.github.io/Afiliados-de-CHP/" target="_blank">Afiliados</a></li>
+                    <li><a href="https://cubabazaronline.github.io/Tcubita/" target="_blank" rel="noopener noreferrer">Tcubita</a></li>
+                    <li><a href="https://cubabazaronline.github.io/CHP/" target="_blank" rel="noopener noreferrer">CHP</a></li>
+                    <li><a href="https://cubabazaronline.github.io/Afiliados-de-CHP/" target="_blank" rel="noopener noreferrer">Afiliados</a></li>
                 </ul>
-                <div class="qr-code">
-                    <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Código QR simplificado (ejemplo) -->
-                        <rect width="150" height="150" fill="#fff"/>
-                        <rect x="10" y="10" width="30" height="30" fill="#000"/>
-                        <rect x="50" y="10" width="10" height="10" fill="#000"/>
-                        <!-- Más elementos del QR... -->
-                        <text x="75" y="140" text-anchor="middle" font-size="10">Escanea para compartir</text>
-                    </svg>
-                </div>
             </div>
             
             <div class="contact">
@@ -237,7 +235,7 @@
                     <p>Acceso directo en tu dispositivo</p>
                 </div>
                 <div class="download-section">
-                    <a href="https://drive.google.com/file/d/1M04bq-cQ4cavwUcWaB71Z6sXJkpCP-wC/view?usp=drivesdk" class="footer-btn" target="_blank">
+                    <a href="https://drive.google.com/file/d/1M04bq-cQ4cavwUcWaB71Z6sXJkpCP-wC/view?usp=drivesdk" class="footer-btn" target="_blank" rel="noopener noreferrer">
                         <i class="fas fa-mobile-alt" aria-hidden="true"></i> Descargar APK
                     </a>
                     <p>Versión para Android</p>
@@ -260,10 +258,18 @@
                 navigator.serviceWorker.register('sw.js')
                     .then(registration => {
                         console.log('ServiceWorker registrado con éxito: ', registration.scope);
+                        gtag('event', 'service_worker_registered', {
+                            'event_category': 'PWA',
+                            'event_label': 'Registration'
+                        });
                     })
                     .catch(err => {
                         console.log('Error al registrar ServiceWorker: ', err);
                         showNotification('Error al cargar funciones offline', 'error');
+                        gtag('event', 'service_worker_error', {
+                            'event_category': 'PWA',
+                            'event_label': 'Registration Error'
+                        });
                     });
             });
         }

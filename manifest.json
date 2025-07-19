@@ -3,12 +3,14 @@
   "short_name": "CBO",
   "description": "Conectando emprendedores cubanos con oportunidades globales",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#1a365d",
   "theme_color": "#1a365d",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwem0xMDQuNi0zMDUuM2MtMTAuMi02LjQtMjMuMS0yLjItMjkuNCA4cy0yLjIgMjMuMSA4IDI5LjRjMzAuNCAxOSAyLjQgNjEuNy0zNC42IDYxLjctMjcuOSAwLTQ4LjUtMjAuNS00OC41LTQ4LjVzMjAuNS00OC41IDQ4LjUtNDguNWMxMy4xIDAgMjQuMyA1LjEgMzMuMSAxMy44bC0xOC4zIDE4LjNjLTYuMiA2LjItNi4yIDE2LjQgMCAyMi42IDYuMiA2LjIgMTYuNCA2LjIgMjIuNiAwbDU0LjMtNTQuM2M2LjItNi4yIDYuMi0xNi40IDAtMjIuNmwtNTQuMy01NC4zYy02LjItNi4yLTE2LjQtNi4yLTIyLjYgMC02LjIgNi4yLTYuMiAxNi40IDAgMjIuNmwxOC4zIDE4LjNjLTguOS04LjctMjAuMS0xMy44LTMzLjEtMTMuOC0zOS43IDAtNzIgMzIuMy03MiA3MnMzMi4zIDcyIDcyIDcyYzQ5LjEgMCA4Ni4z-36uMSA0OS43LTYxLjcgMzQuNnoiLz48L3N2Zz4=",
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwem0xMDQuNi0zMDUuM2MtMTAuMi02LjQtMjMuMS0yLjItMjkuNCA4cy0yLjIgMjMuMSA4IDI5LjRjMzAuNCAxOSAyLjQgNjEuNy0zNC42IDYxLjctMjcuOSAwLTQ4LjUtMjAuNS00OC41LTQ4LjVzMjAuNS00OC41IDQ4LjUtNDguNWMxMy4xIDAgMjQuMyA1LjEgMzMuMSAxMy44bC0xOC4zIDE4LjNjLTYuMiA2LjItNi4yIDE2LjQgMCAyMi42IDYuMiA2LjIgMTYuNCA2LjIgMjIuNiAwbDU0LjMtNTQuM2M2LjItNi4yIDYuMi0xNi40IDAtMjIuNmwtNTQuMy01NC4zYy02LjItNi4yLTE2LjQtNi4yLTIyLjYgMC02LjIgNi4yLTYuMiAxNi40IDAgMjIuNmwxOC4zIDE4LjMtOC45LTguN2MtMzkuNyAwLTcyIDMyLjMtNzIgNzJzMzIuMyA3MiA3MiA3MmM0OS4xIDAgODYuMy0zNi4xIDQ5LjctNjEuNyAzNC42eiIvPjwvc3ZnPg==",
       "sizes": "192x192",
       "type": "image/svg+xml"
     },
@@ -17,5 +19,22 @@
       "sizes": "512x512",
       "type": "image/svg+xml"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot1.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide"
+    },
+    {
+      "src": "screenshot2.webp",
+      "sizes": "750x1334",
+      "type": "image/webp",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["business", "social"],
+  "lang": "es",
+  "dir": "ltr"
 }
