@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBO - Sin conexión</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <style>
+        :root {
+            --primary-color: #4299e1;
+            --primary-hover: #2b6cb0;
+            --bg-color: #1a202c;
+            --text-color: #f7fafc;
+            --glow-color: rgba(66, 153, 225, 0.6);
+            --hologram-color-1: rgba(66, 153, 225, 0.2);
+            --hologram-color-2: rgba(102, 126, 234, 0.2);
+            --hologram-color-3: rgba(159, 122, 234, 0.2);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 1rem;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--hologram-color-1) 0%, transparent 20%),
+                radial-gradient(circle at 75% 75%, var(--hologram-color-2) 0%, transparent 20%),
+                radial-gradient(circle at 50% 10%, var(--hologram-color-3) 0%, transparent 15%);
+            background-size: 200% 200%;
+            animation: hologramBG 15s ease infinite;
+        }
+        
+        @keyframes hologramBG {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        
+        .container {
+            max-width: 500px;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            border-radius: 16px;
+            background: rgba(26, 32, 44, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 2rem;
+            text-shadow: 0 0 10px var(--glow-color);
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            from { text-shadow: 0 0 5px var(--glow-color); }
+            to { text-shadow: 0 0 15px var(--glow-color); }
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            text-shadow: 0 0 15px var(--glow-color);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
+        }
+        
+        button:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 6px 20px rgba(66, 153, 225, 0.6);
+        }
+        
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 30%,
+                rgba(255, 255, 255, 0.3) 45%,
+                rgba(255, 255, 255, 0) 60%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -50%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Holographic grid effect */
+        .holographic-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(rgba(66, 153, 225, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(66, 153, 225, 0.3) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            from { background-position: 0 0; }
+            to { background-position: 40px 40px; }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+                max-width: 90%;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .icon {
+                font-size: 3rem;
+            }
+            
+            button {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Connection status indicator */
+        .connection-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #e53e3e;
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        /* 3D favicon simulation */
+        .favicon-3d {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            transform-style: preserve-3d;
+            animation: spin3D 8s linear infinite;
+        }
+        
+        @keyframes spin3D {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="holographic-grid"></div>
+    <div class="favicon-3d" title="CBO">🚀</div>
+    
+    <div class="container">
+        <div class="icon">⚠️</div>
+        <h1>Estás sin conexión</h1>
+        <p>La aplicación CBO requiere conexión a Internet para acceder a los contenidos más recientes. Por favor, verifica tu conexión e intenta nuevamente.</p>
+        <button onclick="checkConnection()">
+            <i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Reintentar
+        </button>
+    </div>
+    
+    <div class="connection-status">
+        <div class="status-dot"></div>
+        <span>Sin conexión</span>
+    </div>
+
+    <script>
+        // Advanced connection checking with retry logic
+        function checkConnection() {
+            const button = document.querySelector('button');
+            const icon = document.querySelector('.icon');
+            const statusDot = document.querySelector('.status-dot');
+            const statusText = document.querySelector('.connection-status span');
+            
+            // Show loading state
+            button.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i> Comprobando...';
+            button.disabled = true;
+            
+            // Simulate network check with timeout
+            setTimeout(() => {
+                if (navigator.onLine) {
+                    // Connection restored
+                    icon.innerHTML = '<i class="fas fa-check"></i>';
+                    icon.style.color = '#48bb78';
+                    statusDot.style.backgroundColor = '#48bb78';
+                    statusText.textContent = 'Conectado';
+                    
+                    // Brief confirmation before reload
+                    button.innerHTML = '<i class="fas fa-check" style="margin-right: 8px;"></i> ¡Conectado!';
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    // Still offline
+                    icon.innerHTML = '⚠️';
+                    icon.style.color = '#4299e1';
+                    statusDot.style.backgroundColor = '#e53e3e';
+                    statusText.textContent = 'Sin conexión';
+                    
+                    button.innerHTML = '<i class="fas fa-sync-alt" style="margin-right: 8px;"></i> Reintentar';
+                    button.disabled = false;
+                    
+                    // Shake animation for error feedback
+                    container.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        container.style.animation = '';
+                    }, 500);
+                }
+            }, 1500);
+        }
+        
+        // Add shake animation dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Listen for connection changes
+        window.addEventListener('online', () => {
+            checkConnection();
+        });
+        
+        window.addEventListener('offline', () => {
+            const statusDot = document.querySelector('.status-dot');
+            const statusText = document.querySelector('.connection-status span');
+            statusDot.style.backgroundColor = '#e53e3e';
+            statusText.textContent = 'Sin conexión';
+        });
+        
+        // Check for service worker support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

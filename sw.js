@@ -1,17 +1,24 @@
-const CACHE_NAME = 'cbo-platform-v2';
+const CACHE_NAME = 'cbo-platform-v3';
+const OFFLINE_PAGE = '/offline.html';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/styles.css',
   '/script.js',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'
+  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
+  OFFLINE_PAGE
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(ASSETS_TO_CACHE))
+      .then((cache) => {
+        return cache.addAll(ASSETS_TO_CACHE)
+          .catch(err => {
+            console.log('Error al cachear recursos:', err);
+          });
+      })
       .then(() => self.skipWaiting())
   );
 });
@@ -26,15 +33,33 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        return response || fetch(event.request);
-      })
-  );
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .catch(() => {
+          return caches.match(OFFLINE_PAGE);
+        })
+    );
+  } else {
+    event.respondWith(
+      caches.match(event.request)
+        .then((response) => {
+          return response || fetch(event.request)
+            .catch(err => {
+              console.log('Error al cargar recurso:', err);
+            });
+        })
+    );
+  }
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
