@@ -19,6 +19,9 @@
     <!-- Favicon 3D Rocket -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="manifest.json">
+    
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
     {
@@ -41,6 +44,10 @@
     <div class="container holographic-effect">
         <!-- Barra de navegación simplificada -->
         <nav class="nav-bar" aria-label="Navegación principal">
+            <button id="installBtn" class="install-btn" aria-label="Instalar aplicación" style="display:none;">
+                <i class="fas fa-download"></i>
+                <span class="btn-text">Instalar</span>
+            </button>
             <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
                 <i class="fas fa-moon"></i>
             </button>
@@ -49,23 +56,75 @@
             </button>
         </nav>
         
-        <header>
-            <h1 class="glow">Plataforma <span class="glow">CBO</span></h1>
-            <p>Conectando emprendedores cubanos con oportunidades globales</p>
+        <header class="hero-section">
+            <div class="hero-content">
+                <div class="logo-container">
+                    <div class="logo-3d">🚀</div>
+                </div>
+                <h1 class="glow">Plataforma <span class="glow">CBO</span></h1>
+                <p class="hero-subtitle">Conectando emprendedores cubanos con oportunidades globales</p>
+                <div class="scroll-indicator">
+                    <div class="mouse"></div>
+                    <div class="arrow"></div>
+                </div>
+            </div>
         </header>
+        
+        <section class="about-section">
+            <div class="about-card">
+                <h2>Nuestra Historia</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Noviembre 2024</div>
+                        <div class="timeline-content">
+                            <h3>Fundación de CBO</h3>
+                            <p>Creada para proporcionar plataformas web y soporte digital a emprendedores cubanos que necesitan presencia en línea.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Actualidad</div>
+                        <div class="timeline-content">
+                            <h3>Expansión Continua</h3>
+                            <p>Hemos ayudado a decenas de emprendedores a establecer su presencia digital y conectar con oportunidades globales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <main class="tabs-container">
             <div class="tab-nav" role="tablist" aria-label="Secciones de la plataforma">
-                <button class="active" data-tab="0" role="tab" aria-selected="true" aria-controls="tabpanel-1" id="tab-1">1</button>
-                <button data-tab="1" role="tab" aria-selected="false" aria-controls="tabpanel-2" id="tab-2" tabindex="-1">2</button>
-                <button data-tab="2" role="tab" aria-selected="false" aria-controls="tabpanel-3" id="tab-3" tabindex="-1">3</button>
+                <button class="active" data-tab="0" role="tab" aria-selected="true" aria-controls="tabpanel-1" id="tab-1">
+                    <i class="fas fa-users"></i>
+                    <span>Red</span>
+                </button>
+                <button data-tab="1" role="tab" aria-selected="false" aria-controls="tabpanel-2" id="tab-2" tabindex="-1">
+                    <i class="fas fa-tools"></i>
+                    <span>Herramientas</span>
+                </button>
+                <button data-tab="2" role="tab" aria-selected="false" aria-controls="tabpanel-3" id="tab-3" tabindex="-1">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Oportunidades</span>
+                </button>
             </div>
             
             <div class="tabs" id="tabs">
                 <article class="tab" data-tab-content="0" role="tabpanel" id="tabpanel-1" aria-labelledby="tab-1" tabindex="0">
-                    <div>
+                    <div class="tab-content">
                         <h2>Tcubita</h2>
                         <p>Conéctate con una comunidad llena de emprendedores cubanos. Comparte ofertas, encuentra colaboradores y haz crecer tu red de contacto.</p>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-network-wired"></i>
+                                <h3>Conexiones</h3>
+                                <p>Amplía tu red profesional con emprendedores afines</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-handshake"></i>
+                                <h3>Colaboración</h3>
+                                <p>Encuentra socios para tus proyectos</p>
+                            </div>
+                        </div>
                     </div>
                     <a href="https://cubabazaronline.github.io/Tcubita/" target="_blank" rel="noopener noreferrer" class="cta-button">
                         <i class="fas fa-users tab-icon"></i> Unirse a la Red
@@ -73,9 +132,21 @@
                 </article>
                 
                 <article class="tab" data-tab-content="1" role="tabpanel" id="tabpanel-2" aria-labelledby="tab-2" tabindex="0" hidden>
-                    <div>
+                    <div class="tab-content">
                         <h2>CHP</h2>
                         <p>Accede a servicio exclusivo, crea tu propia página web personalizable específicamente para emprendedores cubanos.</p>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-globe"></i>
+                                <h3>Presencia Web</h3>
+                                <p>Muestra tu negocio al mundo</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-paint-brush"></i>
+                                <h3>Personalización</h3>
+                                <p>Adapta tu sitio a tu marca</p>
+                            </div>
+                        </div>
                     </div>
                     <a href="https://cubabazaronline.github.io/CHP/" target="_blank" rel="noopener noreferrer" class="cta-button">
                         <i class="fas fa-tools tab-icon"></i> Explorar Recursos
@@ -83,9 +154,21 @@
                 </article>
                 
                 <article class="tab" data-tab-content="2" role="tabpanel" id="tabpanel-3" aria-labelledby="tab-3" tabindex="0" hidden>
-                    <div>
+                    <div class="tab-content">
                         <h2>Afiliados</h2>
                         <p>Descubre la oportunidad de obtener ingresos desde casa, buscando a emprendedores cubanos que necesiten crecer.</p>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <h3>Ingresos</h3>
+                                <p>Gana comisiones por cada referencia</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h3>Crecimiento</h3>
+                                <p>Sin límites en tus ganancias</p>
+                            </div>
+                        </div>
                     </div>
                     <a href="https://cubabazaronline.github.io/Afiliados-de-CHP/" target="_blank" rel="noopener noreferrer" class="cta-button">
                         <i class="fas fa-briefcase tab-icon"></i> Ver Oportunidades
@@ -103,6 +186,16 @@
             <div class="mission">
                 <h3>Nuestro Propósito</h3>
                 <p>Empoderamos a emprendedores cubanos proporcionando herramientas y conexiones para transformar ideas en negocios prósperos. Conectamos el talento cubano con oportunidades globales.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="projectsCount">50+</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="usersCount">100+</div>
+                        <div class="stat-label">Usuarios</div>
+                    </div>
+                </div>
             </div>  
             
             <div class="quick-links">
@@ -112,6 +205,10 @@
                     <li><a href="https://cubabazaronline.github.io/CHP/" target="_blank">CHP</a></li>
                     <li><a href="https://cubabazaronline.github.io/Afiliados-de-CHP/" target="_blank">Afiliados</a></li>
                 </ul>
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cubabazaronline.github.io/CBO/" alt="QR Code para compartir" loading="lazy">
+                    <p>Escanea para compartir</p>
+                </div>
             </div>
             
             <div class="contact">
@@ -120,6 +217,18 @@
                 <button id="contactBtn" class="footer-btn">
                     <i class="fas fa-envelope"></i> Escríbenos
                 </button>
+                <div class="install-prompt">
+                    <button id="installBtnFooter" class="footer-btn secondary" style="display:none;">
+                        <i class="fas fa-download"></i> Instalar App
+                    </button>
+                    <p>Acceso directo en tu dispositivo</p>
+                </div>
+                <div class="download-section">
+                    <a href="https://drive.google.com/file/d/1M04bq-cQ4cavwUcWaB71Z6sXJkpCP-wC/view?usp=drivesdk" class="footer-btn" target="_blank">
+                        <i class="fas fa-mobile-alt"></i> Descargar APK
+                    </a>
+                    <p>Versión para Android</p>
+                </div>
             </div>
         </div>
         
@@ -131,5 +240,19 @@
 
     <!-- Scripts -->
     <script src="script.js" defer></script>
+    <!-- Service Worker para PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registrado con éxito: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('Error al registrar ServiceWorker: ', err);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

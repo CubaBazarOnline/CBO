@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initShareButton();
   updateCopyrightYear();
   initContactButton();
-  addHolographicEffects();
+  initInstallPrompt();
+  animateStats();
 });
 
 // Sistema de temas
@@ -14,15 +15,12 @@ function initTheme() {
   const themeToggle = document.getElementById('themeToggle');
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
   
-  // Comprobar preferencia del sistema o almacenamiento local
   const currentTheme = localStorage.getItem('theme') || 
                       (prefersDarkScheme.matches ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', currentTheme);
   
-  // Actualizar icono según el tema
   updateThemeIcon(currentTheme);
   
-  // Escuchar cambios en las preferencias del sistema
   prefersDarkScheme.addListener(e => {
     const newTheme = e.matches ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
@@ -30,7 +28,6 @@ function initTheme() {
     updateThemeIcon(newTheme);
   });
   
-  // Manejar el botón de alternar tema
   themeToggle.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
     const newTheme = current === 'dark' ? 'light' : 'dark';
@@ -58,7 +55,6 @@ function initParticles() {
   const particles = [];
   const particleCount = window.innerWidth < 768 ? 50 : 100;
   
-  // Crear partículas
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * canvas.width,
@@ -70,26 +66,21 @@ function initParticles() {
     });
   }
   
-  // Animación de partículas
   function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     particles.forEach(particle => {
-      // Actualizar posición
       particle.x += particle.speedX;
       particle.y += particle.speedY;
       
-      // Rebotar en los bordes
       if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
       if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
       
-      // Dibujar partícula
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
       ctx.fillStyle = particle.color;
       ctx.fill();
       
-      // Dibujar conexiones
       particles.forEach(other => {
         const distance = Math.sqrt(
           Math.pow(particle.x - other.x, 2) + 
@@ -112,7 +103,6 @@ function initParticles() {
   
   animateParticles();
   
-  // Redimensionar canvas
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -126,7 +116,6 @@ function initTabs() {
   
   tabButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
-      // Actualizar botones
       tabButtons.forEach(btn => {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
@@ -137,7 +126,6 @@ function initTabs() {
       button.setAttribute('aria-selected', 'true');
       button.removeAttribute('tabindex');
       
-      // Actualizar contenido
       tabContents.forEach(content => {
         content.hidden = true;
       });
@@ -145,21 +133,18 @@ function initTabs() {
       const selectedTab = document.querySelector(`.tab[data-tab-content="${index}"]`);
       selectedTab.hidden = false;
       
-      // Efecto de transición
       selectedTab.style.animation = 'none';
       setTimeout(() => {
         selectedTab.style.animation = 'fadeIn 0.5s ease forwards';
       }, 10);
     });
     
-    // Navegación con teclado
     button.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         button.click();
       }
       
-      // Navegación con flechas
       if (e.key === 'ArrowRight') {
         e.preventDefault();
         const nextIndex = (index + 1) % tabButtons.length;
@@ -176,25 +161,41 @@ function initTabs() {
     });
   });
   
-  // Activar la primera pestaña por defecto
   if (tabButtons.length > 0) {
     tabButtons[0].click();
   }
 }
 
-// Botón para compartir simplificado
+// Botón para compartir
 function initShareButton() {
   const copyLinkBtn = document.getElementById('copyLinkBtn');
   const pageUrl = window.location.href;
   
   if (copyLinkBtn) {
     copyLinkBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(pageUrl).then(() => {
-        showNotification('Enlace copiado al portapapeles');
-      }).catch(err => {
-        console.error('Error al copiar: ', err);
-        showNotification('Error al copiar el enlace', 'error');
-      });
+      if (navigator.share) {
+        // Usar la API Web Share si está disponible (móviles)
+        navigator.share({
+          title: 'Plataforma CBO',
+          text: 'Conectando emprendedores cubanos con oportunidades globales',
+          url: pageUrl
+        }).catch(err => {
+          console.log('Error al compartir:', err);
+          fallbackCopy();
+        });
+      } else {
+        // Fallback para desktop
+        fallbackCopy();
+      }
+    });
+  }
+  
+  function fallbackCopy() {
+    navigator.clipboard.writeText(pageUrl).then(() => {
+      showNotification('Enlace copiado al portapapeles');
+    }).catch(err => {
+      console.error('Error al copiar: ', err);
+      showNotification('Error al copiar el enlace', 'error');
     });
   }
 }
@@ -205,9 +206,82 @@ function initContactButton() {
   
   if (contactBtn) {
     contactBtn.addEventListener('click', () => {
-      showNotification('Próximamente disponible el formulario de contacto');
+      window.location.href = 'mailto:cubabazaronline@gmail.com?subject=Consulta%20sobre%20CBO&body=Hola%20equipo%20CBO,%20me%20gustaría%20saber%20más%20sobre...';
     });
   }
+}
+
+// Instalación como PWA
+function initInstallPrompt() {
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+  const installFooterBtn = document.getElementById('installBtnFooter');
+  
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Mostrar botones de instalación
+    if (installBtn) {
+      installBtn.style.display = 'flex';
+      installBtn.addEventListener('click', showInstallPrompt);
+    }
+    if (installFooterBtn) {
+      installFooterBtn.style.display = 'flex';
+      installFooterBtn.addEventListener('click', showInstallPrompt);
+    }
+  });
+  
+  function showInstallPrompt() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          showNotification('¡Aplicación instalada con éxito!');
+        } else {
+          showNotification('Instalación cancelada', 'info');
+        }
+        deferredPrompt = null;
+        
+        // Ocultar botones después de la instalación
+        if (installBtn) installBtn.style.display = 'none';
+        if (installFooterBtn) installFooterBtn.style.display = 'none';
+      });
+    } else {
+      showNotification('La aplicación ya está instalada o no es compatible', 'info');
+    }
+  }
+  
+  // Detectar si la app ya está instalada
+  window.addEventListener('appinstalled', () => {
+    if (installBtn) installBtn.style.display = 'none';
+    if (installFooterBtn) installFooterBtn.style.display = 'none';
+  });
+}
+
+// Animación de estadísticas
+function animateStats() {
+  const projectsCount = document.getElementById('projectsCount');
+  const usersCount = document.getElementById('usersCount');
+  
+  if (projectsCount && usersCount) {
+    animateValue(projectsCount, 0, 50, 2000);
+    animateValue(usersCount, 0, 100, 2000);
+  }
+}
+
+function animateValue(element, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const value = Math.floor(progress * (end - start) + start);
+    element.textContent = value + '+';
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
 }
 
 // Notificaciones
@@ -221,7 +295,6 @@ function showNotification(message, type = 'success') {
   
   container.appendChild(notification);
   
-  // Eliminar después de animación
   setTimeout(() => {
     notification.remove();
   }, 3500);
@@ -233,22 +306,4 @@ function updateCopyrightYear() {
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
-}
-
-// Efectos holográficos
-function addHolographicEffects() {
-  const elements = document.querySelectorAll('.cta-button, .tab-nav button, .footer-btn');
-  
-  elements.forEach(el => {
-    el.classList.add('neon-effect');
-    
-    // Efecto de hover adicional
-    el.addEventListener('mouseenter', () => {
-      el.style.transform = 'scale(1.05)';
-    });
-    
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = '';
-    });
-  });
 }
