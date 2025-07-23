@@ -2,37 +2,47 @@
 <html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="description" content="Plataforma CBO para emprendedores cubanos - Conexiones, recursos y oportunidades de negocio.">
     <meta name="author" content="Marcos Volta, CBO Team">
     <meta name="theme-color" content="#1a365d">
+    <meta name="color-scheme" content="dark light">
     
     <title>CBO - Plataforma para Cubanos Emprendedores | Conexiones Globales</title>
     
     <!-- Preload recursos críticos -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" crossorigin="anonymous">
     
     <!-- Estilos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Favicon SVG embebido -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     
     <!-- Manifest PWA -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CBO">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
     
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics mejorado -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      
+      // Configuración mejorada de GA
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure',
+        'cookie_domain': 'auto',
+        'cookie_expires': 63072000, // 2 años en segundos
+        'send_page_view': false // Lo controlamos manualmente
+      });
     </script>
     
     <!-- Schema.org markup for Google -->
@@ -42,32 +52,1086 @@
       "@type": "Organization",
       "name": "CBO - Plataforma para Cubanos Emprendedores",
       "url": "https://cubabazaronline.github.io/CBO/",
+      "logo": "https://cubabazaronline.github.io/CBO/icons/icon-512x512.png",
       "description": "Plataforma para conectar emprendedores cubanos con oportunidades globales",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "CU"
-      }
+      },
+      "sameAs": [
+        "https://facebook.com/cubabazaronline",
+        "https://twitter.com/cubabazaronline"
+      ]
     }
     </script>
+    
+    <style>
+    :root {
+      --primary: #1a365d;
+      --primary-dark: #0f172a;
+      --primary-light: #2c5282;
+      --secondary: #2c5282;
+      --secondary-light: #ebf8ff;
+      --accent: #4299e1;
+      --accent-light: #63b3ed;
+      --accent-dark: #3182ce;
+      --text: #f7fafc;
+      --text-muted: #cbd5e0;
+      --bg: #1a202c;
+      --bg-light: #2d3748;
+      --card-bg: rgba(26, 32, 44, 0.9);
+      --card-border: rgba(66, 153, 225, 0.3);
+      --glow: 0 0 15px rgba(66, 153, 225, 0.5);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --border-radius: 16px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
+      --focus-ring: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    }
+
+    [data-theme="light"] {
+      --primary: #2b6cb0;
+      --primary-dark: #2c5282;
+      --primary-light: #4299e1;
+      --secondary: #ebf8ff;
+      --secondary-light: #ffffff;
+      --accent: #2c5282;
+      --accent-light: #3182ce;
+      --accent-dark: #2b6cb0;
+      --text: #1a202c;
+      --text-muted: #4a5568;
+      --bg: #f7fafc;
+      --bg-light: #e2e8f0;
+      --card-bg: rgba(247, 250, 252, 0.95);
+      --card-border: rgba(44, 82, 130, 0.2);
+      --glow: 0 0 10px rgba(66, 153, 225, 0.3);
+    }
+
+    /* Clases de accesibilidad mejoradas */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(40px);
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    /* Reset mejorado */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Mejoras de tipografía */
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+
+    h3 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      color: var(--text-muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover, a:focus {
+      color: var(--accent-light);
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Efecto holográfico mejorado */
+    .holographic-effect {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    .holographic-effect::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(66, 153, 225, 0.15) 0%,
+        rgba(26, 32, 44, 0) 20%,
+        rgba(26, 32, 44, 0) 80%,
+        rgba(66, 153, 225, 0.15) 100%
+      );
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Canvas de partículas mejorado */
+    #particlesCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    /* Barra de navegación mejorada */
+    .nav-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: rgba(26, 32, 44, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      gap: 0.75rem;
+      border-bottom: 1px solid rgba(66, 153, 225, 0.2);
+    }
+
+    .install-btn, .theme-toggle, .share-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.1rem;
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background-color: rgba(66, 153, 225, 0.15);
+    }
+
+    .install-btn {
+      display: none;
+      width: auto;
+      padding: 0 1.25rem;
+      border-radius: 50px;
+      margin-right: auto;
+      font-weight: 500;
+    }
+
+    .install-btn .btn-text {
+      display: none;
+      margin-left: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .install-btn:hover, .theme-toggle:hover, .share-btn:hover,
+    .install-btn:focus-visible, .theme-toggle:focus-visible, .share-btn:focus-visible {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      outline: none;
+    }
+
+    /* Hero Section mejorada */
+    .hero-section {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .logo-container {
+      margin-bottom: 2rem;
+    }
+
+    .logo-3d {
+      font-size: 4.5rem;
+      display: inline-block;
+      animation: float 4s ease-in-out infinite;
+      text-shadow: var(--glow);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      will-change: transform;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotateY(0deg) scale(1); }
+      50% { transform: translateY(-20px) rotateY(10deg) scale(1.05); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: var(--glow);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-muted);
+    }
+
+    .scroll-indicator {
+      margin-top: 3rem;
+    }
+
+    .mouse {
+      width: 25px;
+      height: 40px;
+      border: 2px solid var(--accent);
+      border-radius: 15px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .mouse::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5px;
+      height: 5px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      animation: scroll 1.75s infinite ease-in-out;
+    }
+
+    @keyframes scroll {
+      0% { top: 5px; opacity: 1; }
+      80% { opacity: 0.5; }
+      100% { top: 25px; opacity: 0; }
+    }
+
+    /* About Section mejorada */
+    .about-section {
+      padding: 4rem 1rem;
+      background: linear-gradient(to bottom, rgba(26, 32, 44, 0.5), var(--bg));
+      position: relative;
+    }
+
+    .about-card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      transition: var(--transition);
+    }
+
+    .about-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      margin-top: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10px;
+      height: 100%;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: -10px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 4px solid var(--secondary);
+      box-shadow: 0 0 0 2px var(--bg);
+    }
+
+    .timeline-date {
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: inline-block;
+      background: rgba(66, 153, 225, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .timeline-content p {
+      color: var(--text-muted);
+    }
+
+    /* Tabs Section mejorada */
+    .tabs-container {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 2.5rem 1.5rem;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      margin: 3rem auto;
+      max-width: 1000px;
+      transition: var(--transition);
+    }
+
+    .tabs-container:hover {
+      transform: translateY(-3px);
+    }
+
+    .tab-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-nav button {
+      width: auto;
+      height: auto;
+      border-radius: 50px;
+      border: none;
+      background-color: var(--secondary);
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 0.8rem 1.5rem;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .tab-nav button i {
+      font-size: 1.1rem;
+    }
+
+    .tab-nav button.active {
+      background-color: var(--accent);
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
+    }
+
+    .tab-nav button:focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    .tab {
+      animation: fadeIn 0.5s ease forwards;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .tab-content {
+      margin-bottom: 2.5rem;
+    }
+
+    .tab-content h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .tab-content p {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.75rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: rgba(66, 153, 225, 0.1);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      transition: var(--transition);
+      border: 1px solid var(--card-border);
+      text-align: center;
+    }
+
+    .feature-card:hover, .feature-card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(66, 153, 225, 0.15);
+      border-color: var(--accent);
+    }
+
+    .feature-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover i {
+      transform: scale(1.1);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.9rem 2rem;
+      background-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: 2px solid transparent;
+      margin-top: 1rem;
+      box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+    }
+
+    .cta-button i {
+      margin-right: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .cta-button:hover, .cta-button:focus-visible {
+      background-color: transparent;
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
+      outline: none;
+    }
+
+    /* Footer mejorado */
+    footer {
+      background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 5rem 1rem 2rem;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    .mission, .quick-links, .contact {
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mission:hover, .quick-links:hover, .contact:hover,
+    .mission:focus-within, .quick-links:focus-within, .contact:focus-within {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      border-color: rgba(66, 153, 225, 0.5);
+    }
+
+    .mission h3, .quick-links h3, .contact h3 {
+      color: white;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .mission h3::after,
+    .quick-links h3::after,
+    .contact h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .mission p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .quick-links ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    .quick-links li {
+      margin-bottom: 1rem;
+    }
+
+    .quick-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+      padding: 0.5rem 0;
+      position: relative;
+      font-size: 1.05rem;
+    }
+
+    .quick-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    .quick-links a:hover, .quick-links a:focus {
+      color: var(--accent);
+      outline: none;
+    }
+
+    .quick-links a:hover::after, .quick-links a:focus::after {
+      width: 100%;
+    }
+
+    .contact p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.75rem;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 0.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+    }
+
+    .footer-btn i {
+      font-size: 1.1rem;
+    }
+
+    .footer-btn:hover, .footer-btn:focus-visible {
+      background-color: var(--accent-light);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
+      outline: none;
+    }
+
+    .footer-btn.secondary {
+      background-color: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    .footer-btn.secondary:hover, .footer-btn.secondary:focus-visible {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .install-prompt, .download-section {
+      margin-top: 2rem;
+    }
+
+    .download-section p {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Notificaciones mejoradas */
+    .notification-container {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: calc(100% - 3rem);
+    }
+
+    .notification {
+      padding: 1.25rem 1.75rem;
+      background-color: var(--accent);
+      color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 0;
+      transform: translateX(150%);
+      opacity: 0;
+      animation: slideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards, fadeOut 0.4s ease 5s forwards;
+      max-width: 350px;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      pointer-events: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .notification::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      animation: progress 5s linear forwards;
+    }
+
+    .notification i {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .notification-content {
+      flex: 1;
+    }
+
+    .notification-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .notification-message {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .notification-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+      padding: 0;
+      margin-left: 0.5rem;
+    }
+
+    .notification-close:hover {
+      opacity: 1;
+    }
+
+    .notification.error {
+      background-color: #e53e3e;
+    }
+
+    .notification.info {
+      background-color: #3182ce;
+    }
+
+    .notification.success {
+      background-color: #38a169;
+    }
+
+    /* Animaciones mejoradas */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes progress {
+      from { width: 100%; }
+      to { width: 0%; }
+    }
+
+    /* Media Queries mejoradas */
+    @media (min-width: 768px) {
+      .nav-bar {
+        padding: 1rem 2rem;
+      }
+      
+      .install-btn .btn-text {
+        display: inline;
+      }
+      
+      .hero-section {
+        padding: 8rem 2rem 6rem;
+      }
+      
+      .about-section, .tabs-container {
+        padding: 5rem 2rem;
+      }
+
+      .footer-grid {
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-bar {
+        padding: 0.75rem;
+      }
+      
+      .hero-section {
+        padding: 5rem 1rem 3rem;
+      }
+      
+      .logo-3d {
+        font-size: 3.5rem;
+      }
+      
+      .tab-nav button {
+        padding: 0.7rem 1.25rem;
+        font-size: 0.9rem;
+      }
+      
+      .feature-card {
+        padding: 1.5rem;
+      }
+
+      .about-card {
+        padding: 1.75rem;
+      }
+
+      .tabs-container {
+        padding: 2rem 1rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mission, .quick-links, .contact {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .tab-nav {
+        gap: 0.5rem;
+      }
+
+      .tab-nav button {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .tab-nav button i {
+        font-size: 1rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 1.25rem;
+      }
+
+      .cta-button, .footer-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .notification {
+        max-width: calc(100vw - 2rem);
+        padding: 1rem 1.25rem;
+      }
+    }
+
+    /* Soporte para dispositivos móviles mejorado */
+    @media (hover: none) {
+      .feature-card:hover, 
+      .footer-btn:hover,
+      .install-btn:hover, 
+      .theme-toggle:hover, 
+      .share-btn:hover,
+      .mission:hover,
+      .quick-links:hover,
+      .contact:hover {
+        transform: none;
+      }
+
+      .feature-card:active, 
+      .footer-btn:active,
+      .install-btn:active, 
+      .theme-toggle:active, 
+      .share-btn:active {
+        transform: scale(0.98);
+      }
+    }
+
+    /* Ajustes específicos para iOS */
+    @supports (-webkit-touch-callout: none) {
+      .nav-bar {
+        padding-top: max(1rem, env(safe-area-inset-top));
+      }
+      
+      footer {
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
+      }
+
+      .hero-section {
+        min-height: -webkit-fill-available;
+      }
+    }
+
+    /* Mejoras para navegadores que soportan prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .logo-3d {
+        animation: none;
+      }
+
+      .mouse::after {
+        animation: none;
+      }
+
+      .notification {
+        animation: none;
+        transform: none;
+        opacity: 1;
+      }
+
+      .notification::after {
+        animation: none;
+      }
+    }
+    </style>
 </head>
 
 <body>
-    <!-- Partículas de fondo -->
+    <!-- Enlace de salto para accesibilidad -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Partículas de fondo mejoradas -->
     <canvas id="particlesCanvas" aria-hidden="true"></canvas>
     <div class="container holographic-effect">
-        <!-- Barra de navegación -->
+        <!-- Barra de navegación mejorada -->
         <nav class="nav-bar" aria-label="Navegación principal">
             <button id="installBtn" class="install-btn" aria-label="Instalar aplicación" style="display:none;">
                 <i class="fas fa-download" aria-hidden="true"></i>
-                <span class="btn-text">Instalar</span>
+                <span class="btn-text">Instalar App</span>
             </button>
             <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema" aria-pressed="false">
                 <i class="fas fa-moon" aria-hidden="true"></i>
-                <span class="sr-only">Cambiar tema</span>
+                <span class="sr-only">Cambiar entre modo claro y oscuro</span>
             </button>
-            <button class="share-btn" id="copyLinkBtn" aria-label="Copiar enlace">
+            <button class="share-btn" id="copyLinkBtn" aria-label="Compartir esta página">
                 <i class="fas fa-share-alt" aria-hidden="true"></i>
-                <span class="sr-only">Compartir</span>
+                <span class="sr-only">Compartir enlace</span>
             </button>
         </nav>
         
@@ -76,124 +1140,140 @@
                 <div class="logo-container">
                     <div class="logo-3d" aria-hidden="true">🚀</div>
                 </div>
-                <h1 class="glow">Plataforma <span class="glow">CBO</span></h1>
+                <h1 class="hero-title">Plataforma <span class="glow">CBO</span></h1>
                 <p class="hero-subtitle">Conectando emprendedores cubanos con oportunidades globales</p>
                 <div class="scroll-indicator" aria-hidden="true">
                     <div class="mouse"></div>
-                    <div class="arrow"></div>
                 </div>
             </div>
         </header>
         
-        <section class="about-section" aria-labelledby="about-heading">
-            <div class="about-card">
-                <h2 id="about-heading">Nuestra Historia</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Noviembre 2024</div>
-                        <div class="timeline-content">
-                            <h3>Fundación de CBO</h3>
-                            <p>Creada para proporcionar plataformas web y soporte digital a emprendedores cubanos que necesitan presencia en línea.</p>
+        <main id="main-content">
+            <section class="about-section" aria-labelledby="about-heading">
+                <div class="about-card">
+                    <h2 id="about-heading">Nuestra Historia</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Noviembre 2024</div>
+                            <div class="timeline-content">
+                                <h3>Fundación de CBO</h3>
+                                <p>Creada para proporcionar plataformas web y soporte digital a emprendedores cubanos que necesitan presencia en línea.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Actualidad</div>
-                        <div class="timeline-content">
-                            <h3>Expansión Continua</h3>
-                            <p>Hemos ayudado a decenas de emprendedores a establecer su presencia digital y conectar con oportunidades globales.</p>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Actualidad</div>
+                            <div class="timeline-content">
+                                <h3>Expansión Continua</h3>
+                                <p>Hemos ayudado a decenas de emprendedores a establecer su presencia digital y conectar con oportunidades globales.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <main class="tabs-container">
-            <div class="tab-nav" role="tablist" aria-label="Secciones de la plataforma">
-                <button class="active" data-tab="0" role="tab" aria-selected="true" aria-controls="tabpanel-1" id="tab-1">
-                    <i class="fas fa-users" aria-hidden="true"></i>
-                    <span>Red</span>
-                </button>
-                <button data-tab="1" role="tab" aria-selected="false" aria-controls="tabpanel-2" id="tab-2" tabindex="-1">
-                    <i class="fas fa-tools" aria-hidden="true"></i>
-                    <span>Herramientas</span>
-                </button>
-                <button data-tab="2" role="tab" aria-selected="false" aria-controls="tabpanel-3" id="tab-3" tabindex="-1">
-                    <i class="fas fa-briefcase" aria-hidden="true"></i>
-                    <span>Oportunidades</span>
-                </button>
-            </div>
+            </section>
             
-            <div class="tabs" id="tabs">
-                <article class="tab" data-tab-content="0" role="tabpanel" id="tabpanel-1" aria-labelledby="tab-1" tabindex="0">
-                    <div class="tab-content">
-                        <h2>Tcubita</h2>
-                        <p>Conéctate con una comunidad llena de emprendedores cubanos. Comparte ofertas, encuentra colaboradores y haz crecer tu red de contacto.</p>
-                        <div class="features-grid">
-                            <div class="feature-card">
-                                <i class="fas fa-network-wired" aria-hidden="true"></i>
-                                <h3>Conexiones</h3>
-                                <p>Amplía tu red profesional con emprendedores afines</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-handshake" aria-hidden="true"></i>
-                                <h3>Colaboración</h3>
-                                <p>Encuentra socios para tus proyectos</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="https://cubabazaronline.github.io/Tcubita/" target="_blank" rel="noopener noreferrer" class="cta-button">
-                        <i class="fas fa-users tab-icon" aria-hidden="true"></i> Unirse a la Red
-                    </a>
-                </article>
+            <div class="tabs-container">
+                <div class="tab-nav" role="tablist" aria-label="Secciones de la plataforma">
+                    <button class="active" data-tab="0" role="tab" aria-selected="true" aria-controls="tabpanel-1" id="tab-1">
+                        <i class="fas fa-users" aria-hidden="true"></i>
+                        <span>Red</span>
+                    </button>
+                    <button data-tab="1" role="tab" aria-selected="false" aria-controls="tabpanel-2" id="tab-2" tabindex="-1">
+                        <i class="fas fa-tools" aria-hidden="true"></i>
+                        <span>Herramientas</span>
+                    </button>
+                    <button data-tab="2" role="tab" aria-selected="false" aria-controls="tabpanel-3" id="tab-3" tabindex="-1">
+                        <i class="fas fa-briefcase" aria-hidden="true"></i>
+                        <span>Oportunidades</span>
+                    </button>
+                </div>
                 
-                <article class="tab" data-tab-content="1" role="tabpanel" id="tabpanel-2" aria-labelledby="tab-2" tabindex="0" hidden>
-                    <div class="tab-content">
-                        <h2>CHP</h2>
-                        <p>Accede a servicio exclusivo, crea tu propia página web personalizable específicamente para emprendedores cubanos.</p>
-                        <div class="features-grid">
-                            <div class="feature-card">
-                                <i class="fas fa-globe" aria-hidden="true"></i>
-                                <h3>Presencia Web</h3>
-                                <p>Muestra tu negocio al mundo</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-paint-brush" aria-hidden="true"></i>
-                                <h3>Personalización</h3>
-                                <p>Adapta tu sitio a tu marca</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="https://cubabazaronline.github.io/CHP/" target="_blank" rel="noopener noreferrer" class="cta-button">
-                        <i class="fas fa-tools tab-icon" aria-hidden="true"></i> Explorar Recursos
-                    </a>
-                </article>
-                
-                <article class="tab" data-tab-content="2" role="tabpanel" id="tabpanel-3" aria-labelledby="tab-3" tabindex="0" hidden>
-                    <div class="tab-content">
-                        <h2>Afiliados</h2>
-                        <p>Descubre la oportunidad de obtener ingresos desde casa, buscando a emprendedores cubanos que necesiten crecer.</p>
-                        <div class="features-grid">
-                            <div class="feature-card">
-                                <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
-                                <h3>Ingresos</h3>
-                                <p>Gana comisiones por cada referencia</p>
-                            </div>
-                            <div class="feature-card">
-                                <i class="fas fa-chart-line" aria-hidden="true"></i>
-                                <h3>Crecimiento</h3>
-                                <p>Sin límites en tus ganancias</p>
+                <div class="tabs" id="tabs">
+                    <article class="tab" data-tab-content="0" role="tabpanel" id="tabpanel-1" aria-labelledby="tab-1" tabindex="0">
+                        <div class="tab-content">
+                            <h2>Tcubita</h2>
+                            <p>Conéctate con una comunidad llena de emprendedores cubanos. Comparte ofertas, encuentra colaboradores y haz crecer tu red de contacto.</p>
+                            <div class="features-grid">
+                                <div class="feature-card">
+                                    <i class="fas fa-network-wired" aria-hidden="true"></i>
+                                    <h3>Conexiones</h3>
+                                    <p>Amplía tu red profesional con emprendedores afines</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-handshake" aria-hidden="true"></i>
+                                    <h3>Colaboración</h3>
+                                    <p>Encuentra socios para tus proyectos</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-comments" aria-hidden="true"></i>
+                                    <h3>Comunidad</h3>
+                                    <p>Interactúa con otros emprendedores</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <a href="https://cubabazaronline.github.io/Afiliados-de-CHP/" target="_blank" rel="noopener noreferrer" class="cta-button">
-                        <i class="fas fa-briefcase tab-icon" aria-hidden="true"></i> Ver Oportunidades
-                    </a>
-                </article>
+                        <a href="https://cubabazaronline.github.io/Tcubita/" target="_blank" rel="noopener noreferrer" class="cta-button">
+                            <i class="fas fa-users tab-icon" aria-hidden="true"></i> Unirse a la Red
+                        </a>
+                    </article>
+                    
+                    <article class="tab" data-tab-content="1" role="tabpanel" id="tabpanel-2" aria-labelledby="tab-2" tabindex="0" hidden>
+                        <div class="tab-content">
+                            <h2>CHP</h2>
+                            <p>Accede a servicio exclusivo, crea tu propia página web personalizable específicamente para emprendedores cubanos.</p>
+                            <div class="features-grid">
+                                <div class="feature-card">
+                                    <i class="fas fa-globe" aria-hidden="true"></i>
+                                    <h3>Presencia Web</h3>
+                                    <p>Muestra tu negocio al mundo</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-paint-brush" aria-hidden="true"></i>
+                                    <h3>Personalización</h3>
+                                    <p>Adapta tu sitio a tu marca</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-rocket" aria-hidden="true"></i>
+                                    <h3>Rápido</h3>
+                                    <p>Sitios optimizados para máxima velocidad</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://cubabazaronline.github.io/CHP/" target="_blank" rel="noopener noreferrer" class="cta-button">
+                            <i class="fas fa-tools tab-icon" aria-hidden="true"></i> Explorar Recursos
+                        </a>
+                    </article>
+                    
+                    <article class="tab" data-tab-content="2" role="tabpanel" id="tabpanel-3" aria-labelledby="tab-3" tabindex="0" hidden>
+                        <div class="tab-content">
+                            <h2>Afiliados</h2>
+                            <p>Descubre la oportunidad de obtener ingresos desde casa, buscando a emprendedores cubanos que necesiten crecer.</p>
+                            <div class="features-grid">
+                                <div class="feature-card">
+                                    <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                                    <h3>Ingresos</h3>
+                                    <p>Gana comisiones por cada referencia</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                    <h3>Crecimiento</h3>
+                                    <p>Sin límites en tus ganancias</p>
+                                </div>
+                                <div class="feature-card">
+                                    <i class="fas fa-users" aria-hidden="true"></i>
+                                    <h3>Red</h3>
+                                    <p>Construye tu propia red de afiliados</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://cubabazaronline.github.io/Afiliados-de-CHP/" target="_blank" rel="noopener noreferrer" class="cta-button">
+                            <i class="fas fa-briefcase tab-icon" aria-hidden="true"></i> Ver Oportunidades
+                        </a>
+                    </article>
+                </div>
             </div>
         </main>
     </div>
     
-    <!-- Contenedor de notificaciones -->
+    <!-- Contenedor de notificaciones mejorado -->
     <div class="notification-container" id="notificationContainer" role="status" aria-live="polite"></div>
     
     <footer>
@@ -210,6 +1290,10 @@
                         <div class="stat-number" id="usersCount">100+</div>
                         <div class="stat-label">Usuarios</div>
                     </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="partnersCount">20+</div>
+                        <div class="stat-label">Socios</div>
+                    </div>
                 </div>
             </div>  
             
@@ -219,12 +1303,13 @@
                     <li><a href="https://cubabazaronline.github.io/Tcubita/" target="_blank" rel="noopener noreferrer">Tcubita</a></li>
                     <li><a href="https://cubabazaronline.github.io/CHP/" target="_blank" rel="noopener noreferrer">CHP</a></li>
                     <li><a href="https://cubabazaronline.github.io/Afiliados-de-CHP/" target="_blank" rel="noopener noreferrer">Afiliados</a></li>
+                    <li><a href="https://cubabazaronline.github.io/CBO/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
                 </ul>
             </div>
             
             <div class="contact">
                 <h3>Contacto</h3>
-                <p>¿Preguntas o sugerencias?</p>
+                <p>¿Preguntas o sugerencias? Estamos aquí para ayudarte.</p>
                 <button id="contactBtn" class="footer-btn">
                     <i class="fas fa-envelope" aria-hidden="true"></i> Escríbenos
                 </button>
@@ -249,30 +1334,796 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="script.js" defer></script>
-    <!-- Service Worker para PWA -->
+    <!-- Scripts mejorados -->
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registrado con éxito: ', registration.scope);
-                        gtag('event', 'service_worker_registered', {
-                            'event_category': 'PWA',
-                            'event_label': 'Registration'
-                        });
-                    })
-                    .catch(err => {
-                        console.log('Error al registrar ServiceWorker: ', err);
-                        showNotification('Error al cargar funciones offline', 'error');
-                        gtag('event', 'service_worker_error', {
-                            'event_category': 'PWA',
-                            'event_label': 'Registration Error'
-                        });
-                    });
-            });
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configuración inicial mejorada
+      try {
+        // Mejorar el rendimiento de la carga inicial
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(initApp);
+        } else {
+          setTimeout(initApp, 500);
         }
+        
+        // Track page view mejorado
+        trackPageView();
+      } catch (error) {
+        console.error('Error en la inicialización:', error);
+        showNotification('Error al cargar la aplicación', 'error');
+        trackError('initialization_error', error.message);
+      }
+    });
+
+    function initApp() {
+      initTheme();
+      initParticles();
+      initTabs();
+      initShareButton();
+      updateCopyrightYear();
+      initContactButton();
+      initInstallPrompt();
+      animateStats();
+      initServiceWorker();
+      
+      // Mejorar la accesibilidad del teclado
+      document.addEventListener('keydown', handleKeyboardNavigation);
+    }
+
+    // Sistema de temas mejorado
+    function initTheme() {
+      const themeToggle = document.getElementById('themeToggle');
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      // Verificar preferencia guardada o del sistema
+      const storedTheme = localStorage.getItem('theme');
+      const systemTheme = prefersDarkScheme.matches ? 'dark' : 'light';
+      const currentTheme = storedTheme || systemTheme;
+      
+      // Aplicar tema inicial
+      applyTheme(currentTheme);
+      
+      // Escuchar cambios en las preferencias del sistema
+      prefersDarkScheme.addListener(e => {
+        const newTheme = e.matches ? 'dark' : 'light';
+        if (!storedTheme) { // Solo cambiar si no hay preferencia guardada
+          applyTheme(newTheme);
+        }
+      });
+      
+      // Configurar el botón de alternancia
+      themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      updateThemeIcon(theme);
+      document.getElementById('themeToggle').setAttribute('aria-pressed', theme === 'dark');
+      
+      // Mejorar el contraste para accesibilidad
+      if (theme === 'light') {
+        document.documentElement.style.setProperty('--focus-ring', '0 0 0 3px rgba(44, 82, 130, 0.5)');
+      } else {
+        document.documentElement.style.setProperty('--focus-ring', '0 0 0 3px rgba(66, 153, 225, 0.5)');
+      }
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const newTheme = current === 'dark' ? 'light' : 'dark';
+      
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      showNotification(`Modo ${newTheme === 'dark' ? 'oscuro' : 'claro'} activado`, 'info');
+      trackEvent('theme_toggle', 'UI', newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      const icon = document.querySelector('#themeToggle i');
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      icon.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    }
+
+    // Sistema de partículas mejorado
+    function initParticles() {
+      try {
+        const canvas = document.getElementById('particlesCanvas');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          canvas.style.display = 'none';
+          return;
+        }
+        
+        // Ajustar tamaño del canvas
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        
+        // Configuración de partículas
+        const particleCount = Math.min(Math.floor(window.innerWidth * window.innerHeight / 2000), 150);
+        const particles = [];
+        const connections = [];
+        const connectionDistance = 150;
+        
+        // Crear partículas
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 1,
+            speedX: (Math.random() - 0.5) * 0.5,
+            speedY: (Math.random() - 0.5) * 0.5,
+            color: `rgba(66, 153, 225, ${Math.random() * 0.4 + 0.2})`,
+            alpha: Math.random() * 0.5 + 0.5
+          });
+        }
+        
+        // Función de animación optimizada
+        function animateParticles() {
+          try {
+            // Limpiar canvas con transparencia para efecto de rastro
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(26, 32, 44, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Actualizar y dibujar partículas
+            particles.forEach(particle => {
+              // Mover partícula
+              particle.x += particle.speedX;
+              particle.y += particle.speedY;
+              
+              // Rebotar en los bordes
+              if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
+              if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+              
+              // Dibujar partícula
+              ctx.beginPath();
+              ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+              ctx.fillStyle = particle.color;
+              ctx.fill();
+            });
+            
+            // Dibujar conexiones entre partículas
+            for (let i = 0; i < particles.length; i++) {
+              for (let j = i + 1; j < particles.length; j++) {
+                const p1 = particles[i];
+                const p2 = particles[j];
+                const distance = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+                
+                if (distance < connectionDistance) {
+                  const opacity = 1 - distance / connectionDistance;
+                  ctx.beginPath();
+                  ctx.moveTo(p1.x, p1.y);
+                  ctx.lineTo(p2.x, p2.y);
+                  ctx.strokeStyle = `rgba(66, 153, 225, ${opacity * 0.3})`;
+                  ctx.lineWidth = 0.8;
+                  ctx.stroke();
+                }
+              }
+            }
+            
+            // Usar requestAnimationFrame con manejo de FPS
+            if (!window.__stopParticles) {
+              requestAnimationFrame(animateParticles);
+            }
+          } catch (error) {
+            console.error('Error en animación de partículas:', error);
+            canvas.style.display = 'none';
+            trackError('particles_error', error.message);
+          }
+        }
+        
+        // Iniciar animación
+        animateParticles();
+        
+        // Manejar redimensionamiento
+        window.addEventListener('resize', () => {
+          resizeCanvas();
+        });
+        
+        // Optimización para pestañas inactivas
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            window.__stopParticles = true;
+          } else {
+            window.__stopParticles = false;
+            animateParticles();
+          }
+        });
+      } catch (error) {
+        console.error('Error al inicializar partículas:', error);
+        const canvas = document.getElementById('particlesCanvas');
+        if (canvas) canvas.style.display = 'none';
+        trackError('particles_init_error', error.message);
+      }
+    }
+
+    // Sistema de pestañas mejorado
+    function initTabs() {
+      try {
+        const tabButtons = Array.from(document.querySelectorAll('.tab-nav button'));
+        const tabContents = Array.from(document.querySelectorAll('.tab'));
+        
+        if (tabButtons.length === 0 || tabContents.length === 0) return;
+        
+        // Configurar cada botón de pestaña
+        tabButtons.forEach((button, index) => {
+          // Evento de clic
+          button.addEventListener('click', () => {
+            setActiveTab(index);
+            trackEvent('tab_click', 'Navigation', button.textContent.trim());
+          });
+          
+          // Eventos de teclado mejorados
+          button.addEventListener('keydown', (e) => {
+            switch (e.key) {
+              case 'Enter':
+              case ' ':
+                e.preventDefault();
+                button.click();
+                break;
+              case 'ArrowRight':
+                e.preventDefault();
+                focusNextTab(tabButtons, index);
+                break;
+              case 'ArrowLeft':
+                e.preventDefault();
+                focusPrevTab(tabButtons, index);
+                break;
+              case 'Home':
+                e.preventDefault();
+                focusTab(tabButtons, 0);
+                break;
+              case 'End':
+                e.preventDefault();
+                focusTab(tabButtons, tabButtons.length - 1);
+                break;
+            }
+          });
+        });
+        
+        // Función para enfocar la siguiente pestaña
+        function focusNextTab(buttons, currentIndex) {
+          const nextIndex = (currentIndex + 1) % buttons.length;
+          focusTab(buttons, nextIndex);
+        }
+        
+        // Función para enfocar la pestaña anterior
+        function focusPrevTab(buttons, currentIndex) {
+          const prevIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+          focusTab(buttons, prevIndex);
+        }
+        
+        // Función para enfocar una pestaña específica
+        function focusTab(buttons, index) {
+          const button = buttons[index];
+          button.focus();
+          button.click();
+        }
+        
+        // Función para establecer la pestaña activa
+        function setActiveTab(index) {
+          // Actualizar botones
+          tabButtons.forEach((btn, i) => {
+            const isSelected = i === index;
+            btn.classList.toggle('active', isSelected);
+            btn.setAttribute('aria-selected', isSelected);
+            btn.setAttribute('tabindex', isSelected ? '0' : '-1');
+          });
+          
+          // Actualizar contenidos
+          tabContents.forEach(content => {
+            content.hidden = true;
+          });
+          
+          const selectedTab = document.querySelector(`.tab[data-tab-content="${index}"]`);
+          if (selectedTab) {
+            selectedTab.hidden = false;
+            selectedTab.style.animation = 'none';
+            setTimeout(() => {
+              selectedTab.style.animation = 'fadeIn 0.5s ease forwards';
+            }, 10);
+            
+            // Enfocar el contenido de la pestaña para accesibilidad
+            setTimeout(() => {
+              selectedTab.focus();
+            }, 50);
+          }
+        }
+        
+        // Activar primera pestaña por defecto
+        setActiveTab(0);
+      } catch (error) {
+        console.error('Error en sistema de pestañas:', error);
+        trackError('tabs_error', error.message);
+      }
+    }
+
+    // Botón para compartir mejorado
+    function initShareButton() {
+      try {
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        if (!copyLinkBtn) return;
+        
+        const pageUrl = window.location.href;
+        const pageTitle = document.title;
+        
+        copyLinkBtn.addEventListener('click', async () => {
+          try {
+            if (navigator.share) {
+              // API de Web Share
+              await navigator.share({
+                title: pageTitle,
+                text: 'Conectando emprendedores cubanos con oportunidades globales',
+                url: pageUrl
+              });
+              trackEvent('share', 'Engagement', 'native');
+            } else if (navigator.clipboard) {
+              // API de Clipboard
+              await navigator.clipboard.writeText(pageUrl);
+              showNotification('Enlace copiado al portapapeles', 'success');
+              trackEvent('share', 'Engagement', 'clipboard');
+            } else {
+              // Fallback para navegadores antiguos
+              copyToClipboardFallback(pageUrl);
+            }
+          } catch (err) {
+            if (err.name !== 'AbortError') {
+              console.error('Error al compartir:', err);
+              copyToClipboardFallback(pageUrl);
+            }
+          }
+        });
+        
+        // Función de fallback mejorada
+        function copyToClipboardFallback(text) {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed'; // Evitar desplazamiento
+          document.body.appendChild(textarea);
+          textarea.select();
+          
+          try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+              showNotification('Enlace copiado al portapeles', 'success');
+              trackEvent('share', 'Engagement', 'execCommand');
+            } else {
+              throw new Error('Falló el comando execCommand');
+            }
+          } catch (err) {
+            console.error('Error al copiar: ', err);
+            showNotification('No se pudo copiar el enlace', 'error');
+            trackError('share_error', err.message);
+          } finally {
+            document.body.removeChild(textarea);
+          }
+        }
+      } catch (error) {
+        console.error('Error en botón de compartir:', error);
+        trackError('share_init_error', error.message);
+      }
+    }
+
+    // Botón de contacto mejorado
+    function initContactButton() {
+      try {
+        const contactBtn = document.getElementById('contactBtn');
+        if (!contactBtn) return;
+        
+        contactBtn.addEventListener('click', () => {
+          const subject = encodeURIComponent('Consulta sobre CBO');
+          const body = encodeURIComponent('Hola equipo CBO,\n\nMe gustaría saber más sobre...');
+          window.location.href = `mailto:cubabazaronline@gmail.com?subject=${subject}&body=${body}`;
+          
+          trackEvent('contact_click', 'Engagement', 'Email Contact');
+        });
+      } catch (error) {
+        console.error('Error en botón de contacto:', error);
+        trackError('contact_error', error.message);
+      }
+    }
+
+    // Instalación como PWA mejorada
+    function initInstallPrompt() {
+      try {
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+        const installFooterBtn = document.getElementById('installBtnFooter');
+        
+        // Verificar si ya está instalado
+        function checkInstalledStatus() {
+          if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+            if (installBtn) installBtn.style.display = 'none';
+            if (installFooterBtn) installFooterBtn.style.display = 'none';
+            return true;
+          }
+          return false;
+        }
+        
+        // Mostrar el prompt de instalación
+        function showInstallPrompt() {
+          if (deferredPrompt) {
+            // Mostrar el prompt de instalación
+            deferredPrompt.prompt();
+            
+            // Esperar a que el usuario responda
+            deferredPrompt.userChoice.then(choiceResult => {
+              if (choiceResult.outcome === 'accepted') {
+                showNotification('¡Aplicación instalada con éxito!', 'success');
+                trackEvent('pwa_install', 'PWA', 'accepted');
+              } else {
+                showNotification('Instalación cancelada', 'info');
+                trackEvent('pwa_install', 'PWA', 'dismissed');
+              }
+              
+              // Limpiar el prompt guardado
+              deferredPrompt = null;
+              
+              // Ocultar botones de instalación
+              if (installBtn) installBtn.style.display = 'none';
+              if (installFooterBtn) installFooterBtn.style.display = 'none';
+            });
+          } else {
+            // Si no hay prompt disponible
+            if (checkInstalledStatus()) {
+              showNotification('La aplicación ya está instalada', 'info');
+            } else {
+              showNotification('La instalación no está disponible en este navegador', 'info');
+            }
+          }
+        }
+        
+        // Escuchar el evento beforeinstallprompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+          e.preventDefault();
+          deferredPrompt = e;
+          
+          // Mostrar botones de instalación
+          if (installBtn) {
+            installBtn.style.display = 'flex';
+            installBtn.addEventListener('click', showInstallPrompt);
+          }
+          if (installFooterBtn) {
+            installFooterBtn.style.display = 'flex';
+            installFooterBtn.addEventListener('click', showInstallPrompt);
+          }
+          
+          trackEvent('pwa_prompt_available', 'PWA');
+        });
+        
+        // Escuchar cuando la app se instala
+        window.addEventListener('appinstalled', () => {
+          showNotification('¡Gracias por instalar nuestra aplicación!', 'success');
+          trackEvent('pwa_installed', 'PWA');
+          
+          // Ocultar botones de instalación
+          if (installBtn) installBtn.style.display = 'none';
+          if (installFooterBtn) installFooterBtn.style.display = 'none';
+        });
+        
+        // Verificar estado inicial
+        checkInstalledStatus();
+      } catch (error) {
+        console.error('Error en instalación PWA:', error);
+        trackError('pwa_error', error.message);
+      }
+    }
+
+    // Animación de estadísticas mejorada
+    function animateStats() {
+      try {
+        const projectsCount = document.getElementById('projectsCount');
+        const usersCount = document.getElementById('usersCount');
+        const partnersCount = document.getElementById('partnersCount');
+        
+        if (projectsCount && usersCount && partnersCount) {
+          // Usar requestAnimationFrame para mejor rendimiento
+          animateValue(projectsCount, 0, 50, 2000);
+          animateValue(usersCount, 0, 100, 2000);
+          animateValue(partnersCount, 0, 20, 2000);
+          
+          trackEvent('stats_animation', 'UI');
+        }
+      } catch (error) {
+        console.error('Error en animación de estadísticas:', error);
+        trackError('stats_error', error.message);
+      }
+    }
+
+    function animateValue(element, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.textContent = value + '+';
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    // Notificaciones mejoradas
+    function showNotification(message, type = 'success', title = '', duration = 5000) {
+      try {
+        const container = document.getElementById('notificationContainer');
+        if (!container) return;
+        
+        // Crear elemento de notificación
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.setAttribute('role', type === 'error' ? 'alert' : 'status');
+        notification.setAttribute('aria-live', 'assertive');
+        
+        // Icono según el tipo
+        let iconClass;
+        switch (type) {
+          case 'error':
+            iconClass = 'fas fa-exclamation-circle';
+            title = title || 'Error';
+            break;
+          case 'info':
+            iconClass = 'fas fa-info-circle';
+            title = title || 'Información';
+            break;
+          default:
+            iconClass = 'fas fa-check-circle';
+            title = title || 'Éxito';
+        }
+        
+        // Contenido de la notificación
+        notification.innerHTML = `
+          <i class="${iconClass}" aria-hidden="true"></i>
+          <div class="notification-content">
+            ${title ? `<div class="notification-title">${title}</div>` : ''}
+            <div class="notification-message">${message}</div>
+          </div>
+          <button class="notification-close" aria-label="Cerrar notificación">
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        `;
+        
+        // Agregar al contenedor
+        container.appendChild(notification);
+        
+        // Configurar botón de cierre
+        const closeBtn = notification.querySelector('.notification-close');
+        closeBtn.addEventListener('click', () => {
+          dismissNotification(notification);
+        });
+        
+        // Eliminar automáticamente después de la duración
+        const timeoutId = setTimeout(() => {
+          dismissNotification(notification);
+        }, duration);
+        
+        // Pausar el timeout cuando se hace hover
+        notification.addEventListener('mouseenter', () => {
+          clearTimeout(timeoutId);
+        });
+        
+        // Reanudar el timeout cuando se deja de hacer hover
+        notification.addEventListener('mouseleave', () => {
+          setTimeout(() => {
+            dismissNotification(notification);
+          }, 1000);
+        });
+        
+        // Track notification
+        trackEvent('notification_shown', 'UI', type);
+      } catch (error) {
+        console.error('Error al mostrar notificación:', error);
+        // Fallback simple
+        alert(`${type.toUpperCase()}: ${message}`);
+        trackError('notification_error', error.message);
+      }
+    }
+
+    function dismissNotification(notification) {
+      if (!notification) return;
+      
+      notification.style.animation = 'fadeOut 0.4s ease forwards';
+      notification.addEventListener('animationend', () => {
+        notification.remove();
+      });
+    }
+
+    // Año de copyright
+    function updateCopyrightYear() {
+      try {
+        const yearElement = document.getElementById('currentYear');
+        if (yearElement) {
+          yearElement.textContent = new Date().getFullYear();
+        }
+      } catch (error) {
+        console.error('Error al actualizar año de copyright:', error);
+        trackError('copyright_error', error.message);
+      }
+    }
+
+    // Service Worker mejorado
+    function initServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        // Registrar después de que la página haya cargado
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registrado con éxito: ', registration.scope);
+              
+              // Verificar actualizaciones
+              registration.update();
+              
+              trackEvent('service_worker_registered', 'PWA');
+              
+              // Escuchar actualizaciones
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed') {
+                    if (navigator.serviceWorker.controller) {
+                      // Hay una nueva versión disponible
+                      showNotification('¡Nueva versión disponible! Actualiza la aplicación.', 'info');
+                      trackEvent('service_worker_update', 'PWA');
+                    }
+                  }
+                });
+              });
+            })
+            .catch(err => {
+              console.log('Error al registrar ServiceWorker: ', err);
+              trackError('service_worker_error', err.message);
+            });
+        });
+      }
+    }
+
+    // Navegación por teclado mejorada
+    function handleKeyboardNavigation(e) {
+      // Saltar al contenido principal con teclado
+      if (e.key === 's' && e.ctrlKey) {
+        e.preventDefault();
+        document.querySelector('.skip-link').focus();
+      }
+    }
+
+    // Google Analytics mejorado
+    function trackPageView() {
+      gtag('event', 'page_view', {
+        'page_title': document.title,
+        'page_location': window.location.href,
+        'page_path': window.location.pathname + window.location.search,
+        'page_referrer': document.referrer || 'direct'
+      });
+    }
+
+    function trackEvent(action, category, label, value) {
+      gtag('event', action, {
+        'event_category': category,
+        'event_label': label,
+        'value': value
+      });
+    }
+
+    function trackError(category, message) {
+      gtag('event', 'exception', {
+        'description': `${category}: ${message}`,
+        'fatal': false
+      });
+    }
+    </script>
+    
+    <!-- Service Worker para PWA mejorado -->
+    <script>
+    // Configuración del Service Worker (debe estar en un archivo separado sw.js)
+    const CACHE_NAME = 'cbo-platform-v5';
+    const OFFLINE_PAGE = '/offline.html';
+    const ASSETS_TO_CACHE = [
+      '/',
+      '/index.html',
+      '/styles.css',
+      '/script.js',
+      '/manifest.webmanifest',
+      'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+      'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap',
+      '/icons/icon-192x192.png',
+      '/icons/icon-512x512.png',
+      OFFLINE_PAGE
+    ];
+
+    // Instalación del Service Worker
+    self.addEventListener('install', (event) => {
+      event.waitUntil(
+        caches.open(CACHE_NAME)
+          .then((cache) => {
+            return cache.addAll(ASSETS_TO_CACHE)
+              .catch(err => {
+                console.error('Error al cachear recursos:', err);
+              });
+          })
+          .then(() => self.skipWaiting())
+      );
+    });
+
+    // Activación del Service Worker
+    self.addEventListener('activate', (event) => {
+      event.waitUntil(
+        caches.keys().then((cacheNames) => {
+          return Promise.all(
+            cacheNames.map((cache) => {
+              if (cache !== CACHE_NAME) {
+                return caches.delete(cache);
+              }
+            })
+          );
+        }).then(() => {
+          // Tomar control de todas las pestañas
+          return self.clients.claim();
+        })
+      );
+    });
+
+    // Estrategia de caché: Cache First, fallback a Network
+    self.addEventListener('fetch', (event) => {
+      // Ignorar solicitudes POST y de analytics
+      if (event.request.method !== 'GET') return;
+      
+      // Para navegación, intentar network primero, luego caché
+      if (event.request.mode === 'navigate') {
+        event.respondWith(
+          fetch(event.request)
+            .catch(() => {
+              return caches.match(OFFLINE_PAGE);
+            })
+        );
+        return;
+      }
+      
+      // Para otros recursos: caché primero, luego red
+      event.respondWith(
+        caches.match(event.request)
+          .then((response) => {
+            return response || fetch(event.request)
+              .then(response => {
+                // Almacenar en caché para futuras solicitudes
+                const responseToCache = response.clone();
+                caches.open(CACHE_NAME)
+                  .then(cache => cache.put(event.request, responseToCache));
+                return response;
+              })
+              .catch(err => {
+                console.error('Error al cargar recurso:', err);
+              });
+          })
+      );
+    });
+
+    // Manejar mensajes para actualización de la app
+    self.addEventListener('message', (event) => {
+      if (event.data === 'skipWaiting') {
+        self.skipWaiting();
+      }
+    });
+
+    // Analytics offline
+    self.addEventListener('fetch', (event) => {
+      if (event.request.url.includes('https://www.google-analytics.com/collect')) {
+        event.respondWith(
+          fetch(event.request)
+            .catch(() => {
+              // Si falla, no hacemos nada para no bloquear el envío
+              return new Response(null, {status: 204});
+            })
+        );
+      }
+    });
     </script>
 </body>
 </html>
